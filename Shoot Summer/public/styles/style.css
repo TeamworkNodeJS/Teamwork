@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body header {
+  background-color: rgba(222, 226, 226, 0.8);
+}
+body header #logo {
+  font-size: 25px;
+  font-family: 'Francois One', sans-serif;
+}
+body header #logo a {
+  color: #fff;
+}
+body header #logo a:hover {
+  text-decoration: none;
+}
+body header #nav a {
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+}
+body header #nav a span {
+  padding: 5px;
+}
+body header #nav a button {
+  padding: 5px;
+  margin-top: 7px;
+  font-size: 16px;
+  border: 1px solid #C3BFBF;
+  border-radius: 5px;
+}
+body header #nav a button:hover {
+  background-color: rgba(237, 236, 236, 0.47);
+  color: #fff;
+}
+body #wrapper #home {
+  width: 100%;
+  height: 880px;
+  background-image: url("../images/home.JPG");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+body #wrapper #home h1 {
+  color: #fff;
+  font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+  font-size: 80px;
+  line-height: 80%;
+  position: relative;
+  left: 60%;
+  top: 30%;
+}
+body #wrapper #home button {
+  position: relative;
+  left: 60%;
+  top: 300px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 10px;
+  background-color: transparent;
+}
+body #wrapper #home button:hover {
+  background-color: #fff;
+  color: #717D7C;
+}
+body footer {
+  background-color: rgba(222, 226, 226, 0.6);
+  color: #fff;
+  font-size: 20px;
+  padding-top: 10px;
+}

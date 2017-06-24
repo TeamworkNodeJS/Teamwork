@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    header {
+        background-color: rgba(222, 226, 226, 0.80);
+        #logo {
+            font-size: 25px;
+            font-family: 'Francois One', sans-serif;
+            a {
+                color: #fff;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        #nav {
+            a {
+                color: #fff;
+                padding: 10px;
+                font-size: 18px;
+                span {
+                    padding: 5px;
+                }
+                button {
+                    padding: 5px;
+                    margin-top: 7px;
+                    font-size: 16px;
+                    border: 1px solid #C3BFBF;
+                    border-radius: 5px;
+                    &:hover {
+                        background-color: rgba(237, 236, 236, 0.47);
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    #wrapper {
+        #home {
+            width: 100%;
+            height: 880px;
+            background-image: url("../images/home.JPG");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            h1 {
+                color: #fff;
+                font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+                font-size: 80px;
+                line-height: 80%;
+                position: relative;
+                left: 60%;
+                top: 30%;
+            }
+            button {
+                position: relative;
+                left: 60%;
+                top: 300px;
+                border: 2px solid #fff;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 20px;
+                padding: 5px 10px;
+                background-color: transparent;
+                &:hover {
+                    background-color: #fff;
+                    color: #717D7C;
+                }
+            }
+        }
+    }
+    footer {
+        background-color: rgba(222, 226, 226, 0.60);
+        color: #fff;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+}

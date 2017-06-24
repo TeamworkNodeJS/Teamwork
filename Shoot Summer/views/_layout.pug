@@ -1,0 +1,32 @@
+include _mixins/_nav
+
+<!DOCTYPE html>
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Document
+    link(rel="stylesheet", href="/static/styles/style.css")
+    link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.css")
+    link(href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet")
+body       
+    header.navbar.navbar-fixed-top
+        .row
+            #logo.col-md-2.col-md-offset-1.text-left
+                a(href="/home") Shoot your Summer
+            #nav.col-md-5.col-md-offset-4
+                .row
+                    #menu.col-md-6
+                        +navigation
+                    #signin.col-md-6
+                        a(href="#")
+                                button.btn.btn-defoult(type="") Sign In
+                        a(href="#")
+                                button.btn.btn-defoult(type="") Sign Up
+    #wrapper
+        block container
+    footer.row.navbar.navbar-fixed-bottom
+        .col-md-5.col-md-offset-1.text-left
+            | &copy; Copyright Web Application with Node.js 2017
+        .col-md-6
