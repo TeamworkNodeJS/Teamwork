@@ -20,4 +20,8 @@ app.get('/explore', (req, res) => {
      res.render('explore/explore');
 });
 
+app.get('/contact', (req, res) => {
+     res.render('forms/contact-form');
+});
+
 app.listen(3002, () => console.log('Server listen on :3002'));
