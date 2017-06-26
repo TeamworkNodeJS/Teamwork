@@ -24,4 +24,12 @@ app.get('/contact', (req, res) => {
      res.render('forms/contact-form');
 });
 
+app.get('/signin', (req, res) => {
+     res.render('forms/signin-form');
+});
+
+app.get('/register', (req, res) => {
+     res.render('forms/register-form');
+});
+
 app.listen(3002, () => console.log('Server listen on :3002'));

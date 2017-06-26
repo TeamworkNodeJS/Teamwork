@@ -1,0 +1,23 @@
+extends ../_layout
+block container
+    .signin-form.container
+        .well
+            img.img-circle(src="//ssl.gstatic.com/accounts/ui/avatar_2x.png")
+            form
+                .row
+                    .col-md-12
+                        .form-group
+                            label(for="name") User Name
+                            .input-group
+                                span.input-group-addon
+                                    span.glyphicon.glyphicon-user
+                                input#name.form-control(type="text" placeholder="Enter name" required="required")
+                    .col-md-12
+                        .form-group
+                            label(for="password") Password
+                            .input-group
+                                span.input-group-addon
+                                    span.glyphicon.glyphicon-lock
+                                input#password.form-control(type="password" placeholder="Enter password" required="required")
+                    .col-md-12
+                        a(href="#" type="button" class="btn btn-default btn-block pull-right" id="btn-signin") Sign In
