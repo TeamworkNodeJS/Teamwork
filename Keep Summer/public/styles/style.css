@@ -6,7 +6,7 @@ body header {
   background-color: #dee2e2;
 }
 body header #logo {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
   font-family: 'Francois One', sans-serif;
 }
@@ -18,8 +18,8 @@ body header #logo a:hover {
 }
 body header #nav a {
   color: #fff;
-  padding: 10px;
-  font-size: 18px;
+  padding: 5px;
+  font-size: 14px;
 }
 body header #nav a span {
   padding: 5px;
@@ -27,7 +27,7 @@ body header #nav a span {
 body header #nav a button {
   padding: 5px;
   margin-top: 7px;
-  font-size: 16px;
+  font-size: 12px;
   border: 1px solid #C3BFBF;
   border-radius: 5px;
 }
@@ -37,7 +37,7 @@ body header #nav a button:hover {
 }
 body #wrapper #home {
   width: 100%;
-  height: 900px;
+  height: 950px;
   background-image: url("../images/home.JPG");
   background-position: center center;
   background-repeat: no-repeat;
@@ -47,20 +47,20 @@ body #wrapper #home {
 body #wrapper #home h1 {
   color: #fff;
   font-family: 'Franklin Gothic Medium', Arial, sans-serif;
-  font-size: 80px;
+  font-size: 50px;
   line-height: 80%;
   position: relative;
   left: 60%;
-  top: 30%;
+  top: 25%;
 }
 body #wrapper #home button {
   position: relative;
   left: 60%;
-  top: 300px;
+  top: 250px;
   border: 2px solid #fff;
   border-radius: 2px;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   padding: 5px 10px;
   background-color: transparent;
 }
@@ -69,76 +69,151 @@ body #wrapper #home button:hover {
   color: #717D7C;
 }
 body #wrapper #explore {
-  height: 900px;
+  height: 950px;
   width: 100%;
 }
 body #wrapper #explore > .row {
   position: relative;
   top: 80px;
   left: -10px;
+  padding-bottom: 50px;
 }
 body #wrapper #explore .col-md-9 .row {
   width: 90%;
 }
 body #wrapper #explore .col-md-9 .row .col-md-4 {
-  padding: 25px;
+  padding: 15px;
 }
-body #wrapper #explore .col-md-9 .row .post-container {
+body #wrapper #explore .col-md-9 .row .posts-container {
   background-color: #f8f8f8;
 }
-body #wrapper #explore .col-md-9 .row .post-container img {
+body #wrapper #explore .col-md-9 .row .posts-container img {
   width: 100%;
-  height: 320px;
+  height: 200px;
 }
-body #wrapper #explore .col-md-9 .row .post-container .description {
+body #wrapper #explore .col-md-9 .row .posts-container .description {
   font-family: 'Lora', serif;
   padding: 20px;
+  font-size: 10px;
 }
-body #wrapper #explore .col-md-9 .row .post-container .description span {
-  margin-left: 20px;
+body #wrapper #explore .col-md-9 .row .posts-container .description span {
+  margin-left: 10px;
 }
-body #wrapper #explore .col-md-9 .row .post-container .description p {
+body #wrapper #explore .col-md-9 .row .posts-container .description p {
+  font-size: 12px;
+  text-align: justify;
+  line-height: 16px;
+}
+body #wrapper #explore .col-md-9 .row .posts-container .description p a {
+  font-size: 12px;
+}
+body #wrapper #post {
+  height: 950px;
+  width: 100%;
+}
+body #wrapper #post > .row {
+  position: relative;
+  top: 80px;
+  left: -10px;
+  padding-bottom: 50px;
+  font-family: 'Lora', serif;
   font-size: 16px;
+}
+body #wrapper #post > .row #single-post-container h2 {
+  margin: 0 0 20px;
+  font-weight: bold;
+  color: #717D7C;
+}
+body #wrapper #post > .row #single-post-container span {
+  margin-left: 10px;
+}
+body #wrapper #post > .row #single-post-container img {
+  width: 85%;
+  margin: 20px 0;
+}
+body #wrapper #post > .row #single-post-container .post-text {
+  text-align: justify;
+  width: 85%;
+}
+body #wrapper #post > .row #single-post-container #publisher {
+  margin: 60px 0;
+}
+body #wrapper #post > .row #single-post-container #publisher h4 {
+  border-bottom: 1px solid #717D7C;
+  color: #717D7C;
+  width: 85%;
+}
+body #wrapper #post > .row #single-post-container #publisher img {
+  width: 100%;
+}
+body #wrapper #post > .row #single-post-container #publisher p {
+  width: 82%;
+}
+body #wrapper #post > .row #single-post-container #comments-container {
+  margin: 60px 0;
+  width: 85%;
+}
+body #wrapper #post > .row #single-post-container #comments-container h4 {
+  border-bottom: 1px solid #717D7C;
+  color: #717D7C;
+}
+body #wrapper #post > .row #single-post-container #comments-container .row {
+  margin: 30px 0;
+}
+body #wrapper #post > .row #single-post-container #comments-container .row img {
+  width: 100%;
+}
+body #wrapper #post > .row #single-post-container #comments-container .row p {
   text-align: justify;
 }
-body #wrapper #explore aside {
+body #wrapper #post > .row #single-post-container #comments-container form label {
+  font-weight: normal;
+}
+body #wrapper #post > .row #single-post-container #comments-container form input {
+  width: 150%;
+}
+body #wrapper aside {
   font-family: 'Lora', serif;
 }
-body #wrapper #explore aside .nav {
+body #wrapper aside .nav {
   margin-top: 50px;
 }
-body #wrapper #explore aside .nav li a {
+body #wrapper aside .nav li a {
   color: #000;
+  font-size: 12px;
 }
-body #wrapper #explore aside .nav li.active > a {
+body #wrapper aside .nav li.active > a {
   background-color: #eeeeee;
 }
-body #wrapper #explore aside .popular {
+body #wrapper aside .popular {
   margin-top: 50px;
 }
-body #wrapper #explore aside .popular h5 {
+body #wrapper aside .popular h5 {
   background-color: #eeeeee;
   padding: 15px 10px;
   margin: 20px 0;
-}
-body #wrapper #explore aside .popular h6 {
   font-size: 14px;
+}
+body #wrapper aside .popular h6 {
+  font-size: 12px;
   margin: 20px 0 40px;
 }
-body #wrapper #explore aside .popular img {
-  width: 280px;
-  height: 200px;
+body #wrapper aside .popular img {
+  width: 100%;
+  height: 140px;
 }
 body #wrapper .contact-form {
   position: relative;
   top: 80px;
   left: 20px;
+  font-size: 12px;
 }
 body #wrapper .reg-form,
 body #wrapper .signin-form {
   position: relative;
   top: 80px;
   left: 400px;
+  font-size: 12px;
 }
 body #wrapper .reg-form .well,
 body #wrapper .signin-form .well {
@@ -153,7 +228,7 @@ body #wrapper .signin-form .img-circle {
 body footer {
   background-color: #dee2e2;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   font-family: 'Francois One', sans-serif;
-  padding-top: 10px;
+  padding-top: 15px;
 }

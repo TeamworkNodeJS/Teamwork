@@ -17,7 +17,11 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/explore', (req, res) => {
-     res.render('explore/explore');
+     res.render('post-views/explore');
+});
+
+app.get('/post', (req, res) => {
+     res.render('post-views/post');
 });
 
 app.get('/contact', (req, res) => {

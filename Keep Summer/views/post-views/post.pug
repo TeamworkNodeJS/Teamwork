@@ -1,0 +1,79 @@
+extends ../_layout
+include ../_mixins/_aside
+
+block container  
+    #post.container
+        .row
+            .col-md-2.col-md-offset-1
+                +asides
+            .col-md-9#single-post-container
+                h2 South Africa - Living with Big Cats
+                .date June 26, 2017
+                    span | 
+                    span.post-by by Nadine Sykora   
+                img(src="../../static/images/cats.jpg" alt="cats")
+                .post-text 
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.
+                img(src="../../static/images/giraffes.JPG" alt="cats")
+                .post-text 
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.
+                #publisher    
+                    h4 Posted by
+                    .row
+                        .col-md-1
+                            img.img-circle(src="../../static/images/publisher.JPG")
+                        .col-md-11
+                            h5 Nadine Sykora
+                            h6 Blogger
+                            p 
+                                | Nadine is a Travel Blogger and Internet Personality. She travels full time creating entertaining travel videos full of wanderlust, comedy, and inspiration to share to the world.
+                #comments-container
+                    h4 Comments
+                    .row
+                        .col-md-1
+                            img(src="../../static/images/comments.JPG")
+                        .col-md-11
+                            h5 Michael Ford
+                            h6 June 26, 2017
+                            p 
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, consequuntur, quod. Ut rerum, aliquid sapiente assumenda. Eveniet alias neque earum quo, rem soluta deleniti cupiditate dicta veritatis modi asperiores quisquam.
+                    .row
+                        .col-md-1
+                            img(src="../../static/images/comments.JPG")
+                        .col-md-11
+                            h5 Michael Ford
+                            h6 June 26, 2017
+                            p 
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, consequuntur, quod. Ut rerum, aliquid sapiente assumenda. Eveniet alias neque earum quo, rem soluta deleniti cupiditate dicta veritatis modi asperiores quisquam.
+                    .row
+                        .col-md-1
+                            img(src="../../static/images/comments.JPG")
+                        .col-md-11
+                            h5 Michael Ford
+                            h6 June 26, 2017
+                            p 
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, consequuntur, quod. Ut rerum, aliquid sapiente assumenda. Eveniet alias neque earum quo, rem soluta deleniti cupiditate dicta veritatis modi asperiores quisquam.
+                    h4 Send a Comment
+                    form
+                        .row
+                            .col-md-6
+                                .form-group
+                                    label(for="firstname") First Name
+                                        .input-group
+                                            input#firstname.form-control(type="text" placeholder="Enter your first name" required="required")
+                                .form-group
+                                    label(for="lastname") Last Name
+                                        .input-group
+                                            input#lastname.form-control(type="text" placeholder="Enter your last name" required="required")
+                            .col-md-6
+                                .form-group
+                                    label(for="text-comment") Comment
+                                    textarea(name="text-comment" id="text-comment" class="form-control" rows="5" cols="25" required="required" placeholder="Comment")
+                            .col-md-12
+                                a(href="#" type="button" class="btn btn-default") Add Comment
+
+
+
+
+                    
