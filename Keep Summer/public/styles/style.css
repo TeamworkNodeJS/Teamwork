@@ -68,43 +68,43 @@ body #wrapper #home button:hover {
   background-color: #fff;
   color: #717D7C;
 }
-body #wrapper #explore {
+body #wrapper #adventures {
   height: 950px;
   width: 100%;
 }
-body #wrapper #explore > .row {
+body #wrapper #adventures > .row {
   position: relative;
   top: 80px;
   left: -10px;
   padding-bottom: 50px;
 }
-body #wrapper #explore .col-md-9 .row {
+body #wrapper #adventures .col-md-8 .row {
   width: 90%;
 }
-body #wrapper #explore .col-md-9 .row .col-md-4 {
-  padding: 15px;
+body #wrapper #adventures .col-md-8 .row .col-md-4 {
+  padding: 5px;
 }
-body #wrapper #explore .col-md-9 .row .posts-container {
+body #wrapper #adventures .col-md-8 .row .posts-container {
   background-color: #f8f8f8;
 }
-body #wrapper #explore .col-md-9 .row .posts-container img {
+body #wrapper #adventures .col-md-8 .row .posts-container img {
   width: 100%;
   height: 200px;
 }
-body #wrapper #explore .col-md-9 .row .posts-container .description {
+body #wrapper #adventures .col-md-8 .row .posts-container .description {
   font-family: 'Lora', serif;
   padding: 20px;
   font-size: 10px;
 }
-body #wrapper #explore .col-md-9 .row .posts-container .description span {
+body #wrapper #adventures .col-md-8 .row .posts-container .description span {
   margin-left: 10px;
 }
-body #wrapper #explore .col-md-9 .row .posts-container .description p {
+body #wrapper #adventures .col-md-8 .row .posts-container .description p {
   font-size: 12px;
   text-align: justify;
   line-height: 16px;
 }
-body #wrapper #explore .col-md-9 .row .posts-container .description p a {
+body #wrapper #adventures .col-md-8 .row .posts-container .description p a {
   font-size: 12px;
 }
 body #wrapper #post {
@@ -117,7 +117,7 @@ body #wrapper #post > .row {
   left: -10px;
   padding-bottom: 50px;
   font-family: 'Lora', serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 body #wrapper #post > .row #single-post-container h2 {
   margin: 0 0 20px;
@@ -135,8 +135,32 @@ body #wrapper #post > .row #single-post-container .post-text {
   text-align: justify;
   width: 85%;
 }
+body #wrapper #post > .row #single-post-container #icons {
+  width: 85%;
+  margin-top: 20px;
+}
+body #wrapper #post > .row #single-post-container #icons button {
+  margin: 0 10px;
+}
+body #wrapper #post > .row #single-post-container #icons button span {
+  margin: 5px 10px;
+}
+body #wrapper #post > .row #single-post-container #icons button .glyphicon {
+  font-weight: bold;
+  font-size: 16px;
+  color: #717D7C;
+}
+body #wrapper #post > .row #single-post-container #icons button:hover .glyphicon-star-empty {
+  color: #fff60a;
+}
+body #wrapper #post > .row #single-post-container #icons button:hover .glyphicon-thumbs-down {
+  color: #ff0000;
+}
+body #wrapper #post > .row #single-post-container #icons button:hover .glyphicon-thumbs-up {
+  color: #1bf776;
+}
 body #wrapper #post > .row #single-post-container #publisher {
-  margin: 60px 0;
+  margin: 30px 0 60px;
 }
 body #wrapper #post > .row #single-post-container #publisher h4 {
   border-bottom: 1px solid #717D7C;
@@ -147,7 +171,7 @@ body #wrapper #post > .row #single-post-container #publisher img {
   width: 100%;
 }
 body #wrapper #post > .row #single-post-container #publisher p {
-  width: 82%;
+  width: 85%;
 }
 body #wrapper #post > .row #single-post-container #comments-container {
   margin: 60px 0;
@@ -174,6 +198,7 @@ body #wrapper #post > .row #single-post-container #comments-container form input
 }
 body #wrapper aside {
   font-family: 'Lora', serif;
+  width: 80%;
 }
 body #wrapper aside .nav {
   margin-top: 50px;
@@ -200,7 +225,7 @@ body #wrapper aside .popular h6 {
 }
 body #wrapper aside .popular img {
   width: 100%;
-  height: 140px;
+  height: 160px;
 }
 body #wrapper .contact-form {
   position: relative;

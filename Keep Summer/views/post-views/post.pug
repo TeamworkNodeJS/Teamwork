@@ -4,9 +4,9 @@ include ../_mixins/_aside
 block container  
     #post.container
         .row
-            .col-md-2.col-md-offset-1
+            .col-md-3.col-md-offset-1
                 +asides
-            .col-md-9#single-post-container
+            .col-md-8#single-post-container
                 h2 South Africa - Living with Big Cats
                 .date June 26, 2017
                     span | 
@@ -18,6 +18,15 @@ block container
                 img(src="../../static/images/giraffes.JPG" alt="cats")
                 .post-text 
                     | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.
+                #icons
+                    .row
+                        .col-md-6.col-md-offset-6.text-right
+                            button(type="button" class="btn btn-default btn-xs")
+                                span(class="glyphicon glyphicon-star-empty" aria-hidden="true")
+                            button(type="button" class="btn btn-default btn-xs")
+                                span(class="glyphicon glyphicon-thumbs-up" aria-hidden="true")
+                            button(type="button" class="btn btn-default btn-xs")
+                                span(class="glyphicon glyphicon-thumbs-down" aria-hidden="true")
                 #publisher    
                     h4 Posted by
                     .row
