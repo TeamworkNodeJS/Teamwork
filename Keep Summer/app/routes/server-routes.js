@@ -10,14 +10,17 @@ const attatch = (app) => {
     .get('/home', (req, res) => {
         res.render('home/home');
     })
-    .get('/adventures', (req, res) => {
-        res.render('post-views/adventures');
+    .get('/all-publications', (req, res) => {
+        res.render('publication-views/all-publications');
     })
-    .get('/post', (req, res) => {
-        res.render('post-views/post');
+    .get('/publication', (req, res) => {
+        res.render('publication-views/publication');
     })
     .get('/contact', (req, res) => {
         res.render('forms/contact-form');
+    })
+    .get('/add-publication', (req, res) => {
+        res.render('forms/add-publication-form');
     });
 
     app.use('/', router);
