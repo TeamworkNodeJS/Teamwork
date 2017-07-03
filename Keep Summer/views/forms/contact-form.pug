@@ -7,7 +7,10 @@ block container
                     .col-md-6
                         .form-group
                             label(for="name") Name
-                            input#name.form-control(type="text" name="name" placeholder="Enter name" required="required")
+                                .input-group
+                                    span.input-group-addon
+                                        span.glyphicon.glyphicon-user
+                                    input.form-control#name(type="text" name="name" placeholder="Enter name" required="required")
                         .form-group
                             label(for="email") Email Address
                             .input-group

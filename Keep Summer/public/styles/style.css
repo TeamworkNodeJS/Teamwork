@@ -253,6 +253,31 @@ body #wrapper .signin-form .img-circle {
   height: 150px;
   margin: 10px 80px;
 }
+body #wrapper .publication-form {
+  position: relative;
+  top: 80px;
+  left: 20px;
+  font-size: 12px;
+  font-family: 'Lora', serif;
+}
+body #wrapper .publication-form .well {
+  padding: 10px;
+}
+body #wrapper .publication-form .well h3 {
+  padding: 0 0 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #717D7C;
+}
+body #wrapper .publication-form .well h6 {
+  font-weight: bold;
+}
+body #wrapper .publication-form .well .destinations div {
+  width: 40%;
+}
+body #wrapper .publication-form .well label {
+  width: 80%;
+}
 body footer {
   background-color: #dee2e2;
   color: #fff;

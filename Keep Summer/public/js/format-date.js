@@ -13,7 +13,7 @@
 /*
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 <input type="date" data-date="" 
-data-date-format="DD MMMM YYYY" value="2015-08-09">
+data-date-format="DD MMMM YYYY" value="2015-08-14">
 
 
 $("input").on("change", function() {

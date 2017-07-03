@@ -20,7 +20,7 @@ const attatch = (app) => {
         res.render('forms/contact-form');
     })
     .get('/add-publication', (req, res) => {
-        res.render('forms/add-publication-form');
+        res.render('forms/publication-form');
     });
 
     app.use('/', router);
