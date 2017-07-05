@@ -95,6 +95,7 @@ body #wrapper #all-publications .col-md-8 .row .publications-container .descript
   font-family: 'Lora', serif;
   padding: 20px;
   font-size: 10px;
+  height: 285px;
 }
 body #wrapper #all-publications .col-md-8 .row .publications-container .description span {
   margin-left: 10px;
@@ -103,6 +104,14 @@ body #wrapper #all-publications .col-md-8 .row .publications-container .descript
   font-size: 12px;
   text-align: justify;
   line-height: 16px;
+  display: block;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 10px auto;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 body #wrapper #all-publications .col-md-8 .row .publications-container .description p a {
   font-size: 12px;
@@ -152,6 +161,9 @@ body #wrapper #publication > .row #single-publication-container #icons button .g
   font-weight: bold;
   font-size: 16px;
   color: #717D7C;
+}
+body #wrapper #publication > .row #single-publication-container #icons button:hover .glyphicon-remove {
+  color: #ff0000;
 }
 body #wrapper #publication > .row #single-publication-container #icons button:hover .glyphicon-star-empty {
   color: #fff60a;

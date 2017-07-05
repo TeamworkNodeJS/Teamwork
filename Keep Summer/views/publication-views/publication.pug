@@ -7,25 +7,29 @@ block container
             .col-md-3.col-md-offset-1
                 +asides
             .col-md-8#single-publication-container
-                h2 South Africa - Living with Big Cats
-                .date June 26, 2017
+                h2 
+                    = model.title
+                .date 
+                    = model.date
                     span | 
-                    span.post-by by Nadine Sykora   
-                img(src="../../static/images/cats.jpg" alt="cats")
+                    span.post-by by 
+                        = model.publisher   
+                img(src="../../static/images/" + model.image1, alt="image")
                 .publication-text 
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.
-                img(src="../../static/images/giraffes.JPG" alt="cats")
+                    = model.text1
+                img(src="../../static/images/" + model.image2, alt="image")
                 .publication-text 
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.
+                    = model.text2
                 #icons
                     .row
                         .col-md-6.col-md-offset-6.text-right
-                            button(type="button" class="btn btn-default btn-xs")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Remove publication" data-content="Default popover")
+                                span(class="glyphicon glyphicon-remove" aria-hidden="true")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Add to favourites" data-content="Default popover")
                                 span(class="glyphicon glyphicon-star-empty" aria-hidden="true")
-                            button(type="button" class="btn btn-default btn-xs")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Like" data-content="Default popover")
                                 span(class="glyphicon glyphicon-thumbs-up" aria-hidden="true")
-                            button(type="button" class="btn btn-default btn-xs")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Dislike" data-content="Default popover")
                                 span(class="glyphicon glyphicon-thumbs-down" aria-hidden="true")
                 #publisher    
                     h4 Posted by
@@ -33,10 +37,11 @@ block container
                         .col-md-1
                             img.img-circle(src="../../static/images/publisher.JPG")
                         .col-md-11
-                            h5 Nadine Sykora
+                            h5 
+                                = model.publisher
                             h6 Blogger
                             p 
-                                | Nadine is a Travel Blogger and Internet Personality. She travels full time creating entertaining travel videos full of wanderlust, comedy, and inspiration to share to the world.
+                                = model.publisherinfo
                 #comments-container
                     h4 Comments
                     .row
@@ -81,8 +86,3 @@ block container
                                     textarea(name="text-comment" id="text-comment" class="form-control" rows="5" cols="25" required="required" placeholder="Comment")
                             .col-md-12
                                 a(href="#" type="button" class="btn btn-default") Add Comment
-
-
-
-
-                    

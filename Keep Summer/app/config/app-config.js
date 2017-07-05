@@ -1,4 +1,5 @@
 /* globals __dirname */
+/* eslint max-len: ["error", { "ignoreStrings": true }] */
 
 const path = require('path');
 const express = require('express');
@@ -14,9 +15,7 @@ const configApp = (app) => {
     }));
     // app.use('/static', favicon(__dirname + '/public/img/favicon.ico'));
     app.use('/static', express.static(path.join(__dirname, '../../public')));
-    app.use(
-        '/libs', express.static(path.join(__dirname, '../../node_modules')));
-
+    app.use('/libs', express.static(path.join(__dirname, '../../node_modules')));
     app.set('view engine', 'pug');
 };
 

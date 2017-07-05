@@ -8,98 +8,25 @@ block container
                 +asides
             .col-md-8
                 .row
-                    .col-md-4
-                        .publications-container
-                            img(src="../../static/images/cats.jpg" alt="cats")
-                            .caption
-                                .description 
-                                    .date June 26, 2017
-                                        span | 
-                                        span.post-by by Nadine Sykora   
-                                    h3 South Africa - Living with Big Cats
-                                    p 
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis velit quae laborum, sunt dolorum, unde, eum error impedit atque architecto ab quidem eius, ipsum ad itaque. Iste provident harum officiis
-                                        p
-                                            a(href="/publication" class="btn btn-default" role="button")  Read more...
-                    .col-md-4
-                        .publications-container
-                            img(src="../../static/images/cats.jpg" alt="cats")
-                            .caption
-                                .description 
-                                    .date June 26, 2017
-                                        span | 
-                                        span.post-by by Nadine Sykora   
-                                    h3 South Africa - Living with Big Cats
-                                    p 
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis velit quae laborum, sunt dolorum, unde, eum error impedit atque architecto ab quidem eius, ipsum ad itaque. Iste provident harum officiis
-                                        p
-                                            a(href="/publication" class="btn btn-default" role="button")  Read more...
-                    .col-md-4
-                        .publications-container
-                            img(src="../../static/images/cats.jpg" alt="cats")
-                            .caption
-                                .description 
-                                    .date June 26, 2017
-                                        span | 
-                                        span.post-by by Nadine Sykora   
-                                    h3 South Africa - Living with Big Cats
-                                    p 
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis velit quae laborum, sunt dolorum, unde, eum error impedit atque architecto ab quidem eius, ipsum ad itaque. Iste provident harum officiis
-                                        p
-                                            a(href="/publication" class="btn btn-default" role="button")  Read more...
-                    .col-md-4
-                        .publications-container
-                            img(src="../../static/images/cats.jpg" alt="cats")
-                            .caption
-                                .description 
-                                    .date June 26, 2017
-                                        span | 
-                                        span.post-by by Nadine Sykora   
-                                    h3 South Africa - Living with Big Cats
-                                    p 
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis velit quae laborum, sunt dolorum, unde, eum error impedit atque architecto ab quidem eius, ipsum ad itaque. Iste provident harum officiis
-                                        p
-                                            a(href="/publication" class="btn btn-default" role="button") Read more...
-                    .col-md-4
-                        .publications-container
-                            img(src="../../static/images/cats.jpg" alt="cats")
-                            .caption
-                                .description 
-                                    .date June 26, 2017
-                                        span | 
-                                        span.post-by by Nadine Sykora   
-                                    h3 South Africa - Living with Big Cats
-                                    p 
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis velit quae laborum, sunt dolorum, unde, eum error impedit atque architecto ab quidem eius, ipsum ad itaque. Iste provident harum officiis
-                                        p
-                                            a(href="/publication" class="btn btn-default" role="button") Read more...
-                    .col-md-4
-                        .publications-container
-                            img(src="../../static/images/cats.jpg" alt="cats")
-                            .caption
-                                .description 
-                                    .date June 26, 2017
-                                        span | 
-                                        span.post-by by Nadine Sykora   
-                                    h3 South Africa - Living with Big Cats
-                                    p 
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis velit quae laborum, sunt dolorum, unde, eum error impedit atque architecto ab quidem eius, ipsum ad itaque. Iste provident harum officiis
-                                        p
-                                            a(href="/publication" class="btn btn-default" role="button") Read more...
-                    .col-md-4
-                        .publications-container
-                            img(src="../../static/images/cats.jpg" alt="cats")
-                            .caption
-                                .description 
-                                    .date June 26, 2017
-                                        span | 
-                                        span.post-by by Nadine Sykora   
-                                    h3 South Africa - Living with Big Cats
-                                    p 
-                                        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis velit quae laborum, sunt dolorum, unde, eum error impedit atque architecto ab quidem eius, ipsum ad itaque. Iste provident harum officiis
-                                        p
-                                            a(href="/publication" class="btn btn-default" role="button") Read more...
+                    each item in model
+                        .col-md-4
+                            .publications-container
+                                img(src="../../static/images/" + item.image1, alt="image")
+                                .caption
+                                    .description 
+                                        .date #{item.date}
+                                            span | 
+                                            span.post-by by #{item.publisher} 
+                                        h3 #{item.title}
+                                        p 
+                                            | #{item.text1}
+                                            p
+                                                a(href="/api/publications/" + item.id , class="btn btn-default",  role="button")  Read more...
                 .row
                     .col-md-12.text-right#add
                         a(href="/add-publication" class="btn btn-default btn-block pull-right" role="button") 
                             | Tell About Your Adventure                                           
+block scripts
+    script(src="/libs/jquery/dist/jquery.js")
+    script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    //- script(src="/static/js/format-date") 

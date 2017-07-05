@@ -10,12 +10,6 @@ const attatch = (app) => {
     .get('/home', (req, res) => {
         res.render('home/home');
     })
-    .get('/all-publications', (req, res) => {
-        res.render('publication-views/all-publications');
-    })
-    .get('/publication', (req, res) => {
-        res.render('publication-views/publication');
-    })
     .get('/contact', (req, res) => {
         res.render('forms/contact-form');
     })

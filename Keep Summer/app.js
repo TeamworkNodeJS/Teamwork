@@ -33,5 +33,6 @@ require('./app/config/auth-config')(app, data);
 
 require('./app/routes/server-routes')(app);
 require('./app/routes/auth-routes')(app);
+require('./app/routes/api-routes')(app);
 
 module.exports = app;
