@@ -35,7 +35,7 @@
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/_mocha/sample.js",
     "start": "gulp server",
     "dev": "./node_modules/.bin/nodemon gulpfile.js"
   },

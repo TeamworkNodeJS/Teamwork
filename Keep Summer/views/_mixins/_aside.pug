@@ -22,6 +22,10 @@ mixin asides
                 a(href="#") South America
             li(role="presentation")
                 a(href="#") Australia and Pacific
+        //- (if else statement)
+        //- - if (Array.isArray(model){
+        //-do something
+        //- -}
         .popular
             h5 Most Popular Posts
             .row
@@ -45,4 +49,14 @@ mixin asides
                         img(src="../../static/images/cats.jpg" alt="cats")
                     .info
                         h6 South Africa - Living with Big Cats
-                                        
+            h5 Most Popular Publishers
+            .row
+                .col-md-12
+                    .info
+                        a(href="/api/publishers")  Publisher Name         
+                .col-md-12
+                    .info
+                        a(href="/api/publishers")  Publisher Name
+                .col-md-12
+                    .info
+                        a(href="/api/publishers")  Publisher Name                                 

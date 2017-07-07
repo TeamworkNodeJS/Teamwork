@@ -5,10 +5,12 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const moment = require('moment');
+const $ = require('jQuery');
 const favicon = require('serve-favicon');
 
 const configApp = (app) => {
-    app.use(morgan('conbined'));
+    app.use(morgan('combined'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true,

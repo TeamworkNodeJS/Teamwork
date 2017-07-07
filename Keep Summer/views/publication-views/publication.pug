@@ -1,12 +1,17 @@
 extends ../_layout
 include ../_mixins/_aside
 
+block scripts                     
+    script(src="/libs/jquery/dist/jquery.js")
+    script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    script(src="/static/js/popover.js")                                                        
+
 block container  
-    #publication.container
+    .publication.container
         .row
             .col-md-3.col-md-offset-1
                 +asides
-            .col-md-8#single-publication-container
+            .col-md-8.single-publication-container
                 h2 
                     = model.title
                 .date 
@@ -20,18 +25,18 @@ block container
                 img(src="../../static/images/" + model.image2, alt="image")
                 .publication-text 
                     = model.text2
-                #icons
+                .icons
                     .row
                         .col-md-6.col-md-offset-6.text-right
-                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Remove publication" data-content="Default popover")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" data-content="Remove publication")
                                 span(class="glyphicon glyphicon-remove" aria-hidden="true")
-                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Add to favourites" data-content="Default popover")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" data-content="Add to favourites")
                                 span(class="glyphicon glyphicon-star-empty" aria-hidden="true")
-                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Like" data-content="Default popover")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" data-content="Like")
                                 span(class="glyphicon glyphicon-thumbs-up" aria-hidden="true")
-                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" title="Dislike" data-content="Default popover")
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" data-content="Dislike")
                                 span(class="glyphicon glyphicon-thumbs-down" aria-hidden="true")
-                #publisher    
+                .publisher    
                     h4 Posted by
                     .row
                         .col-md-1
@@ -42,7 +47,7 @@ block container
                             h6 Blogger
                             p 
                                 = model.publisherinfo
-                #comments-container
+                .comments-container
                     h4 Comments
                     .row
                         .col-md-1

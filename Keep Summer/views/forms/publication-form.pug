@@ -1,4 +1,9 @@
 extends ../_layout
+block scripts                     
+    script(src="/libs/jquery/dist/jquery.js")
+    script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    script(src="/libs/moment/moment.js")
+    script(src="/static/js/format-date.js") 
 block container
     .publication-form.container
         .well.well-sm
@@ -17,7 +22,7 @@ block container
                                 .input-group
                                     span.input-group-addon
                                         span.glyphicon.glyphicon-calendar
-                                    input#date.form-control(type="date" name="date" data-date="" data-date-format="DD MMMM YYYY" value="2017-07-01" required="required", (onclick)="myFunction()")
+                                    input.date.form-control(type="text" name="date" required="required" value="")
                         .form-group
                             label(for="publisher") Enter the name of the publisher
                                 .input-group
@@ -71,9 +76,5 @@ block container
                             label(for="text2") Enter description to image
                                 textarea#text2.form-control(name="text2" placeholder="Enter description" rows="8" cols="25" required="required")
                     .col-md-12
-                        button(type="submit" class="btn btn-default pull-right") 
-                            |   Add Publication  
-block scripts                     
-    script(src="/libs/jquery/dist/jquery.js")
-    script(src="/libs/bootstrap/dist/js/bootstrap.js")
-    //- script(src="/static/js/format-date")                        
+                        button(type="submit" class="btn btn-default pull-right add-publication") 
+                            |   Add Publication                         

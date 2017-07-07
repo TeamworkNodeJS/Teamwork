@@ -2,6 +2,28 @@
 
 const { Router } = require('express');
 
+const users = [{
+    id: 1,
+    firstname: 'Nadine',
+    lastname: 'Sykora',
+    username: 'nadine',
+    email: 'nadine@gmail.com',
+    registered: '06.07.2017',
+    publications: [],
+    favourites: [],
+},
+{
+    id: 2,
+    firstname: 'Michael',
+    lastname: 'Ford',
+    username: 'michael',
+    email: 'michael@gmail.com',
+    registered: '06.07.2017',
+    publications: [],
+    favourites: [],
+},
+];
+
 const publications = [{
         id: 1,
         image1: 'cats.jpg',
@@ -13,6 +35,8 @@ const publications = [{
         text1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
         image2: 'cats.jpg',
         text2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
+        likes: 1,
+        dislikes: 0,
     },
     {
         id: 2,
@@ -25,6 +49,8 @@ const publications = [{
         text1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
         image2: 'giraffes.jpg',
         text2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
+        likes: 0,
+        dislikes: 0,
     },
     {
         id: 3,
@@ -37,6 +63,8 @@ const publications = [{
         text1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
         image2: 'cats.jpg',
         text2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
+        likes: 1,
+        dislikes: 0,
     },
     {
         id: 4,
@@ -49,6 +77,8 @@ const publications = [{
         text1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
         image2: 'cats.jpg',
         text2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
+        likes: 0,
+        dislikes: 0,
     },
     {
         id: 5,
@@ -61,6 +91,8 @@ const publications = [{
         text1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
         image2: 'cats.jpg',
         text2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.ipsum dolor sit amet, consectetur adipisicing elit. Quod eum vitae eaque esse similique ducimus maxime quidem recusandae mollitia, deleniti obcaecati itaque consequatur soluta, quam accusantium repellendus eius facere ipsam.',
+        likes: 3,
+        dislikes: 0,
     },
 ];
 
@@ -92,6 +124,17 @@ const attatch = (app) => {
                 model: publication,
             });
             // return res.redirect('/items');
+        })
+        .get('/api/profile', (req, res) => {
+            // const id = parseInt(req.params.id, 10);
+            // const user = users.find((i) => i.id === id);
+            // if (!user) {
+            //     return res.status(404)
+            //     .res.send('<h1>Error! Not found</h1>');
+            // }
+            return res.render('user/profile', {
+                // model: user,
+            });
         });
 
     app.use('/', router);
