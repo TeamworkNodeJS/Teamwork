@@ -9,16 +9,26 @@ const moment = require('moment');
 const $ = require('jQuery');
 const favicon = require('serve-favicon');
 
-const configApp = (app) => {
+const init = (data) => {
+    const app = express();
+
+    app.set('view engine', 'pug');
+
     app.use(morgan('combined'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true,
     }));
+
     // app.use('/static', favicon(__dirname + '/public/img/favicon.ico'));
     app.use('/static', express.static(path.join(__dirname, '../../public')));
     app.use('/libs', express.static(path.join(__dirname, '../../node_modules')));
-    app.set('view engine', 'pug');
+
+    // app.use(require('connect-flash')());
+    // app.use((req, res, next) => {
+    //     res.locals.messages = require('express-messages')(req, res);
+    //     next();
+    // });
 };
 
-module.exports = configApp;
+module.exports = { init };

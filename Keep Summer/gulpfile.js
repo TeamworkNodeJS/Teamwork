@@ -1,28 +1,34 @@
-/* globals process */
-
 const gulp = require('gulp');
-const nodemon = require('gulp-nodemon');
+
 const mocha = require('gulp-mocha');
 
-// eslint-disable-next-line no-process-env
-const port = process.env.PORT || 3001;
+// const nodemon = require('gulp-nodemon');
 
-const app = require('./app');
+const eslint = require('gulp-eslint');
 
-gulp.task('server', () => {
-    app.listen(`${port}`, () => console.log('Server listen on :3001'));
+gulp.task('run', () => {
+    require('./server');
 });
 
-gulp.task('dev', ['server'], () => {
-    return nodemon({
-        script: 'app.js',
-        ext: 'js',
-        task: ['server'],
-    });
+gulp.task('lint', () => {
+    return gulp.src(['./app/**/*.js'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
 
-// unit testing
+// // nodemon
+// gulp.task('dev', ['run'], () => {
+//     return nodemon({
+//         script: 'server.js',
+//         ext: 'js',
+//         task: ['run'],
+//     });
+// });
+
+
+// // unit testing
 // gulp.task('test:unit', () => {
 //     gulp.src('./test/unit/**/*.js')
 //         .pipe(mocha());

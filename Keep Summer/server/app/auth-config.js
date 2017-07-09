@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const { Strategie } = require('passport-local');
 
-const configAuth = (app, data) => {
+const init = (app, data) => {
    // passport.use(new Strategie());
 
     app.use(cookieParser());
@@ -16,4 +16,4 @@ const configAuth = (app, data) => {
     app.use(passport.session());
 };
 
-module.exports = configAuth;
+module.exports = init;

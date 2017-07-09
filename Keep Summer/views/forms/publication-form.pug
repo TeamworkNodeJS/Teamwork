@@ -8,7 +8,7 @@ block container
     .publication-form.container
         .well.well-sm
             h3.text-center Tell About Your Adventure
-            form(action="api/publications" method="POST")
+            form(action="/publications" method="POST")
                 .row
                     .col-md-6
                         .form-group
@@ -23,6 +23,15 @@ block container
                                     span.input-group-addon
                                         span.glyphicon.glyphicon-calendar
                                     input.date.form-control(type="text" name="date" required="required" value="")
+                    .col-md-6
+                        .form-group
+                            label(for="image1") Add image
+                                input#image1(type="file" name="image1" required="required")
+                        .form-group
+                            label(for="text1") Enter description to image
+                                textarea#text1.form-control(name="text1" placeholder="Enter description" rows="3" cols="25" required="required")
+                .row    
+                    .col-md-6
                         .form-group
                             label(for="publisher") Enter the name of the publisher
                                 .input-group
@@ -34,11 +43,11 @@ block container
                                 textarea#publisher-info.form-control(name="publisherinfo" placeholder="Enter publisher info" rows="2" cols="25" required="required")
                     .col-md-6
                         .form-group
-                            label(for="image1") Add image
-                                input#image1(type="file" name="image1" required="required")
+                            label(for="image2") Add image
+                                input#image2(type="file" name="image2" required="required")
                         .form-group
-                            label(for="text1") Enter description to image
-                                textarea#text1.form-control(name="text1" placeholder="Enter description" rows="8" cols="25" required="required")
+                            label(for="text2") Enter description to image
+                                textarea#text2.form-control(name="text2" placeholder="Enter description" rows="3" cols="25" required="required")
                 .row
                     .col-md-6
                         h6
@@ -70,11 +79,11 @@ block container
                                     |   Australia and Pacific                 
                     .col-md-6
                         .form-group
-                            label(for="image2") Add image
-                                input#image2(type="file" name="image2" required="required")
+                            label(for="image3") Add image
+                                input#image3(type="file" name="image3" required="required")
                         .form-group
-                            label(for="text2") Enter description to image
-                                textarea#text2.form-control(name="text2" placeholder="Enter description" rows="8" cols="25" required="required")
+                            label(for="text3") Enter description to image
+                                textarea#text3.form-control(name="text3" placeholder="Enter description" rows="3" cols="25" required="required")
                     .col-md-12
                         button(type="submit" class="btn btn-default pull-right add-publication") 
                             |   Add Publication                         
