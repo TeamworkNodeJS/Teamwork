@@ -14,6 +14,10 @@ const attatchTo = (app, data) => {
         return controller.getById(req, res);
     });
 
+    app.get('/publications/latest', (req, res) => {
+        return controller.getLatestPublications(req, res);
+    });
+
     app.post('/publications', (req, res) => {
         const publication = req.body;
 
@@ -22,14 +26,9 @@ const attatchTo = (app, data) => {
                 return res.redirect('/publications');
             })
             .catch((err) => {
-                // connect-flash
                 req.flash('error', err);
-                return res.redirect('/home');
+                return res.redirect('/publications');
             });
-
-        // res.render('publication-views/publication', {
-        //     model: publication,
-        // });
     });
 
     app.get('/profile', (req, res) => {

@@ -29,6 +29,21 @@ class BaseData {
             return result;
     }
 
+    getLatest(count) {
+        const result = this.collection
+        .find({})
+        .sort({ 'date': -1 }).limit(count);
+
+        return result;
+    }
+
+    getPopolarPublishers() {
+        const result = this.collection
+        .aggregate([{ $group: { _id: '$publisher',
+        num_publications: { $sum: 1 } } }]);
+        return result;
+    }
+
     create(model) {
         if (!this._isModelValid(model)) {
             return Promise.reject('Invalid model');

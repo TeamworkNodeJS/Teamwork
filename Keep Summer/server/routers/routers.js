@@ -57,9 +57,8 @@ const attachTo = (app, data) => {
                 return res.redirect('/publications');
             })
             .catch((err) => {
-                // connect-flash
                 req.flash('error', err);
-                return res.redirect('/home');
+                return res.redirect('/publications');
             });
 
         // res.render('publication-views/publication', {
@@ -74,7 +73,7 @@ const attachTo = (app, data) => {
         //     return res.status(404)
         //     .res.send('<h1>Error! Not found</h1>');
         // }
-        return res.render('/profile', {
+        return res.render('user/profile', {
             // model: user,
         });
     });

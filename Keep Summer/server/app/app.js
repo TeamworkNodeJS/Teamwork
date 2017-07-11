@@ -42,11 +42,11 @@ const init = (data) => {
     // app.use(session({ cookie: { maxAge: 60000 } }));
 
 
-    // app.use(require('connect-flash')());
-    // app.use((req, res, next) => {
-    //     res.locals.messages = require('express-messages')(req, res);
-    //     next();
-    // });
+    app.use(require('connect-flash')());
+    app.use((req, res, next) => {
+        res.locals.messages = require('express-messages')(req, res);
+        next();
+    });
 
     require('../routers').attachTo(app, data);
 
