@@ -48,7 +48,7 @@ const init = (data) => {
         next();
     });
 
-    require('../routers').attachTo(app, data);
+    require('../routers').attach(app, data);
 
     return Promise.resolve(app);
 };

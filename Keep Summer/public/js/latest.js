@@ -1,5 +1,5 @@
 $.getJSON('/publications/latest', (res) => {
-    const wrapper = $('.latest');
+    var wrapper = $('.latest');
         res.result.forEach((punlications) => {
             $('<div/>')
                 .addClass('.col-md-12')
