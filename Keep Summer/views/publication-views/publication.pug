@@ -4,7 +4,8 @@ include ../_mixins/_aside
 block scripts                     
     script(src="/libs/jquery/dist/jquery.js")
     script(src="/libs/bootstrap/dist/js/bootstrap.js")
-    script(src="/static/js/popover.js")                                                        
+    script(src="/static/js/popover.js")
+    script(src="/static/js/latest.js")                                                        
 
 block container  
     .publication.container
@@ -30,7 +31,9 @@ block container
                     = model.text3
                 .icons
                     .row
-                        .col-md-6.col-md-offset-6.text-right
+                        .col-md-7.col-md-offset-5.text-right
+                            button(type="button" class="btn btn-default btn-xs" data-toggle="popover" data-content="Edit publication")
+                                span(class="glyphicon glyphicon-pencil" aria-hidden="true")
                             button(type="button" class="btn btn-default btn-xs" data-toggle="popover" data-content="Remove publication")
                                 span(class="glyphicon glyphicon-remove" aria-hidden="true")
                             button(type="button" class="btn btn-default btn-xs" data-toggle="popover" data-content="Add to favourites")

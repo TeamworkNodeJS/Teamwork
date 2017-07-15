@@ -225,20 +225,26 @@ body #wrapper aside .nav li a {
 body #wrapper aside .nav li.active > a {
   background-color: #eeeeee;
 }
-body #wrapper aside .popular {
+body #wrapper aside .filtered {
   margin-top: 50px;
 }
-body #wrapper aside .popular h5 {
+body #wrapper aside .filtered h5 {
   background-color: #eeeeee;
   padding: 15px 10px;
   margin: 20px 0;
   font-size: 14px;
 }
-body #wrapper aside .popular h6 {
+body #wrapper aside .filtered .latest,
+body #wrapper aside .filtered .popular {
+  padding: 15px;
+}
+body #wrapper aside .filtered .latest h6,
+body #wrapper aside .filtered .popular h6 {
   font-size: 12px;
   margin: 20px 0 40px;
 }
-body #wrapper aside .popular img {
+body #wrapper aside .filtered .latest img,
+body #wrapper aside .filtered .popular img {
   width: 100%;
   height: 160px;
 }

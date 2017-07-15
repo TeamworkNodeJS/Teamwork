@@ -1,6 +1,5 @@
-// publication-form
 $(document).ready(function() {
-    const date = $('.date');
+    var date = $('.date');
     if (date.attr('type') === 'text') {
         date.val(moment().format('LL'));
     } else if (date.is('div')) {

@@ -19,13 +19,14 @@ class PublicationData extends BaseData {
         return result;
     }
 
-     // getLatest(count) {
-    //     const result = this.collection
-    //     .find({})
-    //     .sort({ 'date': -1 }).limit(count);
-
-    //     return result;
-    // }
+    getLatest(count) {
+        const result = this.collection
+        .find({})
+        .sort({ date: -1 })
+        .limit(count)
+        .toArray();
+        return result;
+    }
 
     // getPopolarPublishers() {
     //     const result = this.collection

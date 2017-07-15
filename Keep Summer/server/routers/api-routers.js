@@ -12,23 +12,14 @@ module.exports = function(app, data) {
         .get('/publications/add-publication', (req, res) => {
             return res.render('forms/publication-form');
         })
-        .get('/publications/:id', (req, res) => {
-            return controller.getById(req, res);
-        })
         .get('/publications/latest', (req, res) => {
             return controller.getLatestPublications(req, res);
         })
+        .get('/publications/:id', (req, res) => {
+            return controller.getById(req, res);
+        })
         .post('/publications', (req, res) => {
-            const publication = req.body;
-
-            return data.publications.create(publication)
-                .then((dbPublication) => {
-                    return res.redirect('/publications');
-                })
-                .catch((err) => {
-                    req.flash('error', err);
-                    return res.redirect('/publications');
-                });
+            return controller.create(req, res);
         })
         .get('/profile', (req, res) => {
             // const id = parseInt(req.params.id, 10);

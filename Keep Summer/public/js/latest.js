@@ -1,57 +1,56 @@
-$.getJSON('/publications/latest', (res) => {
-    var wrapper = $('.latest');
-        res.result.forEach((punlications) => {
-            $('<div/>')
-                .addClass('.col-md-12')
-                .append($('<a href="/publications/:id">').append(
-                        $('<img alt="image"/>')))
-                .appendTo(wrapper);
+// $(function () {
+//     $.ajax({
+//             url: '/publications/latest',
+//             type: 'GET',
+//             dataType: 'jsonp',
+//             success: function(data) {
+//                 const wrapper = $('.latest');
+//                 data.forEach((publication) => {
+//                     $('<div/>')
+//                         .addClass('.col-md-12').text('hello')
+//                         .append($('<a href="/publications/' + publication._id + '" >').append(
+//                             $('<img src="../../static/images/' + publication.image1 + '" alt="image"/>')))
+//                         .append($('<div/>').addClass('info').append($('<h6/>').text(publication.title)))
+//                         .appendTo(wrapper);
+//                 });
+//             },
+//             error: function(error) {
+//                 console.log(error);
+//             },
+//     });
+// });
 
-        //                 .append(
-        //                     $("<img/>")
-        //                     .attr("src", article.imgUrl)
-        //                 )
-        //                 .append(
-        //                     $("<a/>")
-        //                     .attr("href", "/articles/" + article._id)
-        //                     .append(
-        //                         $("<div/>")
-        //                         .addClass("mask")
-        //                     )
-        //                 )
-        //             )
-                    
-        //                 .append(
-        //                     $("<a/>")
-        //                     .attr("href", "/articles/" + article._id)
-        //                     .append(
-        //                         $("<h3>")
-        //                         .addClass("card-title")
-        //                         .html(article.title)
-        //                     )
-        //                 )
-        //             )
-        //         )
-         });
-        // $list.appendTo(".newest-articles-container");
-    });
 
-/*
-            //- each item in result
-            //-     .col-md-12
-            //-         a(href="/publications") 
-            //-             img(src="../../static/images/" + item.image1 alt="image")
-            //-         .info
-            //-             h6 #{item.title}           
-            h5 Most Popular Publishers
-            .row
-                //- .col-md-12
-                //-     .info
-                //-         a(href="/publishers")  Publisher Name         
-                //- .col-md-12
-                //-     .info
-                //-         a(href="/publishers")  Publisher Name
-                //- .col-md-12
-                //-     .info
-                //-         a(href="/publishers")  Publisher Name                                 
-*/
+// $(document).ready(function() {
+//     $.getJSON('/publications/latest', function(res) {
+//         const wrapper = $('.latest');
+//         res.result.forEach((publication) => {
+//             $('<div/>')
+//                 .addClass('.col-md-12')
+//                 .append($('<a href="/publications/' + publication._id + '" >').append(
+//                     $('<img src="../../static/images/' + publication.image1 + '" alt="image"/>')))
+//                 .append($('<div/>').addClass('info').append($('<h6/>').text(publication.title)))
+//                 .appendTo(wrapper);
+//         });
+//     });
+// });
+
+
+$(function () {
+    fetch('/publications/latest')
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            // console.log(data.result);
+            const wrapper = $('.latest');
+            data.result.forEach((publications) => {
+                $('<div/>')
+                    .addClass('.col-md-12')
+                    .append($('<a href="/publications/' + publications._id + '">').append(
+                        $('<img src="/static/images/' + publications.image1 + '" alt="image"/>')))
+                    .append($('<div/>').addClass('info').append($('<h6/>').text(publications.title)))
+                    .appendTo(wrapper);
+            });
+        });
+});
