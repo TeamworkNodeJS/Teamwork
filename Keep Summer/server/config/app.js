@@ -6,13 +6,9 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const moment = require('moment');
 const $ = require('jQuery');
 const favicon = require('serve-favicon');
-
-const passport = require('passport');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const { Strategie } = require('passport-local');
 
 const init = (data) => {
     const app = express();
@@ -25,21 +21,9 @@ const init = (data) => {
         extended: true,
     }));
 
-    // passport.use(new Strategie());
-    app.use(bodyParser.urlencoded({
-         'extended': true, resave: true, saveUninitialize: true,
-        }));
-    // app.use(session({ secret: 'pink cat' }));
-    app.use(passport.initialize());
-    app.use(passport.session());
-
     // app.use('/static', favicon(__dirname + '/public/img/favicon.ico'));
     app.use('/libs', express.static(path.join(__dirname, '../../node_modules')));
     app.use('/static', express.static(path.join(__dirname, '../../public')));
-
-    // app.use(cookieParser('keyboard cat'));
-    // app.use(session({ cookie: { maxAge: 60000 } }));
-
 
     app.use(require('connect-flash')());
     app.use((req, res, next) => {
@@ -48,6 +32,10 @@ const init = (data) => {
     });
 
     require('../routers').attach(app, data);
+
+    app.get('*', (req, res) => {
+        res.render('errors/not-found');
+    });
 
     return Promise.resolve(app);
 };

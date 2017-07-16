@@ -313,6 +313,12 @@ body #wrapper .profile .col-md-8 img {
   height: 280px;
   margin: 10px 80px;
 }
+body #wrapper .error {
+  margin-top: 80px;
+}
+body #wrapper .error img {
+  width: 40%;
+}
 body footer {
   background-color: #dee2e2;
   color: #fff;

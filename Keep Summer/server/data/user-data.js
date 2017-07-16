@@ -1,9 +1,16 @@
-const BaseData = require('./base.data');
-const User = require('../models/user.model');
+const BaseData = require('./base/base-data');
+const User = require('../models/user-model');
+
+// custom validation
+const validator = {
+    isValid() {
+        return true;
+    },
+};
 
 class UsersData extends BaseData {
     constructor(db) {
-        super(db, User);
+        super(db, { name: 'User' }, validator);
     }
 
     checkPassword(username, password) {

@@ -8,9 +8,17 @@ module.exports = function(app, data) {
         .get('/signin', (req, res) => {
             return res.render('forms/signin-form');
         })
+        .post('/signin',
+            passport.authenticate('local', {
+                successRedirect: '/',
+                failureRedirect: '/forms/signin-form',
+                failureFlash: true,
+            })
+        )
         .get('/register', (req, res) => {
             return res.render('forms/register-form');
-        }).post('/sign-in', passport.authenticate('local', {
+        })
+        .post('/register', passport.authenticate('local', {
             successRedirect: '/',
             failureRedirect: '/forms/signin-form',
             failureFlash: true,

@@ -3,15 +3,15 @@ block container
     .signin-form.container
         .well
             img.img-circle(src="/static/images/avatar.png")
-            form(action="#" method="POST")
+            form(action="/signin" method="POST")
                 .row
                     .col-md-12
                         .form-group
-                            label(for="name") User Name
+                            label(for="username") User Name
                             .input-group
                                 span.input-group-addon
                                     span.glyphicon.glyphicon-user
-                                input#name.form-control(type="text" name="name" placeholder="Enter name" required="required")
+                                input#name.form-control(type="text" name="username" placeholder="Enter name" required="required")
                     .col-md-12
                         .form-group
                             label(for="password") Password
