@@ -5,25 +5,23 @@ module.exports = function(app, data) {
     const router = new Router();
 
     router
-        .get('/signin', (req, res) => {
+        .get('/login', (req, res) => {
             return res.render('forms/signin-form');
         })
-        .post('/signin',
+        .post('/login',
             passport.authenticate('local', {
                 successRedirect: '/',
-                failureRedirect: '/forms/signin-form',
+                failureRedirect: '/login',
                 failureFlash: true,
             })
         )
         .get('/register', (req, res) => {
             return res.render('forms/register-form');
         })
-        .post('/register', passport.authenticate('local', {
-            successRedirect: '/',
-            failureRedirect: '/forms/signin-form',
-            failureFlash: true,
-        }))
-        .get('/sign-out', (req, res) => {
+        .post('/register', (req, res) => {
+            return '';
+        })
+        .get('/logout', (req, res) => {
             req.logout();
             return res.redirect('/');
         });

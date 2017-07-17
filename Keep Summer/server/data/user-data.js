@@ -1,5 +1,5 @@
+const { ObjectId } = require('mongodb').ObjectId;
 const BaseData = require('./base/base-data');
-const User = require('../models/user-model');
 
 // custom validation
 const validator = {
@@ -11,6 +11,20 @@ const validator = {
 class UsersData extends BaseData {
     constructor(db) {
         super(db, { name: 'User' }, validator);
+    }
+
+    findByUsername(username) {
+        const result = this.collection.findOne({
+            username: username,
+        });
+
+        return result;
+    }
+
+    findById(id) {
+        const result = this.collection.findOne({ _id: new ObjectId(id) });
+
+        return result;
     }
 
     checkPassword(username, password) {

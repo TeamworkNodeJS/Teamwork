@@ -3,6 +3,8 @@ include ../_mixins/_aside
 block scripts                     
     script(src="/libs/jquery/dist/jquery.js")
     script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    script(src="/libs/moment/moment.js")
+    script(src="/static/js/format-date.js") 
     script(src="/static/js/latest.js")    
 
 block container  
@@ -18,7 +20,8 @@ block container
                                 img(src="../../static/images/" + item.image1, alt="image")
                                 .caption
                                     .description 
-                                        .date #{item.date}
+                                        .date-postBy
+                                            span.date #{item.date}
                                             span | 
                                             span.post-by by #{item.publisher} 
                                         h3 #{item.title}

@@ -21,7 +21,7 @@ const init = (data) => {
         extended: true,
     }));
 
-    // app.use('/static', favicon(__dirname + '/public/img/favicon.ico'));
+    app.use(favicon(path.join(__dirname, '../../public/images', 'favicon.ico')));
     app.use('/libs', express.static(path.join(__dirname, '../../node_modules')));
     app.use('/static', express.static(path.join(__dirname, '../../public')));
 
@@ -31,9 +31,11 @@ const init = (data) => {
         next();
     });
 
+    require('./auth').init(app, data);
     require('../routers').attach(app, data);
 
-    app.get('*', (req, res) => {
+    app.all('*', (req, res) => {
+        res.status(404);
         res.render('errors/not-found');
     });
 

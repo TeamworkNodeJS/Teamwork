@@ -4,6 +4,8 @@ include ../_mixins/_aside
 block scripts                     
     script(src="/libs/jquery/dist/jquery.js")
     script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    script(src="/libs/moment/moment.js")
+    script(src="/static/js/format-date.js") 
     script(src="/static/js/popover.js")
     script(src="/static/js/latest.js")                                                        
 
@@ -15,8 +17,9 @@ block container
             .col-md-8.single-publication-container
                 h2 
                     = model.title
-                .date 
-                    = model.date
+                .date-postBy
+                    span.date
+                        = model.date
                     span | 
                     span.post-by by 
                         = model.publisher   

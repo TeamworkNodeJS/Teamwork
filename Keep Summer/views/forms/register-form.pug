@@ -3,36 +3,36 @@ block container
     .reg-form.container
         .well
             img.img-circle(src="/static/images/avatar.png")
-            form(action="#" method="POST")
+            form(action="/register" method="POST")
                 .row
                     .col-md-12
                         .form-group
-                            label(for="fname") First Name
+                            label(for="firstname") First Name
                             .input-group
                                 span.input-group-addon
                                     span.glyphicon.glyphicon-user
-                                input#fname.form-control(type="text" name="fname" placeholder="Enter your first name" required="required")
+                                input#firstname.form-control(type="text" name="firstname" placeholder="Enter your first name" required="required")
                     .col-md-12
                         .form-group
-                            label(for="lname") Last Name
+                            label(for="lastname") Last Name
                             .input-group
                                 span.input-group-addon
                                     span.glyphicon.glyphicon-user
-                                input#lname.form-control(type="text" name="lname" placeholder="Enter your last name" required="required")
+                                input#lastname.form-control(type="text" name="lastname" placeholder="Enter your last name" required="required")
                     .col-md-12
                         .form-group
-                            label(for="uname") User Name
+                            label(for="username") User Name
                             .input-group
                                 span.input-group-addon
                                     span.glyphicon.glyphicon-user
-                                input#uname.form-control(type="text" name="uname" placeholder="Enter your username" required="required")
+                                input#username.form-control(type="text" name="username" placeholder="Enter your username" required="required")
                     .col-md-12
                         .form-group
-                            label(for="e-mail") E-mail
+                            label(for="email") E-mail
                             .input-group
                                 span.input-group-addon
                                     span.glyphicon.glyphicon-envelope
-                                input#e-mail.form-control(type="email" name="email" placeholder="Enter your e-mail" required="required")
+                                input#email.form-control(type="email" name="email" placeholder="Enter your e-mail" required="required")
                     .col-md-12
                         .form-group
                             label(for="password") Password
@@ -48,4 +48,4 @@ block container
                                     span.glyphicon.glyphicon-lock
                                 input#confirm-password.form-control(type="password" name="confirm-password" placeholder="Confirm your password" required="required")
                     .col-md-12
-                        a(href="#" type="button" class="btn btn-default btn-block pull-right" id="btn-signin") Register
+                        button(type="submit" class="btn btn-default btn-block pull-right" id="btn-signin") Register
