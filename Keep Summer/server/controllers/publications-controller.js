@@ -3,19 +3,16 @@ const LATEST_COUNT = 3;
 module.exports = function(data) {
     return {
         getAll(req, res) {
-            const user = req.user;
             return data.publications.getAll()
                 .then((publications) => {
                     return res
                         .render('publication-views/all-publications', {
                             model: publications,
-                            user: user,
                         });
                 });
         },
         getById(req, res) {
             const id = req.params.id;
-            const user = req.user;
 
             return data.publications.getById(id)
                 .then((publication) => {
@@ -24,15 +21,16 @@ module.exports = function(data) {
                             .res.send('<h1>Error! Not found</h1>');
                     }
                     return res.render('publication-views/publication', {
-                        user: user,
                         model: publication,
                     });
                 });
         },
         create(req, res) {
             const publication = req.body;
+            const user = req.user;
 
             // validation
+
             const publisher = {
                 name: publication.publisher,
             };
@@ -52,9 +50,17 @@ module.exports = function(data) {
                         image: dbPublication.image1,
                     });
 
+                    user.publications = user.publications || [];
+                    user.publications.push({
+                        _id: dbPublication._id,
+                        title: dbPublication.title,
+                        image: dbPublication.image1,
+                    });
+
                     return Promise.all([
                         data.publications.updateById(dbPublication),
                         data.publishers.updateById(dbPublisher),
+                        data.users.updateById(user),
                     ]);
                 })
                 .then(() => {

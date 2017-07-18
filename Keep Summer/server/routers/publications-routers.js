@@ -1,5 +1,6 @@
 /* eslint max-len: ["error", { "ignoreStrings": true }] */
 const { Router } = require('express');
+const auth = require('../utilities/authinticated');
 
 module.exports = function(app, data) {
     const router = new Router();
@@ -9,7 +10,7 @@ module.exports = function(app, data) {
         .get('/', (req, res) => {
             return controller.getAll(req, res);
         })
-        .get('/add-publication', (req, res) => {
+        .get('/add-publication', auth.isAuthenticated, (req, res) => { // could be useed by post comments too
             return res.render('forms/publication-form');
         })
         .get('/latest', (req, res) => {

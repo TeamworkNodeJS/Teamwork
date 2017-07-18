@@ -2,9 +2,10 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const LocalStrategy = require('passport-local');
 
-const MongoStore = require('connect-mongo')(session);
+const config = require('../../configurations');
 
 const init = (app, { users }) => {
     // must be always on the top
@@ -30,11 +31,13 @@ const init = (app, { users }) => {
         'extended': true,
     }));
     app.use(session({
-        secret: 'pink cat',
+        secret: config.sessionSecret,
+        store: new MongoStore({
+            url: config.connectionString,
+            ttl: 14 * 24 * 60 * 60, // = 14 days. Default
+        }),
         resave: true,
         saveUninitialize: true,
-        // maxAge: new Date(Date.now() + 60 * 60 * 1000 ),
-        // store: new MongoStore(),
     }));
     app.use(passport.initialize());
     app.use(passport.session());
@@ -49,6 +52,14 @@ const init = (app, { users }) => {
             done(null, user);
         })
         .catch(done);
+    });
+
+    app.use((req, res, next) => {
+        res.locals = {
+            user: req.user,
+        };
+
+        next();
     });
 };
 

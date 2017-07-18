@@ -12,7 +12,7 @@ module.exports = function(app, data) {
             return controller.getHomePage(req, res);
         })
         .get('/contact', (req, res) => {
-            return controller.getContactForm(res, req);
+            return controller.getContactForm(req, res);
         });
 
     app.use('/', router);

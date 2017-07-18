@@ -1,12 +1,15 @@
 const passport = require('passport');
 const { Router } = require('express');
 
+// const encryption = require('../utilities/encryption');
+
 module.exports = function(app, data) {
     const router = new Router();
+    const controller= require('../controllers/auth-controller')(data);
 
     router
         .get('/login', (req, res) => {
-            return res.render('forms/signin-form');
+            return controller.getLoginForm(req, res);
         })
         .post('/login',
             passport.authenticate('local', {
@@ -16,10 +19,10 @@ module.exports = function(app, data) {
             })
         )
         .get('/register', (req, res) => {
-            return res.render('forms/register-form');
+            return controller.getRegisterForm(req, res);
         })
         .post('/register', (req, res) => {
-            return '';
+            return controller.signUp(req, res);
         })
         .get('/logout', (req, res) => {
             req.logout();

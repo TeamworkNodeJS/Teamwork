@@ -1,6 +1,6 @@
 class Validator {
     static validatePassword(password, confirmpassword) {
-        const pattern = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]){2,10}$/;
+        const pattern = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]){4,10}$/;
         const message = `Password must contain at least one upper case letter, 
         one lower case and one digit, 
         and must be between 2 and 10 symbols long.`;

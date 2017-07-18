@@ -13,4 +13,7 @@ async()
     .then((app) => {
         app.listen(config.port, () =>
         console.log(`Server listen on :${config.port}`));
+    })
+    .catch((err) => {
+        console.log(err);
     });
