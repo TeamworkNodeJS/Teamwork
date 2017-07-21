@@ -8,17 +8,17 @@ class BaseData {
     }
 
     getAll() {
-        return this.collection.find().toArray();
+        let result = this.collection.find().toArray();
 
-        // if (this.ModelClass.toViewModel) {
-        //     result = result.then((models) => {
-        //         return models
-        //             .map((model) =>
-        //                 this.ModelClass.toViewModel(model));
-        //     });
-        // }
+        if (this.ModelClass.toViewModel) {
+            result = result.then((models) => {
+                return models
+                    .map((model) =>
+                        this.ModelClass.toViewModel(model));
+            });
+        }
 
-        // return result;
+        return result;
     }
 
     filterBy(props) {

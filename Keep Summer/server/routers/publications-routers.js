@@ -10,7 +10,7 @@ module.exports = function(app, data) {
         .get('/', (req, res) => {
             return controller.getAll(req, res);
         })
-        .get('/add-publication', auth.isAuthenticated, (req, res) => { // could be useed by post comments too
+        .get('/form', auth.isAuthenticated, (req, res) => { // could be useed by post comments too
             return res.render('forms/publication-form');
         })
         .get('/latest', (req, res) => {
