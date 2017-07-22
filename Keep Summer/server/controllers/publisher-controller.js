@@ -1,4 +1,4 @@
-const MOST_POPULAR_COUNT = 3;
+const MOST_POPULAR_COUNT = 4;
 
 module.exports = function(data) {
     return {

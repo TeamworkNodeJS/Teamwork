@@ -12,26 +12,20 @@ block container
         .row
             .col-md-3.col-md-offset-1
                 +asides
-            .col-md-8.single-publisher-container
-               h1 PublisherInfo
+            .col-md-8
+                h3
+                    |   #{model.name}
+                p
+                    |   #{model.info}
+                .single-publisher-container
+                    each element in model.publication
+                        .row.publisher-container-info
+                            .col-md-6
+                                    img(src="../../static/images/" + element.image, alt="image")
+                            .col-md-6
+                                a(href="/publications/" + element._id) #{element.title}
                 .comments-container
                     h4 Comments
-                    .row
-                        .col-md-1
-                            img(src="../../static/images/comments.JPG")
-                        .col-md-11
-                            h5 Michael Ford
-                            h6 June 26, 2017
-                            p 
-                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, consequuntur, quod. Ut rerum, aliquid sapiente assumenda. Eveniet alias neque earum quo, rem soluta deleniti cupiditate dicta veritatis modi asperiores quisquam.
-                    .row
-                        .col-md-1
-                            img(src="../../static/images/comments.JPG")
-                        .col-md-11
-                            h5 Michael Ford
-                            h6 June 26, 2017
-                            p 
-                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, consequuntur, quod. Ut rerum, aliquid sapiente assumenda. Eveniet alias neque earum quo, rem soluta deleniti cupiditate dicta veritatis modi asperiores quisquam.
                     .row
                         .col-md-1
                             img(src="../../static/images/comments.JPG")
