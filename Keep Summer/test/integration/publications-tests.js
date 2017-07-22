@@ -31,7 +31,7 @@ describe('/piblications tests', () => {
 
     describe('GET /publications/:id', () => {
         it('expect to return 200', (done) => {
-            const task = { };
+            const task = {};
             request(app)
                 .get('/publications/' + task._id)
                 .expect(500)
@@ -66,19 +66,39 @@ describe('/piblications tests', () => {
     });
 
     describe('GET /form tests', () => {
-        it('expect to receive 302 if login', (done) => {
-                    request(app)
-                        .get('/publications/form')
-                        .set('Authorization', 'Token token=sometoken')
-                        // or .auth('user', 'password')
-                        .expect(302)
-                        .end((err, res) => {
-                            if (err) {
-                                return done(err);
-                            }
+        it('expect to receive 302 with login', (done) => {
+            request(app)
+                .get('/publications/form')
+                .expect(302)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
 
-                            return done();
-                        });
+                    return done();
                 });
+        });
     });
+
+    // describe('GET /form tests', () => {
+    //     it('expect to receive 200 if user is loged in', (done) => {
+    //         app.use(function(req, res, next) {
+    //             req.isAuthenticated = function() {
+    //                 return true;
+    //             };
+    //             req.user = {};
+    //             next();
+    //         });
+    //         request(app)
+    //             .get('/publications/form')
+    //             .expect(200)
+    //             .end((err, res) => {
+    //                 if (err) {
+    //                     return done(err);
+    //                 }
+
+    //                 return done();
+    //             });
+    //     });
+    // });
 });

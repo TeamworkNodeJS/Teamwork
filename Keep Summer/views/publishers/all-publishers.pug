@@ -1,0 +1,26 @@
+extends ../_layout
+include ../_mixins/_aside
+block scripts                     
+    script(src="/libs/jquery/dist/jquery.js")
+    script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    script(src="/static/js/latest.js")    
+    script(src="/static/js/popular.js")  
+
+block container  
+    .all-publishers.container
+        .row
+            .col-md-3.col-md-offset-1
+                +asides
+            .col-md-8
+                each item in model
+                    h3
+                        a(href="/publishers/" + item._id) #{item.name}
+                    p
+                        |    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro illo accusamus commodi dolor, quibusdam doloribus error, excepturi quidem soluta! Nisi vel atque, alias non quis error quia beatae cupiditate dolores.
+                    .publisher-container
+                        each element in item.publication
+                            .row
+                                .col-md-4
+                                    img(src="../../static/images/" + element.image, alt="image")
+                                .col-md-8
+                                    |   #{element.title}

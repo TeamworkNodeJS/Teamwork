@@ -1,20 +1,16 @@
-// .popular
-            // h5 Recent Posts
-            // .row
-                //  each item in result
-                //      .col-md-12
-                //          a(href="/publications") 
-                //              img(src="../../static/images/" + item.image1 alt="image")
-                //          .info
-                //              h6 #{item.title}           
-            // h5 Most Popular Publishers
-            // .row
-                // .col-md-12
-                //     .info
-                //         a(href="/publishers")  Publisher Name         
-                // .col-md-12
-                //     .info
-                //         a(href="/publishers")  Publisher Name
-                // .col-md-12
-                //     .info
-                //         a(href="/publishers")  Publisher Name                                 
+$(function () {
+    fetch('/publishers/mostpopular')
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            // console.log(data.result);
+            const wrapper = $('.popular');
+            data.result.forEach((publishers) => {
+                $('<div/>')
+                    .addClass('col-md-12')
+                    .append($('<a href="/publishers/' + publishers._id + '">').addClass('info').text(publishers.name))
+                    .appendTo(wrapper);
+            });
+        });
+});

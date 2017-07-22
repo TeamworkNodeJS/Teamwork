@@ -27,13 +27,6 @@ class PublicationData extends BaseData {
         .toArray();
         return result;
     }
-
-    // getPopolarPublishers() {
-    //     const result = this.collection
-    //     .aggregate([{ $group: { _id: '$publisher',
-    //     count: { $sum: 1 } } }, { $out: 'count-publications' }]);
-    //     return result;
-    // }
 }
 
 module.exports = PublicationData;

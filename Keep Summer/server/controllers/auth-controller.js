@@ -1,4 +1,5 @@
 const moment = require('moment');
+const encryption = require('../utilities/encryption');
 
 module.exports = function(data) {
     return {
@@ -27,7 +28,7 @@ module.exports = function(data) {
             if (!patternPassword.test(req.body.password)) {
                 res.status(401);
                 // const message = `Password must be between
-                //  6 and 16 symbols long, must have at least one number 
+                //  6 and 16 symbols long, must have at least one number
                 // and at least one special character`;
                 return;
             }
@@ -49,15 +50,15 @@ module.exports = function(data) {
             const patternName = /^[a-zA-Z0-9]{2,40}$/;
             if (!patternName.test(req.body.username)) {
                 res.status(401);
-                // const message = 
+                // const message =
                 // `Name must contain only alphanumetrical symbols
                 //  and must be between 2 and 40 symbols long.`;
                 return;
             }
 
-            // const salt = encryption.generateSalt();
-            // const passHash = encryption
-            // .generateHashedPassword(salt, user.password);
+            const salt = encryption.generateSalt();
+            const passHash = encryption
+            .generateHashedPassword(salt, user.password);
 
             data.users.findByUsername(user.username)
             .then((userByName) => {

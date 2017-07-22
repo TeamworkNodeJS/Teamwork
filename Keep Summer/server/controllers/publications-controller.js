@@ -17,8 +17,7 @@ module.exports = function(data) {
             return data.publications.getById(id)
                 .then((publication) => {
                     if (!publication) {
-                        return res.status(404)
-                            .res.send('<h1>Error! Not found</h1>');
+                        return res.render('errors/not-found');
                     }
                     return res.render('publication-views/publication', {
                         model: publication,
@@ -33,6 +32,8 @@ module.exports = function(data) {
 
             const publisher = {
                 name: publication.publisher,
+                info: publication.publisherinfo,
+                comments: [],
             };
 
             return Promise

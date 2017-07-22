@@ -20,18 +20,18 @@ body
         .row
             #logo.col-md-2.col-md-offset-1.text-left
                 a(href="/home") Keep Your Summer
-            #nav.col-md-6.col-md-offset-3
+            #nav.col-md-8.col-md-offset-1
                 .row
-                    #menu.col-md-6
+                    #menu.col-md-7
                         +navigation
                     if !user
-                        #signin.col-md-6
+                        #signin.col-md-5
                             a(href="/login")
                                     button.btn.btn-defoult(type="") Sign In
                             a(href="/register")
                                     button.btn.btn-defoult(type="") Sign Up
                     if user
-                        #loged.col-md-6
+                        #loged.col-md-5
                             a(href="/profile")
                                 span.glyphicon.glyphicon-user
                                     span User Profile
