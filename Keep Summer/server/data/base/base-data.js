@@ -8,17 +8,15 @@ class BaseData {
     }
 
     getAll() {
-        let result = this.collection.find().toArray();
-
-        if (this.ModelClass.toViewModel) {
-            result = result.then((models) => {
-                return models
-                    .map((model) =>
-                        this.ModelClass.toViewModel(model));
+        return this.collection.find()
+            .toArray()
+            .then((models) => {
+                if (this.ModelClass.toViewModel) {
+                        return models.map((model) =>
+                                this.ModelClass.toViewModel(model));
+                }
+                return models;
             });
-        }
-
-        return result;
     }
 
     filterBy(props) {
@@ -27,7 +25,7 @@ class BaseData {
 
     create(model) {
         if (!this._isModelValid(model)) {
-            return Promise.reject('Invalid model');
+            return Promise.reject('Incorrect data!');
         }
 
         return this.collection.insert(model)

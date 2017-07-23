@@ -1,16 +1,10 @@
 const { ObjectId } = require('mongodb').ObjectId;
 const BaseData = require('./base/base-data');
-
- // custom validation
-const validator = {
-    isValid() {
-        return true;
-    },
-};
+const PublicationModel = require('../models/publication-model');
 
 class PublicationData extends BaseData {
     constructor(db) {
-        super(db, { name: 'Publication' }, validator);
+        super(db, PublicationModel);
     }
 
     getById(id) {

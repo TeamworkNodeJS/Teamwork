@@ -28,8 +28,6 @@ module.exports = function(data) {
             const publication = req.body;
             const user = req.user;
 
-            // validation
-
             const publisher = {
                 name: publication.publisher,
                 info: publication.publisherinfo,
@@ -70,7 +68,6 @@ module.exports = function(data) {
                     return res.redirect('/publications');
                 })
                 .catch((err) => {
-                    // connect-flash
                     req.flash('error', err);
                     return res.redirect('/publications/add-publication');
                 });

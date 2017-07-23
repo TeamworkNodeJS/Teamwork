@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const LocalStrategy = require('passport-local');
+const encryption = require('../../utilities/encryption');
 
 const config = require('../../configurations');
 
@@ -17,10 +18,20 @@ const init = (app, { users }) => {
         return users.findByUsername(username)
             .then((user) => {
                 if (!user) {
-                    return done(null, false);
+                    return done(null, false, { message: 'User not exist' });
                 }
-                if (user.password !== password) {
-                    return done(null, false);
+
+                if (user.username !== username) {
+                        return done(null, false,
+                            { message: 'Incorrect username or password' });
+                    }
+
+                const passHash = encryption
+                .generateHashedPassword(user.salt, password);
+
+                if (user.passHash !== passHash) {
+                    return done(null, false,
+                        { message: 'Incorrect username or password!' });
                 }
                 return done(null, user);
             });

@@ -8,6 +8,18 @@ module.exports = function(app, data) {
         .get('/profile', (req, res) => {
             return controller.getUserProfile(req, res);
         });
+        // .get('/favourites', (req, res) => {
+        //     return '';
+        // })
+        // .post('favourites', (req, res)=>{
+        //     return '';
+        // })
+        // .post('likes', (req, res)=>{
+        //     return '';
+        // })
+        // .post('dislikes', (req, res)=>{
+        //     return '';
+        // });
 
-    app.use('/', router);
+    app.use('/user', router);
 };
