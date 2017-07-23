@@ -46,7 +46,8 @@
   "scripts": {
     "test": "./node_modules/.bin/_mocha test/unit/data/getAll.js",
     "start": "node server.js",
-    "dev": "./node_modules/.bin/nodemon gulpfile.js"
+    "dev": "./node_modules/.bin/nodemon gulpfile.js",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha test/unit/**/*.js"
   },
   "author": "LS",
   "license": "MIT"
