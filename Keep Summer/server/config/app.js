@@ -23,13 +23,14 @@ const init = (data) => {
     app.use('/libs', express.static(path.join(__dirname, '../../node_modules')));
     app.use('/static', express.static(path.join(__dirname, '../../public')));
 
+    require('./auth').init(app, data);
+
     app.use(require('connect-flash')());
     app.use((req, res, next) => {
         res.locals.messages = require('express-messages')(req, res);
         next();
     });
 
-    require('./auth').init(app, data);
     require('../routers').attach(app, data);
 
     app.all('*', (req, res) => {

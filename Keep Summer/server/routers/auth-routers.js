@@ -16,6 +16,7 @@ module.exports = function(app, data) {
                 successRedirect: '/',
                 failureRedirect: '/login',
                 failureFlash: true,
+                failureMessage: 'Invalid username or password',
             })
         )
         .get('/register', (req, res) => {

@@ -1,4 +1,4 @@
-const LATEST_COUNT = 3;
+const LATEST_COUNT = 4;
 
 module.exports = function(data) {
     return {
@@ -43,6 +43,8 @@ module.exports = function(data) {
                 ])
                 .then(([dbPublication, dbPublisher]) => {
                     dbPublisher.name = publication.publisher;
+                    dbPublisher.info = publication.publisherinfo;
+                    dbPublisher.comments = [];
 
                     dbPublisher.publication = dbPublisher.publication || [];
                     dbPublisher.publication.push({

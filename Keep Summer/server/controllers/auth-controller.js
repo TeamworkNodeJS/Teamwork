@@ -27,32 +27,31 @@ module.exports = function(data) {
             /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
             if (!patternPassword.test(req.body.password)) {
                 res.status(401);
-                // const message = `Password must be between
-                //  6 and 16 symbols long, must have at least one number
-                // and at least one special character`;
+                req.flash('error', `Password must be between
+                6 and 16 symbols long, must have at least one number
+                and at least one special character`);
                 return;
             }
 
             if (req.body.password !== req.body.confirmpassword) {
                 res.status(401);
-                // const message = 'Please confirm password correctly.'
-                return;
+               req.flash('error', 'Please confirm password correctly.');
+               return;
             }
 
             const patternEmail = /^\w.+@[a-zA-Z]+?\.[a-zA-Z]{2,3}$/;
             if (!patternEmail.test(req.body.email)) {
                 res.status(401);
-                // const message = `Email can contain latin letters,
-                //  numbers, _ and .`;
+               req.flash('error', `Email can contain latin letters,
+                numbers, _ and .`);
                 return;
             }
 
             const patternName = /^[a-zA-Z0-9]{2,40}$/;
             if (!patternName.test(req.body.username)) {
                 res.status(401);
-                // const message =
-                // `Name must contain only alphanumetrical symbols
-                //  and must be between 2 and 40 symbols long.`;
+                req.flash('error', `Name must contain only alphanumetrical 
+                symbols and must be between 2 and 40 symbols long.`);
                 return;
             }
 
@@ -72,6 +71,7 @@ module.exports = function(data) {
             })
             .catch((err) => {
                 req.flash('error', err);
+                return res.redirect('/register');
             });
         },
     };

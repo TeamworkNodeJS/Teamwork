@@ -273,7 +273,6 @@ body #wrapper .publishers > .row .col-md-8 .single-publisher-container {
   width: 80%;
 }
 body #wrapper .publishers > .row .col-md-8 .single-publisher-container .publisher-container-info {
-  border-bottom: 2px solid #C3BFBF;
   padding: 20px;
 }
 body #wrapper .publishers > .row .col-md-8 .single-publisher-container .publisher-container-info img {
@@ -420,6 +419,9 @@ body #wrapper .profile .col-md-8 img {
   width: 450px;
   height: 280px;
   margin: 10px 80px;
+}
+body #wrapper .profile .col-md-8 a {
+  color: #000;
 }
 body #wrapper .error {
   margin-top: 80px;

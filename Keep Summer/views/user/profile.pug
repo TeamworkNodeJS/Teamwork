@@ -4,8 +4,6 @@ include ../_mixins/_aside
 block scripts
     script(src="/libs/jquery/dist/jquery.js")
     script(src="/libs/bootstrap/dist/js/bootstrap.js")
-    script(src="/libs/moment/moment.js")
-    script(src="/static/js/format-date.js") 
     script(src="/static/js/latest.js")
     script(src="/static/js/popular.js")  
 
@@ -20,17 +18,26 @@ block container
                         img(src="/static/images/camera.jpg")
                     .col-md-12
                         .row
-                            .col-md-3.col-md-offset-3 First Name : 
-                            .col-md-6 Nadine
-                            .col-md-3.col-md-offset-3 Last Name : 
-                            .col-md-6 Sykora
-                            .col-md-3.col-md-offset-3 User Name: 
-                            .col-md-6 nadine
-                            .col-md-3.col-md-offset-3 Email Address: 
-                            .col-md-6 nadine@gmail.com
-                            .col-md-3.col-md-offset-3 Registered: 
-                            .col-md-6.date 2017-07-10
-                            .col-md-12.text-center
-                                a(href="#") Your Publications
-                            .col-md-12.text-center
-                                a(href="#") Your Favourites                                  
+                            .col-md-3.col-md-offset-2 First Name : 
+                            .col-md-7 #{user.firstname}
+                            .col-md-3.col-md-offset-2 Last Name : 
+                            .col-md-7 #{user.lastname}
+                            .col-md-3.col-md-offset-2 User Name: 
+                            .col-md-7 #{user.username}
+                            .col-md-3.col-md-offset-2 Email Address: 
+                            .col-md-7 #{user.email}
+                            .col-md-3.col-md-offset-2 Registered: 
+                            .col-md-7.date #{user.date}
+                            .col-md-3.col-md-offset-2 Your Favourites:
+                            .col-md-7
+                                a(href="#") See your favourites
+                            .col-md-3.col-md-offset-2 Your Publications:
+                            .col-md-7
+                                if user.publications.length
+                                    each publication in user.publications
+                                        div
+                                            a(href="/publications/" + publication._id) #{publication.title}
+                                else
+                                    div 
+                                        | You have no publications yet.
+                            

@@ -8,6 +8,7 @@ block scripts
     //- script(src="/static/js/format-date.js") 
 block container
     .publication-form.container
+        != messages()
         .well.well-sm
             h3.text-center Tell About Your Adventure
             form(action="/publications" method="POST")

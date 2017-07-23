@@ -1,6 +1,7 @@
 extends ../_layout
 block container
     .reg-form.container
+        != messages()
         .well
             img.img-circle(src="/static/images/avatar.png")
             form(action="/register" method="POST")
