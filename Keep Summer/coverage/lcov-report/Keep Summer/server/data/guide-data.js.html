@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for Keep Summer\server\data\data.js</title>
+    <title>Code coverage report for Keep Summer\server\data\guide-data.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">all files</a> / <a href="index.html">Keep Summer/server/data/</a> data.js
+      <a href="../../../index.html">all files</a> / <a href="index.html">Keep Summer/server/data/</a> guide-data.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>0/7</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>0/7</span>
       </div>
     </div>
   </div>
@@ -63,37 +63,37 @@
 18</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >const Publication = require('./publication-data');</span>
-<span class="cstat-no" title="statement not covered" >const Publisher = require('./publisher-data');</span>
-<span class="cstat-no" title="statement not covered" >const Destination = require('./destination-data');</span>
-<span class="cstat-no" title="statement not covered" >const Guide = require('./guide-data');</span>
-<span class="cstat-no" title="statement not covered" >const User = require('./user-data');</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >const BaseData = require('./base/base-data');</span>
+<span class="cstat-no" title="statement not covered" >const { ObjectId } = require('mongodb').ObjectId;</span>
+<span class="cstat-no" title="statement not covered" >const GuideModel = require('../models/guides-model');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const init = (db) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return Promise.resolve({</span>
-        publications: new Publication(db),
-        publishers: new Publisher(db),
-        destinations: new Destination(db),
-        guides: new Guide(db),
-        users: new User(db),
-    });
-};
+class GuideData extends BaseData {
+    constructor<span class="fstat-no" title="function not covered" >(db) {</span>
+<span class="cstat-no" title="statement not covered" >        super(db, GuideModel, GuideModel);</span>
+    }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = { init };</span>
+    getById<span class="fstat-no" title="function not covered" >(id) {</span>
+<span class="cstat-no" title="statement not covered" >        const result = this.collection.findOne({ _id: new ObjectId(id) });</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return result;</span>
+    }
+}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = GuideData;</span>
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

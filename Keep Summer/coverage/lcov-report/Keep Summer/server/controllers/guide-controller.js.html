@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for Keep Summer\server\controllers\publisher-controller.js</title>
+    <title>Code coverage report for Keep Summer\server\controllers\guide-controller.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">all files</a> / <a href="index.html">Keep Summer/server/controllers/</a> publisher-controller.js
+      <a href="../../../index.html">all files</a> / <a href="index.html">Keep Summer/server/controllers/</a> guide-controller.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/12</span>
+        <span class='fraction'>0/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/4</span>
+        <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/12</span>
+        <span class='fraction'>0/9</span>
       </div>
     </div>
   </div>
@@ -69,22 +69,8 @@
 24
 25
 26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">6×</span>
+27</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -108,51 +94,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const MOST_POPULAR_COUNT = 4;
-&nbsp;
-module.exports = function(data) {
-    return {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >module.exports = <span class="fstat-no" title="function not covered" >function(data) {</span></span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
         getAll<span class="fstat-no" title="function not covered" >(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >            return data.publishers.getAll()</span>
-                .then((publishers) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return data.guides.getAll()</span>
+                .then((guides) =&gt; {
 <span class="cstat-no" title="statement not covered" >                    return res</span>
-                        .render('publishers/all-publishers', {
-                            model: publishers,
+                        .render('guides/all-guides', {
+                            model: guides,
                         });
                 });
         },
         getById<span class="fstat-no" title="function not covered" >(req, res) {</span>
 <span class="cstat-no" title="statement not covered" >            const id = req.params.id;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            return data.publishers.getById(id)</span>
-                .then((publisher) =&gt; {
-<span class="cstat-no" title="statement not covered" >                    if (!publisher) {</span>
+<span class="cstat-no" title="statement not covered" >            return data.guides.getById(id)</span>
+                .then((guide) =&gt; {
+<span class="cstat-no" title="statement not covered" >                    if (!guide) {</span>
 <span class="cstat-no" title="statement not covered" >                        return res.render('errors/not-found');</span>
                     }
-<span class="cstat-no" title="statement not covered" >                    return res.render('publishers/publisher', {</span>
-                        model: publisher,
+<span class="cstat-no" title="statement not covered" >                    return res.render('guides/guide', {</span>
+                        model: guide,
                     });
-                });
-        },
-        getMostPopolarPublishers<span class="fstat-no" title="function not covered" >(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >            return data.publishers</span>
-                .getMostPopolarPublishers(MOST_POPULAR_COUNT)
-                .then((publishers) =&gt; {
-<span class="cstat-no" title="statement not covered" >                    return res</span>
-                        .send({
-                            result: publishers,
-                        });
                 });
         },
     };

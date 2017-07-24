@@ -49,7 +49,7 @@ gulp.task('pre-test', () => {
 gulp.task('tests', ['pre-test'], () => {
     return gulp.src([
         './test/unit/**/*.js',
-       // './test/integration/**/*.js',
+        './test/integration/**/*.js',
     ])
         .pipe(mocha({
             reporter: 'nyan',
