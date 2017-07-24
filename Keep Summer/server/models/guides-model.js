@@ -1,12 +1,12 @@
-class Publisher {
+class Guide {
     static isValid(model) {
         return typeof model !== 'undefined' &&
-            typeof model.name === 'string' &&
-            typeof model.info === 'string';
+            typeof model.title === 'string' &&
+            typeof model.text === 'string';
     }
 
     static toViewModel(model) {
-        const viewModel = new Publisher();
+        const viewModel = new Guide();
 
         Object.keys(model)
             .forEach((prop) => {
@@ -21,4 +21,4 @@ class Publisher {
     }
 }
 
-module.exports = Publisher;
+module.exports = Guide;

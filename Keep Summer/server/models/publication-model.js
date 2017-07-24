@@ -20,7 +20,7 @@ class Publication {
         return typeof model !== 'undefined' &&
             typeof model.title === 'string' &&
             typeof model.publisher === 'string' &&
-            typeof model.publisherInfo === 'string' &&
+            typeof model.publisherinfo === 'string' &&
             typeof model.destination === 'string' &&
             typeof model.text1 === 'string' &&
             typeof model.text2 === 'string' &&
@@ -36,6 +36,10 @@ class Publication {
             });
 
         return viewModel;
+    }
+
+     get id() {
+        return this._id;
     }
 }
 

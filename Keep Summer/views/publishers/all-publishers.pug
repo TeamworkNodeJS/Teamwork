@@ -13,14 +13,16 @@ block container
                 +asides
             .col-md-8
                 each item in model
-                    h3
-                        a(href="/publishers/" + item._id) #{item.name}
-                    p
-                        |    #{item.info}
                     .publishers-container
-                        each element in item.publication
-                            .row.publishers-container-info
-                                .col-md-6
-                                    img(src="../../static/images/" + element.image, alt="image")
-                                .col-md-6
-                                    a(href="/publications/" + element._id) #{element.title}
+                        h3.text-center
+                            a(href="/publishers/" + item._id) #{item.name}
+                        p
+                            |    #{item.info}
+                        .all
+                            .row
+                                each element in item.publication
+                                    .publishers-container-info.col-md-6
+                                        div
+                                            img(src="../../static/images/" + element.image, alt="image")
+                                        .text-center
+                                            a(href="/publications/" + element._id) #{element.title}

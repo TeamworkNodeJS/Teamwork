@@ -19,6 +19,10 @@ class User {
 
         return viewModel;
     }
+
+     get id() {
+        return this._id;
+    }
 }
 
 module.exports = User;

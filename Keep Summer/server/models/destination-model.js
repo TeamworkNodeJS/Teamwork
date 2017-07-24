@@ -1,12 +1,10 @@
-class Publisher {
+class Destination {
     static isValid(model) {
-        return typeof model !== 'undefined' &&
-            typeof model.name === 'string' &&
-            typeof model.info === 'string';
+        return typeof model !== 'undefined';
     }
 
     static toViewModel(model) {
-        const viewModel = new Publisher();
+        const viewModel = new Destination();
 
         Object.keys(model)
             .forEach((prop) => {
@@ -21,4 +19,4 @@ class Publisher {
     }
 }
 
-module.exports = Publisher;
+module.exports = Destination;

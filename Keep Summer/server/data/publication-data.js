@@ -4,7 +4,7 @@ const PublicationModel = require('../models/publication-model');
 
 class PublicationData extends BaseData {
     constructor(db) {
-        super(db, PublicationModel);
+        super(db, PublicationModel, PublicationModel);
     }
 
     getById(id) {

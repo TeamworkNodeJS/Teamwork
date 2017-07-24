@@ -4,7 +4,7 @@ const PublisherModel = require('../models/publisher-model');
 
 class PublisherData extends BaseData {
     constructor(db) {
-        super(db, PublisherModel);
+        super(db, PublisherModel, PublisherModel);
     }
 
     getById(id) {
