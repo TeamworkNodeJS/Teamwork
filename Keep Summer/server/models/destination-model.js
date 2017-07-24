@@ -1,6 +1,8 @@
 class Destination {
     static isValid(model) {
-        return typeof model !== 'undefined';
+        return typeof model !== 'undefined' &&
+        typeof model.destination === 'string' &&
+        typeof model.info === 'string';
     }
 
     static toViewModel(model) {

@@ -238,9 +238,6 @@ body #wrapper .all-publishers > .row > .col-md-8 .publishers-container:last-of-t
 body #wrapper .all-publishers > .row > .col-md-8 .publishers-container p {
   text-align: justify;
 }
-body #wrapper .all-publishers > .row > .col-md-8 .publishers-container a {
-  color: #000;
-}
 body #wrapper .all-publishers > .row > .col-md-8 .publishers-container .all {
   padding: 10px;
 }
@@ -250,6 +247,9 @@ body #wrapper .all-publishers > .row > .col-md-8 .publishers-container .all .pub
 body #wrapper .all-publishers > .row > .col-md-8 .publishers-container .all .publishers-container-info img {
   width: 100%;
   height: 200px;
+}
+body #wrapper .all-publishers > .row > .col-md-8 .publishers-container .all .publishers-container-info a {
+  color: #000;
 }
 body #wrapper .all-publishers > .row > .col-md-8 .publishers-container .all .publishers-container-info .text-center {
   padding: 20px;
@@ -314,6 +314,82 @@ body #wrapper .publishers > .row .comments-container form label {
 }
 body #wrapper .publishers > .row .comments-container form input {
   width: 150%;
+}
+body #wrapper .all-destinations {
+  height: 950px;
+  width: 100%;
+}
+body #wrapper .all-destinations > .row {
+  position: relative;
+  top: 80px;
+  left: -10px;
+  padding-bottom: 50px;
+}
+body #wrapper .all-destinations > .row > .col-md-8 {
+  font-family: 'Lora', serif;
+}
+body #wrapper .all-destinations > .row > .col-md-8 .destinations-container {
+  width: 80%;
+}
+body #wrapper .all-destinations > .row > .col-md-8 .publications-container-info {
+  padding: 20px;
+}
+body #wrapper .all-destinations > .row > .col-md-8 .publications-container-info img {
+  width: 100%;
+  height: 200px;
+}
+body #wrapper .all-destinations > .row > .col-md-8 .publications-container-info a {
+  color: #000;
+}
+body #wrapper .all-destinations > .row > .col-md-8 .publications-container-info .text-center {
+  padding: 10px;
+  background-color: #eeeeee;
+  height: 80px;
+}
+body #wrapper .all-destinations > .row > .col-md-8 .publications-container-info .text-center .date-postBy {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+body #wrapper .destinations {
+  height: 950px;
+  width: 100%;
+}
+body #wrapper .destinations > .row {
+  position: relative;
+  top: 80px;
+  left: -10px;
+  padding-bottom: 50px;
+}
+body #wrapper .destinations > .row > .col-md-8 {
+  font-family: 'Lora', serif;
+}
+body #wrapper .destinations > .row > .col-md-8 .single-destination-container {
+  width: 80%;
+}
+body #wrapper .destinations > .row > .col-md-8 .single-destination-container .info img {
+  width: 80%;
+}
+body #wrapper .destinations > .row > .col-md-8 .single-destination-container .info p {
+  text-align: justify;
+}
+body #wrapper .destinations > .row > .col-md-8 .publications-container-info {
+  padding: 20px;
+}
+body #wrapper .destinations > .row > .col-md-8 .publications-container-info img {
+  width: 100%;
+  height: 200px;
+}
+body #wrapper .destinations > .row > .col-md-8 .publications-container-info a {
+  color: #000;
+}
+body #wrapper .destinations > .row > .col-md-8 .publications-container-info .text-center {
+  padding: 10px;
+  background-color: #eeeeee;
+  height: 80px;
+}
+body #wrapper .destinations > .row > .col-md-8 .publications-container-info .text-center .date-postBy {
+  font-size: 12px;
+  margin-bottom: 10px;
 }
 body #wrapper aside {
   font-family: 'Lora', serif;
@@ -407,7 +483,7 @@ body #wrapper .publication-form .well h3 {
 body #wrapper .publication-form .well h6 {
   font-weight: bold;
 }
-body #wrapper .publication-form .well .destinations div {
+body #wrapper .publication-form .well .destinations-form div {
   width: 40%;
 }
 body #wrapper .publication-form .well label {

@@ -17,8 +17,20 @@ module.exports = function(data) {
                     if (!destination) {
                         return res.render('errors/not-found');
                     }
-                    return res.render('destonations/destination', {
+                    return res.render('destinations/destination', {
                         model: destination,
+                    });
+                });
+        },
+
+        displayDestinations(req, res) {
+            return data.destinations.getAll()
+                .then((destinations) => {
+                    if (!destinations) {
+                        return res.render('errors/not-found');
+                    }
+                    return res.send({
+                        result: destinations,
                     });
                 });
         },

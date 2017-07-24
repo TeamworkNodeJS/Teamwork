@@ -34,15 +34,21 @@ module.exports = function(data) {
                 comments: [],
             };
 
+            // VALIDATIONS
+
+            // works not
+
             return Promise
                 .all([
                     data.publications.create(publication),
                     data.publishers.findOrCreateBy(publisher),
                 ])
-                .then(([dbPublication, dbPublisher]) => {
+                .then(([dbPublication, dbPublisher, dbDestination]) => {
                     dbPublisher.name = publication.publisher;
                     dbPublisher.info = publication.publisherinfo;
                     dbPublisher.comments = [];
+
+                    dbDestination.destination = publication.destination;
 
                     dbPublisher.publication = dbPublisher.publication || [];
                     dbPublisher.publication.push({
@@ -58,10 +64,22 @@ module.exports = function(data) {
                         image: dbPublication.image1,
                     });
 
+                    dbDestination
+                    .publications = dbDestination.publications || [];
+                    dbDestination.publications.push({
+                        _id: dbPublication._id,
+                        destination: dbPublication.destination,
+                        title: dbPublication.title,
+                        publisher: dbPublication.publisher,
+                        date: dbPublication.date,
+                        image: dbPublication.image1,
+                    });
+
                     return Promise.all([
                         data.publications.updateById(dbPublication),
                         data.publishers.updateById(dbPublisher),
                         data.users.updateById(user),
+                        data.destinations.updateById(dbDestination),
                     ]);
                 })
                 .then(() => {
