@@ -36,12 +36,15 @@ module.exports = function(data) {
 
             // VALIDATIONS
 
-            // works not
+           const destination = {
+               destination: publication.destination,
+           };
 
             return Promise
                 .all([
                     data.publications.create(publication),
                     data.publishers.findOrCreateBy(publisher),
+                    data.destinations.findOrCreateBy(destination),
                 ])
                 .then(([dbPublication, dbPublisher, dbDestination]) => {
                     dbPublisher.name = publication.publisher;
