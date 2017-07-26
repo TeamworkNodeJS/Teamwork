@@ -103,5 +103,8 @@ module.exports = function(data) {
                         });
                 });
         },
+        getPublicationForm(req, res) {
+            return res.render('forms/publication-form');
+        },
     };
 };

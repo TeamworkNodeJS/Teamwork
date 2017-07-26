@@ -1,8 +1,8 @@
 const request = require('supertest');
+const { init } = require('../../server/config');
 
-describe('/piblications tests', () => {
-    //const connectionString = 'mongodb://localhost/items-db-test';
-    let app = null;
+describe('/publications tests', () => {
+   /*let app = null;
     const data = {
         publications: {
             getAll(){
@@ -18,11 +18,15 @@ describe('/piblications tests', () => {
                 app = _app;
             });
     });
+        */
 
-    describe('GET /publications', () => {
+    describe('GET /publishers ', () => {
         it('expect to return 200', (done) => {
-            request(app)
-                .get('/publications')
+            const data = {};
+            init(data)
+            .then((app) => {
+                request(app)
+                .get('/publishers')
                 .expect(200)
                 .end((err, res) => {
                     if (err) {
@@ -31,6 +35,7 @@ describe('/piblications tests', () => {
 
                     return done();
                 });
+            });
         });
     });
 });

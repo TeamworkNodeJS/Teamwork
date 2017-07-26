@@ -49,28 +49,7 @@ describe('/publications tests', () => {
         });
     });
 
-    /*describe('POST /publications', () => {
-        it('expect to redirect to /publications', (done) => {
-            request(app)
-                .post('/publications')
-                .send({
-                    publication: {},
-                    user: {},
-                    publisher: {},
-                })
-                .expect(302)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    return done();
-                });
-        });
-    });
-    */
-
-    describe('GET /form tests', () => {
+    describe('GET /form', () => {
         it('expect to receive 302 with login', (done) => {
             request(app)
                 .get('/publications/form')
@@ -85,25 +64,39 @@ describe('/publications tests', () => {
         });
     });
 
-    // describe('GET /form tests', () => {
-    //     it('expect to receive 200 if user is loged in', (done) => {
-    //         app.use(function(req, res, next) {
-    //             req.isAuthenticated = function() {
-    //                 return true;
-    //             };
-    //             req.user = {};
-    //             next();
-    //         });
-    //         request(app)
-    //             .get('/publications/form')
-    //             .expect(200)
-    //             .end((err, res) => {
-    //                 if (err) {
-    //                     return done(err);
-    //                 }
+     describe('GET /non-existing rout', () => {
+        it('expect to receive error 404', (done) => {
+            request(app)
+                .get('/non-existing-page')
+                .expect(404)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
 
-    //                 return done();
-    //             });
-    //     });
-    // });
+                    return done();
+                });
+        });
+    });
+
+    /*describe('POST /publications', () => {
+        it('should respond with redirect on post', function(done) {
+        request(app)
+        .post('/publications')
+        .send({
+            publication: {},
+            user: {},
+            publisher: {},
+        })
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+             if (err) {
+                return done(err);
+            }
+            return done();
+        });
+    });
+});
+*/
 });

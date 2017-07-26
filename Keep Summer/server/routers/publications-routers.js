@@ -11,7 +11,7 @@ module.exports = function(app, data) {
             return controller.getAll(req, res);
         })
         .get('/form', auth.isAuthenticated, (req, res) => { // could be useed by post comments too
-            return res.render('forms/publication-form');
+            return controller.getPublicationForm(req, res);
         })
         .get('/latest', (req, res) => {
             return controller.getLatestPublications(req, res);
