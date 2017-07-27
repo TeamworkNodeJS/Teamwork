@@ -25,13 +25,13 @@ block container
                     span | 
                     span.post-by by 
                         = model.publisher   
-                img(src="../../static/images/" + model.image1, alt="image")
+                img(src="/static" + model.image1, alt="image")
                 .publication-text 
                     = model.text1
-                img(src="../../static/images/" + model.image2, alt="image")
+                img(src="/static" + model.image2, alt="image")
                 .publication-text 
                     = model.text2
-                img(src="../../static/images/" + model.image3, alt="image")
+                img(src= "/static" + model.image3, alt="image")
                 .publication-text 
                     = model.text3
                 if user    

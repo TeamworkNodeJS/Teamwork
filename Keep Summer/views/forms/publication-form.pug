@@ -11,7 +11,7 @@ block container
         != messages()
         .well.well-sm
             h3.text-center Tell About Your Adventure
-            form(action="/publications" method="POST")
+            form(action="/publications" method="POST" enctype="multipart/form-data")
                 //- enctype="multipart/form-data"
                 .row
                     .col-md-6
