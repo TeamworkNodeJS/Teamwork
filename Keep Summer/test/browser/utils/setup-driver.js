@@ -2,7 +2,7 @@ const webdriver = require('selenium-webdriver');
 
 const setupDriver = (browser) => {
     const driver = new webdriver.Builder()
-    .forBrowser('chrome')
+    .forBrowser(browser)
     .usingServer('http://localhost:4444/wd/hub')
     .build();
 
