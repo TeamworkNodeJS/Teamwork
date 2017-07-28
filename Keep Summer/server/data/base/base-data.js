@@ -57,13 +57,12 @@ class BaseData {
         }, model);
     }
 
-    remove(id) {
+    removeById(id) {
         this.collection.remove({ _id: new ObjectId(id) });
     }
 
-    removeFrom( { query }, prop, id) {
-        return this.collection
-        .update({ query }, { $pull: { prop: { _id: new ObjectId(id) } } } );
+    removeByQuery(query, options ) {
+        return this.collection.update(query, options);
     }
 
     _isModelValid(model) {

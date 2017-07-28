@@ -1,5 +1,6 @@
 /* globals __dirname */
 /* eslint max-len: ["error", 80] */
+const { ObjectId } = require('mongodb').ObjectId;
 
 const formidable = require('formidable');
 const fs = require('fs');
@@ -38,10 +39,10 @@ module.exports = function(data) {
                     });
             },
             create(req, res) {
-                // const publication = req.body;
-                // const user = req.user;
+                // const publication = req.body;!!!!!!!!!!!!!!!!!!!!!!!
+                // const user = req.user;!!!!!!!!!!!!!!!!!!!!!!
 
-                // VALIDATIONS
+                // VALIDATIONS !!!!!!!!!!!!!!!!!!!!!!!!!
 
                 const clearRoot = function(rootedDir) {
                     let cleared = rootedDir.replace(appDir, '');
@@ -94,147 +95,138 @@ module.exports = function(data) {
                 publication.image2 = image2RelativeName;
                 publication.image3 = image3RelativeName;
 
-                        return Promise
-                            .all([
-                                data.publications.create(publication),
-                                data.publishers.findOrCreateBy(publisher),
-                                data.destinations.findOrCreateBy(destination),
-                            ])
-                            .then(([dbPublication, dbPublisher, dbDestination]) => {  // eslint-disable-line
-                                dbPublisher.name = publication.publisher;
-                                dbPublisher.info = publication.publisherinfo;
-                                dbPublisher.comments = [];
+                return Promise
+                    .all([
+                        data.publications.create(publication),
+                        data.publishers.findOrCreateBy(publisher),
+                        data.destinations.findOrCreateBy(destination),
+                    ])
+                    .then(([dbPublication, dbPublisher, dbDestination]) => {  // eslint-disable-line
+                        dbPublisher.name = publication.publisher;
+                        dbPublisher.info = publication.publisherinfo;
+                        dbPublisher.comments = [];
 
-                                dbDestination.destination =
-                                publication.destination;
+                        dbDestination.destination =
+                            publication.destination;
 
-                                dbPublisher.publication =
-                                dbPublisher.publication || [];
-                                dbPublisher.publication.push({
-                                    _id: dbPublication._id,
-                                    title: dbPublication.title,
-                                    image: dbPublication.image1,
-                                });
-
-                                user.publications = user.publications || [];
-                                user.publications.push({
-                                    _id: dbPublication._id,
-                                    title: dbPublication.title,
-                                    image: dbPublication.image1,
-                                });
-
-                                dbDestination
-                                    .publications =
-                                    dbDestination.publications || [];
-                                dbDestination.publications.push({
-                                    _id: dbPublication._id,
-                                    destination: dbPublication.destination,
-                                    title: dbPublication.title,
-                                    publisher: dbPublication.publisher,
-                                    date: dbPublication.date,
-                                    image: dbPublication.image1,
-                                });
-
-                                return Promise.all([
-                                    data.publications.updateById(dbPublication),
-                                    data.publishers.updateById(dbPublisher),
-                                    data.users.updateById(user),
-                                    data.destinations.updateById(dbDestination),
-                                ]);
-                            })
-                            .then(() => {
-                                return res.redirect('/publications');
-                            })
-                            .catch((error) => {
-                                req.flash('error', error);
-                                return res.redirect('/publications/add-publication'); // eslint-disable-line
-                            });
+                        dbPublisher.publication =
+                            dbPublisher.publication || [];
+                        dbPublisher.publication.push({
+                            _id: dbPublication._id,
+                            title: dbPublication.title,
+                            image: dbPublication.image1,
                         });
-                    },
-                    getLatestPublications(req, res) {
+
+                        user.publications = user.publications || [];
+                        user.publications.push({
+                            _id: dbPublication._id,
+                            title: dbPublication.title,
+                            image: dbPublication.image1,
+                        });
+
+                        dbDestination
+                            .publications =
+                            dbDestination.publications || [];
+                        dbDestination.publications.push({
+                            _id: dbPublication._id,
+                            destination: dbPublication.destination,
+                            title: dbPublication.title,
+                            publisher: dbPublication.publisher,
+                            date: dbPublication.date,
+                            image: dbPublication.image1,
+                        });
+
+                        return Promise.all([
+                            data.publications.updateById(dbPublication),
+                            data.publishers.updateById(dbPublisher),
+                            data.users.updateById(user),
+                            data.destinations.updateById(dbDestination),
+                        ]);
+                    })
+                    .then(() => {
+                        return res.redirect('/publications');
+                    })
+                    .catch((error) => {
+                        req.flash('error', error);
+                        return res.redirect('/publications/add-publication'); // eslint-disable-line
+                    });
+                });
+            },
+            getLatestPublications(req, res) {
+                return data.publications
+                    .getLatest(LATEST_COUNT)
+                    .then((publications) => {
+                        return res
+                            .send({
+                                result: publications,
+                            });
+                    });
+            },
+            getPublicationForm(req, res) {
+                return res.render('forms/publication-form');
+            },
+            likePublication(req, res) {
+                const id = req.body.id;
+
+                return data.publications.getById(id)
+                    .then((publication) => {
+                        publication.likes = publication.likes + 1;
+
                         return data.publications
-                            .getLatest(LATEST_COUNT)
-                            .then((publications) => {
-                                return res
-                                    .send({
-                                        result: publications,
-                                    });
-                            });
-                    },
-                    getPublicationForm(req, res) {
-                        return res.render('forms/publication-form');
-                    },
-                    likePublication(req, res) {
-                        const id = req.body.id;
+                            .updateById(publication);
+                    })
+                    .then(() => {
+                        req.flash('info',
+                            'Your like was added successfully!');
+                        return res.status(200);
+                    })
+                    .catch((err) => {
+                        req.flash('error', err);
+                        return res.status(400);
+                    });
+            },
+            dislikePublication(req, res) {
+                const id = req.body.id;
 
-                        return data.publications.getById(id)
-                            .then((publication) => {
-                                publication.likes = publication.likes + 1;
+                return data.publications.getById(id)
+                    .then((publication) => {
+                        publication.dislikes = publication.dislikes + 1;
 
-                                return data.publications
-                                .updateById(publication);
-                            })
-                            .then(() => {
-                                req.flash('info',
-                                    'Your like was added successfully!');
-                                return res.status(200);
-                            })
-                            .catch((err) => {
-                                req.flash('error', err);
-                                return res.status(400);
-                            });
-                    },
-                    dislikePublication(req, res) {
-                        const id = req.body.id;
+                        return data.publications
+                            .updateById(publication);
+                    })
+                    .then(() => {
+                        req.flash('info',
+                            'Your like was added successfully!');
+                        return res.status(200);
+                    })
+                    .catch((err) => {
+                        req.flash('error', err);
+                        return res.status(400);
+                    });
+            },
+            removePublication(req, res) {
+                const id = req.body.id;
+                const publisher = req.body.publisher;
+                const destination = req.body.destination;
+                const username = req.user.username;
 
-                        return data.publications.getById(id)
-                            .then((publication) => {
-                                publication.dislikes = publication.dislikes + 1;
-
-                                return data.publications
-                                .updateById(publication);
-                            })
-                            .then(() => {
-                                req.flash('info',
-                                    'Your like was added successfully!');
-                                return res.status(200);
-                            })
-                            .catch((err) => {
-                                req.flash('error', err);
-                                return res.status(400);
-                            });
-                    },
-
-                    // not working yet
-
-                    removePublication(req, res) {
-                        const id = req.body.id;
-                        const publisher = req.body.publisher;
-                        const destination = req.body.destination;
-                        const title = req.body.title;
-
-
-                        return Promise
-                            .all([
-                                data.publications.remove(id),
-                                data.publishers.removeFrom({}, data.publishers.publication, id), // eslint-disable-line
-                                data.destinations.removeFrom({}, data.destinations.publications, id), // eslint-disable-line
-                                data.users.removeFrom({}, data.users.publications, id), // eslint-disable-line
-                            ])
-                            .then(() => {
-                                req.flash('info',
-                                    'Your publication was remover successfully!'); // eslint-disable-line
-                                return res.status(200);
-                            })
-                            .catch((err) => {
-                                req.flash('error', err);
-                                return res.status(400);
-                            });
-                    },
-                    // editPublication(req, res) {
-                    //     const id = req.body.id;
-
-                    //     return data.publications.getById(id);
-                    // },
-                };
-            };
+                return Promise
+                    .all([
+                        data.publications.removeById(id),
+                        data.publishers.removeByQuery({ name: publisher }, { $pull: { publication: { _id: new ObjectId(id) } } }),// eslint-disable-line
+                        data.destinations.removeByQuery({ destination: destination }, { $pull: { publications: { _id: new ObjectId(id) } } }),// eslint-disable-line
+                        data.users.removeByQuery({ username: username }, { $pull: { publications: { _id: new ObjectId(id) } } }), // eslint-disable-line
+                    ])
+                    .then(() => {
+                        req.flash('info',
+                            'Your publication was removed successfully!'); // eslint-disable-line
+                        return res.redirect('/publications');
+                    })
+                    .catch((err) => {
+                        req.flash('error', err);
+                        return res.status(400);
+                    });
+            },
+    };
+};

@@ -1,4 +1,5 @@
 /* eslint max-len: ["error", { "ignoreStrings": true }] */
+
 const { Router } = require('express');
 const auth = require('../utilities/authinticated');
 
@@ -28,9 +29,6 @@ module.exports = function(app, data) {
         .post('/dislike', (req, res) => {
             return controller.dislikePublication(req, res);
         })
-        // .post('/edit', (req, res) => {
-        //     return controller.editPublication(req, res);
-        // })
         .put('/remove', (req, res) => {
             return controller.removePublication(req, res);
         });

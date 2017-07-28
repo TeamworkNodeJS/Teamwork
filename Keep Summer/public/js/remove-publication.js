@@ -5,12 +5,12 @@ $(function () {
         'id': id,
         'publisher': $('.post-by').text().substring(3),
         'title': $('h2').text(),
-        'destinaton': '',
+        'destination': $('.destination-info').text(),
     };
 
     $('.remove').on('click', function () {
         $.ajax({
-            method: 'DELETE',
+            method: 'PUT',
             url: '/publications/remove',
             data: data,
             success: function (data) {

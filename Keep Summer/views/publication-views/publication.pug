@@ -28,6 +28,9 @@ block container
                     span | 
                     span.post-by by 
                         = model.publisher   
+                    span | destination
+                    span.destination-info
+                        = model.destination 
                 img(src="/static" + model.image1, alt="image")
                 .publication-text 
                     = model.text1

@@ -12,11 +12,8 @@ module.exports = function(data) {
             return data.users.findById(userId)
                 .then((user) => {
                     user.favourites = user.favourites || [];
-                    const index = user.
-                    favourites.findIndex((x) => x._id === req.body.id);
-                    if (index === -1) {
-                        return Promise
-                        .reject(`This publication
+                    if (user.favourites.filter((x) => x._id === req.body.id).length > 0) { // eslint-disable-line
+                        return Promise.reject(`This publication
                          is already in your favourites.`);
                     }
                     user.favourites.push({
