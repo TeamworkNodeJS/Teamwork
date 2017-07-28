@@ -58,7 +58,7 @@ gulp.task('tests', ['pre-test'], () => {
 });
 
 const config = {
-    connectionString: 'mongodb://localhost/items-db-test',
+    connectionString: 'mongodb://Admin:admin@ds143532.mlab.com:43532/summer',
     port: 3001,
 };
 
@@ -88,7 +88,7 @@ gulp.task('tests:browser', ['test-server:start'], () => {
     return gulp.src('./test/browser/publications/**/*.js')
         .pipe(mocha({
             reporter: 'nyan',
-            timeout: 10000,
+            timeout: 100000,
         }))
         .once('end', () => {
             gulp.start('test-server:stop');

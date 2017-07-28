@@ -40,7 +40,7 @@ describe('Publication tests', () => {
             .then(() => ui.click('#btn-signin'))
             .then(() => ui.click('#adventures'))
             .then(() => driver.sleep(1000))
-            //  .then(() => driver.executeScript('window.scrollTo(0, document.body.scrollHeight);'))
+            .then(() => driver.executeScript('window.scrollTo(0, document.body.scrollHeight);'))
             .then(() => ui.click('#publicationForm'));
         });
     });
