@@ -1,0 +1,18 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title Online Chat using WebSockets
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js')
+		link(href='../static/styles/chat.style.css', rel='stylesheet')
+	body
+		#insta-chat
+			h2 Insta Chat
+			h2 Tell instantly about your daily adventure...
+			#chat-window
+				#output
+				#feedback
+			input#handle(type='text', placeholder='Handle')
+			input#message(type='text', placeholder='Message')
+			button#send Send
+	script(src='../static/js/chat.js')
