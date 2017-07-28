@@ -1,3 +1,5 @@
+const { ObjectId } = require('mongodb').ObjectId;
+
 class BaseData {
     constructor(db, ModelClass, validator) {
         this.db = db;
@@ -53,6 +55,15 @@ class BaseData {
         return this.collection.updateOne({
             _id: model._id,
         }, model);
+    }
+
+    remove(id) {
+        this.collection.remove({ _id: new ObjectId(id) });
+    }
+
+    removeFrom( { query }, prop, id) {
+        return this.collection
+        .update({ query }, { $pull: { prop: { _id: new ObjectId(id) } } } );
     }
 
     _isModelValid(model) {

@@ -1,9 +1,15 @@
 extends ../_layout
+
+block scripts 
+    script(src="/libs/jquery/dist/jquery.js")
+    script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    script(src="/static/js/contact-form-send.js")
+
 block container 
     .container.contact-form
         != messages()
         .well.well-sm
-            form(action="#" method="POST")
+            form(action="/contact" method="POST")
                 .row
                     .col-md-6
                         .form-group
@@ -30,4 +36,4 @@ block container
                             label(for="message") Message
                             textarea(name="message" id="message" class="form-control" rows="9" cols="25" required="required" placeholder="Message")
                     .col-md-12
-                        a(href="#" type="button" class="btn btn-default pull-right" id="btnContactUs") Send Message
+                        button(type="submit" class="btn btn-default pull-right" id="btnContactUs") Send Message

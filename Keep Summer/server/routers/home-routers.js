@@ -13,6 +13,9 @@ module.exports = function(app, data) {
         })
         .get('/contact', (req, res) => {
             return controller.getContactForm(req, res);
+        })
+        .post('/contact', (req, res) => {
+            return controller.postContactForm(req, res);
         });
 
     app.use('/', router);

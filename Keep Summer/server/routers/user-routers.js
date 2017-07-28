@@ -7,19 +7,13 @@ module.exports = function(app, data) {
     router
         .get('/profile', (req, res) => {
             return controller.getUserProfile(req, res);
+        })
+        .get('/favourites', (req, res) => {
+            return controller.getUserFavourites(req, res);
+        })
+        .post('/favourites', (req, res) => {
+            return controller.addUserFavourites(req, res);
         });
-        // .get('/favourites', (req, res) => {
-        //     return '';
-        // })
-        // .post('favourites', (req, res)=>{
-        //     return '';
-        // })
-        // .post('likes', (req, res)=>{
-        //     return '';
-        // })
-        // .post('dislikes', (req, res)=>{
-        //     return '';
-        // });
 
     app.use('/user', router);
 };
