@@ -59,14 +59,14 @@ gulp.task('tests', ['pre-test'], () => {
 
 const config = {
     connectionString: 'mongodb://localhost/items-db-test',
-    port: 3002,
+    port: 3001,
 };
 
 gulp.task('test-server:start', () => {
     return Promise.resolve()
-        .then(() => require('./db').init(config.connectionString))
-        .then((db) => require('./data').init(db))
-        .then((data) => require('./app').init(data))
+        .then(() => require('./server/db').init(config.connectionString))
+        .then((db) => require('./server/data').init(db))
+        .then((data) => require('./server/config').init(data))
         .then((app) => {
             app.listen(
                 config.port,
@@ -79,14 +79,13 @@ const { MongoClient } = require('mongodb');
 gulp.task('test-server:stop', () => {
     return MongoClient.connect(config.connectionString)
         .then((db) => {
-            return db.dropDatabase();
+            // return db.dropDatabase();
         });
 });
 
-
 // browser
 gulp.task('tests:browser', ['test-server:start'], () => {
-    return gulp.src('./test/browser/items/create-item.js')
+    return gulp.src('./test/browser/publications/**/*.js')
         .pipe(mocha({
             reporter: 'nyan',
             timeout: 10000,
