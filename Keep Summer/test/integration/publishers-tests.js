@@ -2,7 +2,7 @@ const request = require('supertest');
 const { init } = require('../../server/config');
 
 describe('/publications tests', () => {
-   /*let app = null;
+   /* let app = null;
     const data = {
         publications: {
             getAll(){

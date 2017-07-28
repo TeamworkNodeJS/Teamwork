@@ -10,22 +10,22 @@ const getRequestMock = (options = {}) => {
 
 const getResponseMock = () => {
     return {
-        viewName : '',
+        viewName: '',
         model: null,
-        render(viewName, model){
+        render(viewName, model) {
             this.viewName = viewName;
             this.model = model;
             return this;
         },
-        status(statusCode){
+        status(statusCode) {
             this.statusCode = statusCode;
             return this;
         },
-        send(body){
+        send(body) {
             this.body = body;
             return this;
         },
-        redirect(status, url){
+        redirect(status, url) {
             if (!url) {
                 this.redirectUrl = status;
             } else {

@@ -1,6 +1,6 @@
-// https://gist.github.com/jeshuamaxey/e88a21f802445bf05e18 
-//http://www.alexjamesbrown.com/blog/development/stubbing-middleware-testing-express-supertest/
-//https://github.com/alexjamesbrown/supertest-stubbing-middleware/blob/f63be40cc4f0334efd80576d5ff0499cb918d394/test/test.js
+// https://gist.github.com/jeshuamaxey/e88a21f802445bf05e18
+// http://www.alexjamesbrown.com/blog/development/stubbing-middleware-testing-express-supertest/
+// https://github.com/alexjamesbrown/supertest-stubbing-middleware/blob/f63be40cc4f0334efd80576d5ff0499cb918d394/test/test.js
 
 /*
 let User = require('../../server/models/user-model');
@@ -34,23 +34,18 @@ describe('User API:', function() {
         password: 'password'
       });
 
-
-
       user.save(function(err) {
         if (err) return done(err);
         done();
       });
     });
-    
+
   });
-
-
 
   // Clear users after testing
 after(function() {
     return User.remove().exec();
   });
-
 
  describe('GET /user/profile', function() {
     let token;

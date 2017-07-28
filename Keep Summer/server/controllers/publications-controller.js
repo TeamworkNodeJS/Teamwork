@@ -8,7 +8,8 @@ const appDir = path.dirname(path.dirname(__dirname));
 const shelljs = require('shelljs');
 
 /* eslint-disable-line no-extend-native */
-const PUBLISHER_PUBLICATIONS_IMAGES_DIRECTORY = path.join(appDir, 'public/Publicated images');
+const PUBLISHER_PUBLICATIONS_IMAGES_DIRECTORY =
+path.join(appDir, 'public/Publicated images');
 
 const LATEST_COUNT = 4;
 
@@ -51,7 +52,6 @@ module.exports = function(data) {
 
                 const form = new formidable.IncomingForm();
                 form.parse(req, function(err, fields, files) {
-
                         const publication = fields;
                         publication.likes = 0;
                         publication.dislikes = 0;
@@ -89,7 +89,7 @@ module.exports = function(data) {
                 .join(imagesDir, files.image3.name);
                 fs.renameSync(image3RawFillName, image3FineFullName);
                 const image3RelativeName = clearRoot(image3FineFullName);
-                
+
                 publication.image1 = image1RelativeName;
                 publication.image2 = image2RelativeName;
                 publication.image3 = image3RelativeName;
@@ -100,14 +100,16 @@ module.exports = function(data) {
                                 data.publishers.findOrCreateBy(publisher),
                                 data.destinations.findOrCreateBy(destination),
                             ])
-                            .then(([dbPublication, dbPublisher, dbDestination]) => {
+                            .then(([dbPublication, dbPublisher, dbDestination]) => {  // eslint-disable-line
                                 dbPublisher.name = publication.publisher;
                                 dbPublisher.info = publication.publisherinfo;
                                 dbPublisher.comments = [];
 
-                                dbDestination.destination = publication.destination;
+                                dbDestination.destination =
+                                publication.destination;
 
-                                dbPublisher.publication = dbPublisher.publication || [];
+                                dbPublisher.publication =
+                                dbPublisher.publication || [];
                                 dbPublisher.publication.push({
                                     _id: dbPublication._id,
                                     title: dbPublication.title,
@@ -122,7 +124,8 @@ module.exports = function(data) {
                                 });
 
                                 dbDestination
-                                    .publications = dbDestination.publications || [];
+                                    .publications =
+                                    dbDestination.publications || [];
                                 dbDestination.publications.push({
                                     _id: dbPublication._id,
                                     destination: dbPublication.destination,
@@ -144,7 +147,7 @@ module.exports = function(data) {
                             })
                             .catch((error) => {
                                 req.flash('error', error);
-                                return res.redirect('/publications/add-publication');
+                                return res.redirect('/publications/add-publication'); // eslint-disable-line
                             });
                         });
                     },
@@ -168,7 +171,8 @@ module.exports = function(data) {
                             .then((publication) => {
                                 publication.likes = publication.likes + 1;
 
-                                return data.publications.updateById(publication);
+                                return data.publications
+                                .updateById(publication);
                             })
                             .then(() => {
                                 req.flash('info',
@@ -187,7 +191,8 @@ module.exports = function(data) {
                             .then((publication) => {
                                 publication.dislikes = publication.dislikes + 1;
 
-                                return data.publications.updateById(publication);
+                                return data.publications
+                                .updateById(publication);
                             })
                             .then(() => {
                                 req.flash('info',
@@ -212,13 +217,13 @@ module.exports = function(data) {
                         return Promise
                             .all([
                                 data.publications.remove(id),
-                                data.publishers.removeFrom({}, data.publishers.publication, id),
-                                data.destinations.removeFrom({}, data.destinations.publications, id),
-                                data.users.removeFrom({}, data.users.publications, id),
+                                data.publishers.removeFrom({}, data.publishers.publication, id), // eslint-disable-line
+                                data.destinations.removeFrom({}, data.destinations.publications, id), // eslint-disable-line
+                                data.users.removeFrom({}, data.users.publications, id), // eslint-disable-line
                             ])
                             .then(() => {
                                 req.flash('info',
-                                    'Your publication was remover successfully!');
+                                    'Your publication was remover successfully!'); // eslint-disable-line
                                 return res.status(200);
                             })
                             .catch((err) => {

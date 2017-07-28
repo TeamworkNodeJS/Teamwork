@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 
-
 /*
 getAll(req, res) {
             return data.publications.getAll()
@@ -16,32 +15,32 @@ getAll(req, res) {
 describe('publication controller', () => {
     let data = null;
     let controller = null;
-    let publications = ['publication 1', 'publication 2' , 'publication 3'];
+    const publications = ['publication 1', 'publication 2', 'publication 3'];
 
     let req = null;
     let res = null;
 
     beforeEach(() => {
         data = {
-            publications : {
+            publications: {
                  getAll() {
                     return Promise.resolve(publications);
                  },
             },
         };
 
-        controller = require('../../../../../server/controllers/publications-controller')(data);
+        controller = require('../../../../../server/controllers/publications-controller')(data); // eslint-disable-line
         req = require('../../../req-res').getRequestMock();
         res = require('../../../req-res').getResponseMock();
     });
 
     it('expect getAll to return all publications', () =>{
-        return controller.getAll(req,res)
+        return controller.getAll(req, res)
             .then(() => {
                 expect(res.model).to.be.deep.equal({
                     model: publications,
                 });
-                expect(res.viewName).to.be.equal('publication-views/all-publications');
+                expect(res.viewName).to.be.equal('publication-views/all-publications'); // eslint-disable-line
             });
     });
 });

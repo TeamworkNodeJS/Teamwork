@@ -24,6 +24,6 @@ block container
                                 each element in item.publication
                                     .publishers-container-info.col-md-6
                                         div
-                                            img(src="../../static/images/" + element.image, alt="image")
+                                            img(src="/static" + element.image, alt="image")
                                         .text-center
                                             a(href="/publications/" + element._id) #{element.title}

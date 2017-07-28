@@ -48,7 +48,7 @@ $(function () {
                 $('<div/>')
                     .addClass('.col-md-12')
                     .append($('<a href="/publications/' + publications._id + '">').append(
-                        $('<img src="/static/images/' + publications.image1 + '" alt="image"/>')))
+                        $('<img src="/static' + publications.image1 + '" alt="image"/>')))
                     .append($('<div/>').addClass('info').append($('<h6/>').text(publications.title)))
                     .appendTo(wrapper);
             });

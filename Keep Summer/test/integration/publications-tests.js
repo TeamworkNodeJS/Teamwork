@@ -4,10 +4,10 @@ describe('/publications tests', () => {
    let app = null;
     const data = {
         publications: {
-            getAll(){
+            getAll() {
                 return Promise.resolve([]);
             },
-        }
+        },
     };
 
     beforeEach(() => {
@@ -79,7 +79,7 @@ describe('/publications tests', () => {
         });
     });
 
-    /*describe('POST /publications', () => {
+    /* describe('POST /publications', () => {
         it('should respond with redirect on post', function(done) {
         request(app)
         .post('/publications')

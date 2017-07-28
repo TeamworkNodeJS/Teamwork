@@ -49,7 +49,6 @@ const init = (app, { users }) => {
         }),
         resave: true,
         saveUninitialize: true,
-        cookie: { secure: true },
     }));
     app.use(passport.initialize());
     app.use(passport.session());

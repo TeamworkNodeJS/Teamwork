@@ -84,7 +84,7 @@ gulp.task('test-server:stop', () => {
 });
 
 
-//browser
+// browser
 gulp.task('tests:browser', ['test-server:start'], () => {
     return gulp.src('./test/browser/items/create-item.js')
         .pipe(mocha({

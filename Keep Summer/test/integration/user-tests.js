@@ -1,4 +1,4 @@
-/*const request = require('supertest');
+/* const request = require('supertest');
 const { init } = require('../../server/config');
 
 describe('/user tests', () => {

@@ -21,18 +21,4 @@ $(function () {
             })
         });
     });
-
-    // $('.remove').on('click', function () {
-    //     $.ajax({
-    //         method: 'POST',
-    //         url: '/publications/remove',
-    //         data: data,
-    //         success: function (data) {
-    //             console.log('success');
-    //         },
-    //         error: ((error) => {
-    //             console.log(error);
-    //         })
-    //     });
-    // });
 });
