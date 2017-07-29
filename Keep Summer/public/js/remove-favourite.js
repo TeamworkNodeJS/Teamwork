@@ -16,7 +16,10 @@ $(function () {
             error: ((error) => {
                 console.log(error);
             })
-        });
+        })
+        .then(() => {
+             window.location.reload();
+         });
     });
 
 });

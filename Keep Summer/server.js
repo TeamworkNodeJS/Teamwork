@@ -6,32 +6,51 @@ const async = () => {
 
 const config = require('./server/configurations');
 const socket = require('socket.io');
-//let server = null;
+
+let numClients = 0;
+
+// let server = null;
 async()
-    .then(() => require('./server/db').init(config.connectionString))
+.then(() => require('./server/db').init(config.connectionString))
     .then((db) => require('./server/data').init(db))
     .then((data) => require('./server/config').init(data))
     .then((app) => {
         return app.listen(config.port, () =>
-        console.log(`Server listen on :${config.port}`));
+            console.log(`Server listen on :${config.port}`));
     })
     .then((server) => {
         // Socket setup & pass server
-    const io = socket(server);
-    io.on('connection', (socket) => {
-    console.log('made socket connection', socket.id);
+        const io = socket(server);
+        io.on('connection', (socket) => {
+            console.log('made socket connection', socket.id);
 
-    // Handle chat event
-    socket.on('chat', function(data) {
-        // console.log(data);
-        io.sockets.emit('chat', data);
-    });
+            // Handle chat event
+            socket.on('chat', function(data) {
+                // console.log(data);
+                io.sockets.emit('chat', data);
+            });
 
-    // Handle typing event
-    socket.on('typing', function(data) {
-        socket.broadcast.emit('typing', data);
-    });
-    });
+            // Handle typing event
+            socket.on('typing', function(data) {
+                socket.broadcast.emit('typing', data);
+            });
+
+                numClients++;
+                io.emit('stats', {
+                    numClients: numClients,
+                });
+
+                console.log('Connected clients:', numClients);
+
+                socket.on('disconnect', function() {
+                    numClients--;
+                    io.emit('stats', {
+                        numClients: numClients,
+                    });
+
+                    console.log('Connected clients:', numClients);
+                });
+        });
     })
     .catch((err) => {
         console.log(err);

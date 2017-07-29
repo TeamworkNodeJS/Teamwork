@@ -178,7 +178,7 @@ module.exports = function(data) {
                     .then(() => {
                         req.flash('info',
                             'Your like was added successfully!');
-                        return res.status(200);
+                        return res.redirect(req.get('referer'));
                     })
                     .catch((err) => {
                         req.flash('error', err);
@@ -198,7 +198,7 @@ module.exports = function(data) {
                     .then(() => {
                         req.flash('info',
                             'Your like was added successfully!');
-                        return res.status(200);
+                        return res.redirect(req.get('referer'));
                     })
                     .catch((err) => {
                         req.flash('error', err);
@@ -222,6 +222,7 @@ module.exports = function(data) {
                         req.flash('info',
                             'Your publication was removed successfully!'); // eslint-disable-line
                         return res.status(200);
+                        // return res.redirect('/publications');
                     })
                     .catch((err) => {
                         req.flash('error', err);
