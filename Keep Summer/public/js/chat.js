@@ -3,7 +3,7 @@ var socket = io.connect('http://localhost:3001');
 
 // Query DOM
 var message = document.getElementById('message'),
-      handle = document.getElementById('handle'),
+      handle = document.getElementById('currentUser'),
       btn = document.getElementById('send'),
       output = document.getElementById('output'),
       feedback = document.getElementById('feedback');
@@ -12,13 +12,13 @@ var message = document.getElementById('message'),
 btn.addEventListener('click', function(){
     socket.emit('chat', {
         message: message.value,
-        handle: handle.value
+        handle: handle.innerHTML,
     });
     message.value = "";
 });
 
 message.addEventListener('keypress', function(){
-    socket.emit('typing', handle.value);
+    socket.emit('typing', handle.innerHTML);
 })
 
 // Listen for events

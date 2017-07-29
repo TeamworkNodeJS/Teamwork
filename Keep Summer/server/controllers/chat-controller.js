@@ -1,7 +1,10 @@
 module.exports = function(data) {
     return {
         openChat(req, res) {
-            return res.render('chat/chat');
+            const username = req.user.username;
+            return res.render('chat/chat', {
+               username,
+            });
         },
     };
 };

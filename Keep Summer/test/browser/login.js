@@ -33,24 +33,24 @@ describe('Login test', () => {
 
         it('expect to redirect to home page', (done) => {
             async()
-            .then(() => ui.click('.container button'))
-            .then(() => ui.click('.btn'))
-            .then(() => {
-             return driver.findElement(webdriver.By.css('#name'));
-            })
-            .then((tb) => tb.sendKeys(username))
-            .then(() => {
-             return driver.findElement(webdriver.By.css('#password'));
-            })
-            .then((tb) => tb.sendKeys(password))
-            .then(() => ui.click('#btn-signin'))
-            .then(() => {
-                return driver.getCurrentUrl();
-            })
-            .then((url) => {
-                expect(url).to.be.equal('http://localhost:3001/');
-                done();
-            });
+                .then(() => ui.click('.container button'))
+                .then(() => ui.click('.btn'))
+                .then(() => {
+                    return driver.findElement(webdriver.By.css('#name'));
+                })
+                .then((tb) => tb.sendKeys(username))
+                .then(() => {
+                    return driver.findElement(webdriver.By.css('#password'));
+                })
+                .then((tb) => tb.sendKeys(password))
+                .then(() => ui.click('#btn-signin'))
+                .then(() => {
+                    return driver.getCurrentUrl();
+                })
+                .then((url) => {
+                    expect(url).to.be.equal('http://localhost:3001/');
+                    done();
+                });
         });
     });
 });

@@ -4,15 +4,21 @@ html
 		meta(charset='utf-8')
 		title Online Chat using WebSockets
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js')
+		script(src="/libs/jquery/dist/jquery.js")
+		script(src="/libs/bootstrap/dist/js/bootstrap.js")
+		link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.css") 
 		link(href='../static/styles/chat.style.css', rel='stylesheet')
 	body
 		#insta-chat
-			h2 Insta Chat
-			h2 Tell instantly about your daily adventure...
+			#head
+				span.glyphicon.glyphicon-comment
+				h2#liveChat Live Chat
+			h2 Current user: 
+				span#currentUser
+					=model
 			#chat-window
 				#output
 				#feedback
-			input#handle(type='text', placeholder='Handle')
 			input#message(type='text', placeholder='Message')
 			button#send Send
 	script(src='../static/js/chat.js')

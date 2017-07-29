@@ -8,7 +8,7 @@ head
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Document
     link(rel="stylesheet", href="/static/styles/style.css")    
-    link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.css")    
+    link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.css")  
     link(href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet")
     link(href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet")
     link(rel="shortcut icon" type="image/x-icon", href="/static/images/favicon.ico")
@@ -17,7 +17,7 @@ head
     //- script(src="/libs/socket.io/lib/socket.js") 
     //- script(src="/static/js/users-current-number.js")
     block scripts
-body       
+body
     header.navbar.navbar-fixed-top
         .row
             #logo.col-md-2.col-md-offset-1.text-left
@@ -45,3 +45,14 @@ body
         .col-md-5.col-md-offset-1.text-left
             | &copy; Copyright 2017 Web Application with Node.js
         .col-md-6
+        if user
+            .col-md-5.col-md-offset-1.text-right
+                .holder
+                    .round.hollow.text-center
+                        a.publication(href='/publications/form')
+                            span.glyphicon.glyphicon-plus
+                                | Publication
+                    .round.hollow.text-center
+                        a.chat(href='/chat')
+                            span.glyphicon.glyphicon-comment
+                                | Chat
