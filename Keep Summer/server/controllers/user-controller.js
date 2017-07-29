@@ -1,3 +1,5 @@
+const { ObjectId } = require('mongodb').ObjectId;
+
 module.exports = function(data) {
     return {
         getUserProfile(req, res) {
@@ -17,7 +19,7 @@ module.exports = function(data) {
                          is already in your favourites.`);
                     }
                     user.favourites.push({
-                        _id: req.body.id,
+                        _id: new ObjectId(req.body.id),
                         image: req.body.image,
                         title: req.body.title,
                         date: req.body.date,
@@ -29,6 +31,29 @@ module.exports = function(data) {
                 .then(() => {
                     req.flash('info',
                         'Your favourites was added successfully!');
+                    return res.status(200);
+                })
+                .catch((err) => {
+                    req.flash('error', err);
+                    return res.status(400);
+                });
+        },
+        removeUserFavourites(req, res) {
+            const username = req.user.username;
+            const id = req.body.id;
+
+            return data.users.removeByQuery({ username: username }, { $pull: { favourites: { _id: new ObjectId(id) } } }) // eslint-disable-line
+
+                // //return data.users.findById(userId)                
+
+                // //.then( (result) => {
+                //  //   const index = result.favourites
+                //  //   .findIndex((x) => x._id === req.body.id);
+                //  //   return result.favourites.splice(index, 1);
+                //  //   })
+                .then(() => {
+                    req.flash('info',
+                        'Your favourites was removed successfully!');
                     return res.status(200);
                 })
                 .catch((err) => {

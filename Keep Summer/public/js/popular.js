@@ -4,7 +4,6 @@ $(function () {
             return res.json();
         })
         .then((data) => {
-            // console.log(data.result);
             const wrapper = $('.popular');
             data.result.forEach((publishers) => {
                 $('<div/>')

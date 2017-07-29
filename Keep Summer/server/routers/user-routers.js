@@ -14,6 +14,9 @@ module.exports = function(app, data) {
         })
         .post('/favourites', (req, res) => {
             return controller.addUserFavourites(req, res);
+        })
+        .put('/removefavourites', (req, res) => {
+            return controller.removeUserFavourites(req, res);
         });
 
     app.use('/user', router);

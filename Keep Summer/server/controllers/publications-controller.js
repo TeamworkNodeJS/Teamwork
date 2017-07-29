@@ -221,7 +221,7 @@ module.exports = function(data) {
                     .then(() => {
                         req.flash('info',
                             'Your publication was removed successfully!'); // eslint-disable-line
-                        return res.redirect('/publications');
+                        return res.status(200);
                     })
                     .catch((err) => {
                         req.flash('error', err);

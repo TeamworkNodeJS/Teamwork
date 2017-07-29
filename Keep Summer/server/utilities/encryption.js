@@ -8,14 +8,3 @@ module.exports = {
 };
 
 
-// function authenticate(password) {
-//     const salt = encryption.generateSalt();
-//     const inputHashedPassword = encryption
-//                                 .generateHashedPassword(salt, password);
-//     const hashedPass = ''; // ????
-//     if (inputHashedPassword === hashedPass) {
-//       return true;
-//     }
-//       return false;
-//   }
-
