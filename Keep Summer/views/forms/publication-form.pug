@@ -26,14 +26,14 @@ block container
                                 .input-group
                                     span.input-group-addon
                                         span.glyphicon.glyphicon-calendar
-                                    input.date.form-control(type="date" name="date" required="required" value="")
+                                    input#date.date.form-control(type="date" name="date" value="")
                     .col-md-6
                         .form-group
                             label(for="image1") Add image
-                                input#image1(type="file" name="image1" required="required")
+                                input#image1(type="file" name="image1")
                         .form-group
                             label(for="text1") Enter description to image
-                                textarea#text1.form-control(name="text1" placeholder="Enter description" rows="3" cols="25" required="required")
+                                textarea#text1.form-control(name="text1" placeholder="Enter description" rows="3" cols="25")
                 .row    
                     .col-md-6
                         .form-group
@@ -48,10 +48,10 @@ block container
                     .col-md-6
                         .form-group
                             label(for="image2") Add image
-                                input#image2(type="file" name="image2" required="required")
+                                input#image2(type="file" name="image2")
                         .form-group
                             label(for="text2") Enter description to image
-                                textarea#text2.form-control(name="text2" placeholder="Enter description" rows="3" cols="25" required="required")
+                                textarea#text2.form-control(name="text2" placeholder="Enter description" rows="3" cols="25")
                 .row
                     .col-md-6
                         h6
@@ -84,10 +84,10 @@ block container
                     .col-md-6
                         .form-group
                             label(for="image3") Add image
-                                input#image3(type="file" name="image3" required="required")
+                                input#image3(type="file" name="image3")
                         .form-group
                             label(for="text3") Enter description to image
-                                textarea#text3.form-control(name="text3" placeholder="Enter description" rows="3" cols="25" required="required")
-                    .col-md-12
-                        button(type="submit" class="btn btn-default pull-right add-publication") 
-                            |   Add Publication                         
+                                textarea#text3.form-control(name="text3" placeholder="Enter description" rows="3" cols="25")
+                    .col-md-5
+                        button(type="submit" id="addPublication" class="btn btn-default pull-right add-publication") 
+                            |   Add Publication                    

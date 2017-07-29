@@ -1,7 +1,7 @@
 const request = require('supertest');
 const { init } = require('../../server/config');
 
-describe('/publications tests', () => {
+describe('/publishers tests', () => {
    /* let app = null;
     const data = {
         publications: {
@@ -27,7 +27,7 @@ describe('/publications tests', () => {
             .then((app) => {
                 request(app)
                 .get('/publishers')
-                .expect(200)
+                .expect(304)
                 .end((err, res) => {
                     if (err) {
                         return done(err);

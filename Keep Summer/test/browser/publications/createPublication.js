@@ -4,6 +4,7 @@ const { setupDriver } = require('../utils/setup-driver');
 const webdriver = require('selenium-webdriver');
 const ui = require('../utils/ui.js');
 const async = require('../../../server/utilities/async');
+const publicationUtils = require('../utils/publication.utils');
 
 describe('Publication tests', () => {
     let driver = null;
@@ -14,6 +15,7 @@ describe('Publication tests', () => {
     beforeEach(() => {
         driver = setupDriver('chrome');
         ui.setDriver(driver);
+        publicationUtils.setDriver(driver);
         return driver.get(appUrl);
     });
 
@@ -26,22 +28,12 @@ describe('Publication tests', () => {
 
         // });
 
-        const username = 'Darin96';
-        const password = 'darin96*';
-
         it('expect to create a new publication', (done) => {
-            async()
-            .then(() => ui.click('.container button'))
-            .then(() => ui.click('.btn'))
-            .then(() => ui.setValue('#name', username))
-            .then(() => driver.sleep(1000))
-            .then(() => ui.setValue('#password', password))
-            .then(() => driver.sleep(1000))
-            .then(() => ui.click('#btn-signin'))
-            .then(() => ui.click('#adventures'))
-            .then(() => driver.sleep(1000))
-            .then(() => driver.executeScript('window.scrollTo(0, document.body.scrollHeight);'))
-            .then(() => ui.click('#publicationForm'));
+            publicationUtils.createPublication();
+            // .then(() => {
+            //     expect(driver.getCurrentUrl()).to.be.equal('http://localhost:3001/publications');
+            //     done
+            // });
         });
     });
 });
