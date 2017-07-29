@@ -17,6 +17,9 @@ module.exports = function(app, data) {
         .get('/latest', (req, res) => {
             return controller.getLatestPublications(req, res);
         })
+        .get('/search', (req, res) => {
+            return controller.search(req, res);
+        })
         .get('/:id', (req, res) => {
             return controller.getById(req, res);
         })

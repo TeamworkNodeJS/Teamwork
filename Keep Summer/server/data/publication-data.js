@@ -13,6 +13,14 @@ class PublicationData extends BaseData {
         return result;
     }
 
+    getByFilter(filter) {
+        const result = this.collection
+        .findOne({ $or: [{ title: new RegExp(`.*${filter}.*`, 'gi' ) },
+        { publisher: new RegExp(`.*${filter}.*`, 'gi' ) }] });
+
+        return result;
+    }
+
     getLatest(count) {
         const result = this.collection
         .find({})

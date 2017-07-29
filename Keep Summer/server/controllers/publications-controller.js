@@ -229,5 +229,17 @@ module.exports = function(data) {
                         return res.status(400);
                     });
             },
+            search(req, res) {
+                const filter = req.query.search;
+                return data.publications.getByFilter(filter)
+                .then((publication) => {
+                        if (!publication) {
+                            return res.render('errors/not-found');
+                        }
+                        return res.render('publication-views/publication', {
+                            model: publication,
+                        });
+                    });
+            },
     };
 };
