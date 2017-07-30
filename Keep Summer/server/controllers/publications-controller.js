@@ -60,6 +60,8 @@ module.exports = function(data) {
                         publication.dislikes = 0;
                         publication.comments = [];
                         const user = req.user;
+                        publication.publisher = user.username;
+
 
                         const publisher = {
                             name: publication.publisher,
