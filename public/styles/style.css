@@ -454,6 +454,9 @@ body #wrapper .signin-form {
   left: 400px;
   font-size: 12px;
 }
+body #wrapper .reg-form{
+  top:30px;
+}
 body #wrapper .reg-form .well,
 body #wrapper .signin-form .well {
   width: 350px;

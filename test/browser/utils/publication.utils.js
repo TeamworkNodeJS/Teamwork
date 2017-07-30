@@ -6,7 +6,7 @@ const async = require('../../../server/utilities/async');
 
 const username = 'Darin96';
 const password = 'darin96*';
-const imagePath = 'C:\\Users\\Darin-PC\\Desktop\\TeamProject\\Teamwork\\Keep Summer\\public\\Publicated images\\Jane Adam\\The Best Time to Go to Bali\\bali01.jpg';
+const imagePath = 'C:\\Users\\Darin-PC\\Desktop\\TeamProject\\Teamwork\\public\\Publicated images\\Jane Adam\\The Best Time to Go to Bali\\bali01.jpg';
 const test = 'Test';
 const date = '08/02/2017';
 
@@ -26,7 +26,7 @@ const createPublication = () => {
             .then(() => ui.setValue('#title', test))
             .then(() => ui.setValue('#date', date))
             .then(() => ui.setValue('#text1', test))
-            .then(() => ui.setValue('#publisher', test))
+            //  .then(() => ui.setValue('#publisher', test))
             .then(() => ui.setValue('#publisher-info', test))
             .then(() => ui.setValue('#image1', imagePath))
             .then(() => ui.setValue('#image2', imagePath))
