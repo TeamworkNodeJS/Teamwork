@@ -1,6 +1,7 @@
 $(function () {
     var pathname = window.location.pathname;
     var id = pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+
     var data = {
         'id': id,
         'publisher': $('.post-by').text().substring(3),
@@ -8,20 +9,20 @@ $(function () {
         'destination': $('.destination-info').text(),
     };
 
-    $('.remove').on('click', function () {
+    $('.remove').click(function () {
         $.ajax({
             method: 'DELETE',
             url: '/publications',
             data: data,
-            success: ((data) =>  {
-                location.reload();
+            success: (() =>  {     
+                window.location.href = '/publications';
             }),
-            error: ((error) => {
-                console.log(error);
+            error: ((error) => {     
+                window.location.href = '/publications';
             })
+        })
+        .then(() =>{
+        // window.location.href = '/publications';
         });
-        // .then(() => {
-        //      window.location.reload();
-        //  });
     });
 });

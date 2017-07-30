@@ -212,26 +212,20 @@ module.exports = function(data) {
             },
             removePublication(req, res) {
                 const id = req.body.id;
-                const publisher = req.body.publisher;
+                const publisher = req.user.username;
                 const destination = req.body.destination;
                 const username = req.user.username;
-                return Promise
-                    .all([
-                        data.publications.removeById(id),
-                        data.publishers.removeByQuery({ name: publisher }, { $pull: { publication: { _id: new ObjectId(id) } } }),// eslint-disable-line
-                        data.destinations.removeByQuery({ destination: destination }, { $pull: { publications: { _id: new ObjectId(id) } } }),// eslint-disable-line
-                        data.users.removeByQuery({ username: username }, { $pull: { publications: { _id: new ObjectId(id) } } }),// eslint-disable-line
-                    ])
-                    .then(() => {
-                        req.flash('info',
-                            'Your publication was removed successfully!'); // eslint-disable-line
-                        // return res.status(200);
-                        return res.redirect('/publications');
-                    })
-                    .catch((err) => {
-                        req.flash('error', err);
-                        return res.status(400);
-                    });
+
+                data.publications.removeById(id);
+                data.publishers.removeByQuery({ name: publisher }, { $pull: { publication: { _id: new ObjectId(id) } } });// eslint-disable-line
+                data.destinations.removeByQuery({ destination: destination }, { $pull: { publications: { _id: new ObjectId(id) } } });// eslint-disable-line
+                data.users.removeByQuery({ username: username }, { $pull: { publications: { _id: new ObjectId(id) } } });// eslint-disable-line
+                           
+                return res.end();
+                // req.method = 'GET';
+                // req.url = '/publications';
+                // res.req = req;
+                // return res.redirect('/publications');            
             },
             search(req, res) {
                 const filter = req.query.search;
