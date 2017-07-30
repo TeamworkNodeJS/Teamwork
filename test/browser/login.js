@@ -39,10 +39,12 @@ describe('Login test', () => {
                     return driver.findElement(webdriver.By.css('#name'));
                 })
                 .then((tb) => tb.sendKeys(username))
+                .then(() => driver.sleep(1000))
                 .then(() => {
                     return driver.findElement(webdriver.By.css('#password'));
                 })
                 .then((tb) => tb.sendKeys(password))
+                .then(() => driver.sleep(1000))
                 .then(() => ui.click('#btn-signin'))
                 .then(() => {
                     return driver.getCurrentUrl();

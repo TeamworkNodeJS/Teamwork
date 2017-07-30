@@ -22,7 +22,7 @@ const createPublication = () => {
             .then(() => ui.click('#adventures'))
             .then(() => driver.sleep(1000))
             .then(() => driver.executeScript('window.scrollTo(0, document.body.scrollHeight);'))
-            .then(() => ui.click('#publicationForm'))
+            .then(() => ui.click('.publication'))
             .then(() => ui.setValue('#title', test))
             .then(() => ui.setValue('#date', date))
             .then(() => ui.setValue('#text1', test))

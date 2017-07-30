@@ -9,17 +9,27 @@ var message = document.getElementById('message'),
       feedback = document.getElementById('feedback');
 
 // Emit events
-btn.addEventListener('click', function(){
+
+function sendMessage(){
     socket.emit('chat', {
         message: message.value,
         handle: handle.innerHTML,
     });
     message.value = "";
-});
+}
+function enterHandler(e) {
+    if (e.keyCode == 13){
+        sendMessage();
+    }
+}
+
+btn.addEventListener('click', sendMessage);
+
+message.addEventListener("keydown", enterHandler);
 
 message.addEventListener('keypress', function(){
     socket.emit('typing', handle.innerHTML);
-})
+});
 
 // Listen for events
 socket.on('chat', function(data){

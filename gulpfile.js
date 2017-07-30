@@ -58,7 +58,8 @@ gulp.task('tests', ['pre-test'], () => {
 });
 
 const config = {
-    connectionString: 'mongodb://Admin:admin@ds143532.mlab.com:43532/summer',
+    //  connectionString: 'mongodb://Admin:admin@ds143532.mlab.com:43532/summer',
+    connectionString: 'mongodb://localhost/items-db-test',
     port: 3001,
 };
 
@@ -86,6 +87,8 @@ gulp.task('test-server:stop', () => {
 
 // browser
 gulp.task('tests:browser', ['test-server:start'], () => {
+    //  return gulp.src('./test/browser/login.js')
+    //  return gulp.src('./test/browser/home.js')
     return gulp.src('./test/browser/publications/**/*.js')
         .pipe(mocha({
             reporter: 'nyan',
