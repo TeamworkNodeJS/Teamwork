@@ -7,19 +7,16 @@ $(function () {
         };
 
         $.ajax({
-            method: 'PUT',
-            url: '/user/removefavourites',
+            method: 'DELETE',
+            url: '/user/favourites',
             data: data,
-            success: function (data) {
-                console.log('success');
-            },
+            success: ((data) =>  {
+                location.reload();
+            }),
             error: ((error) => {
                 console.log(error);
             })
-        })
-        .then(() => {
-             window.location.reload();
-         });
+        });
     });
 
 });

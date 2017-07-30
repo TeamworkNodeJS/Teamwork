@@ -10,15 +10,18 @@ $(function () {
 
     $('.remove').on('click', function () {
         $.ajax({
-            method: 'PUT',
-            url: '/publications/remove',
+            method: 'DELETE',
+            url: '/publications',
             data: data,
-            success: function (data) {
-                console.log('success');
-            },
+            success: ((data) =>  {
+                location.reload();
+            }),
             error: ((error) => {
                 console.log(error);
             })
         });
+        // .then(() => {
+        //      window.location.reload();
+        //  });
     });
 });

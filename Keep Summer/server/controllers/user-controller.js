@@ -33,7 +33,7 @@ module.exports = function(data) {
                 .then(() => {
                     req.flash('info',
                         'Your favourites was added successfully!');
-                    return res.status(200);
+                    return res.redirect('back');
                 })
                 .catch((err) => {
                     req.flash('error', err);
@@ -56,7 +56,7 @@ module.exports = function(data) {
                 .then(() => {
                     req.flash('info',
                         'Your favourites was removed successfully!');
-                    return res.redirect(req.get('referer'));
+                    return res.redirect('back');
                 })
                 .catch((err) => {
                     req.flash('error', err);

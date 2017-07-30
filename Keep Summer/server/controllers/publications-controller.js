@@ -2,6 +2,8 @@
 /* eslint max-len: ["error", 80] */
 const { ObjectId } = require('mongodb').ObjectId;
 
+const moment = require('moment');
+
 const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
@@ -56,6 +58,7 @@ module.exports = function(data) {
                         const publication = fields;
                         publication.likes = 0;
                         publication.dislikes = 0;
+                        publication.comments = [];
                         const user = req.user;
 
                         const publisher = {
@@ -178,7 +181,7 @@ module.exports = function(data) {
                     .then(() => {
                         req.flash('info',
                             'Your like was added successfully!');
-                        return res.redirect(req.get('referer'));
+                        return res.redirect('back');
                     })
                     .catch((err) => {
                         req.flash('error', err);
@@ -198,7 +201,7 @@ module.exports = function(data) {
                     .then(() => {
                         req.flash('info',
                             'Your like was added successfully!');
-                        return res.redirect(req.get('referer'));
+                        return res.redirect('back');
                     })
                     .catch((err) => {
                         req.flash('error', err);
@@ -210,19 +213,18 @@ module.exports = function(data) {
                 const publisher = req.body.publisher;
                 const destination = req.body.destination;
                 const username = req.user.username;
-
                 return Promise
                     .all([
                         data.publications.removeById(id),
                         data.publishers.removeByQuery({ name: publisher }, { $pull: { publication: { _id: new ObjectId(id) } } }),// eslint-disable-line
                         data.destinations.removeByQuery({ destination: destination }, { $pull: { publications: { _id: new ObjectId(id) } } }),// eslint-disable-line
-                        data.users.removeByQuery({ username: username }, { $pull: { publications: { _id: new ObjectId(id) } } }), // eslint-disable-line
+                        data.users.removeByQuery({ username: username }, { $pull: { publications: { _id: new ObjectId(id) } } }),// eslint-disable-line
                     ])
                     .then(() => {
                         req.flash('info',
                             'Your publication was removed successfully!'); // eslint-disable-line
-                        return res.status(200);
-                        // return res.redirect('/publications');
+                        // return res.status(200);
+                        return res.redirect('/publications');
                     })
                     .catch((err) => {
                         req.flash('error', err);
@@ -239,6 +241,32 @@ module.exports = function(data) {
                         return res.render('publication-views/publication', {
                             model: publication,
                         });
+                    });
+            },
+            addComment(req, res) {
+                const comment = {
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    date: moment().format('LL'),
+                    text: req.body.textComment,
+                };
+                const id = req.params.id;
+
+                return data.publications.getById(id)
+                    .then((dbPublication) => {
+                        dbPublication.comments = dbPublication.comments || [];
+                        dbPublication.comments.push(comment);
+
+                        return data.publications.updateById(dbPublication);
+                    })
+                    .then(() => {
+                        req.flash('info',
+                            'Your comment was added successfully!'); // eslint-disable-line
+                        return res.redirect('/publications/' + id);
+                    })
+                    .catch((err) => {
+                        req.flash('error', err);
+                        return res.status(400);
                     });
             },
     };

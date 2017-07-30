@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const auth = require('../utilities/authinticated');
 
 module.exports = function(app, data) {
     const router = new Router();
@@ -13,6 +14,9 @@ module.exports = function(app, data) {
         })
         .get('/:id', (req, res) => {
             return controller.getById(req, res);
+        })
+        .post('/:id/comments', auth.isAuthenticated, (req, res) => {
+            return controller.addComment(req, res);
         });
 
     app.use('/publishers', router);

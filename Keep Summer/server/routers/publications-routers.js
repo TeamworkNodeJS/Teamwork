@@ -11,7 +11,7 @@ module.exports = function(app, data) {
         .get('/', (req, res) => {
             return controller.getAll(req, res);
         })
-        .get('/form', auth.isAuthenticated, (req, res) => { // could be useed by post comments too
+        .get('/form', auth.isAuthenticated, (req, res) => {
              return controller.getPublicationForm(req, res);
         })
         .get('/latest', (req, res) => {
@@ -32,7 +32,10 @@ module.exports = function(app, data) {
         .post('/dislike', (req, res) => {
             return controller.dislikePublication(req, res);
         })
-        .put('/remove', (req, res) => {
+        .post('/:id/comments', auth.isAuthenticated, (req, res) => {
+            return controller.addComment(req, res);
+        })
+        .delete('/', (req, res) => {
             return controller.removePublication(req, res);
         });
 

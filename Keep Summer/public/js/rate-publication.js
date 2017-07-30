@@ -10,9 +10,9 @@ $(function () {
             method: 'POST',
             url: '/publications/like',
             data: data,
-            success: function (data) {
+            success: ((data) => {
                 console.log('success');
-            },
+            }),
             error: ((error) => {
                 console.log(error);
             })
@@ -24,9 +24,9 @@ $(function () {
             method: 'POST',
             url: '/publications/dislike',
             data: data,
-            success: function (data) {
+            success: ((data) => {
                 console.log('success');
-            },
+            }),
             error: ((error) => {
                 console.log(error);
             })

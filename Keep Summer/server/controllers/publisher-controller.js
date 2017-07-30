@@ -1,4 +1,5 @@
 const MOST_POPULAR_COUNT = 4;
+const moment = require('moment');
 
 module.exports = function(data) {
     return {
@@ -34,5 +35,31 @@ module.exports = function(data) {
                         });
                 });
         },
+            addComment(req, res) {
+                const comment = {
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    date: moment().format('LL'),
+                    text: req.body.textComment,
+                };
+                const id = req.params.id;
+
+                return data.publishers.getById(id)
+                    .then((dbPublisher) => {
+                        dbPublisher.comments = dbPublisher.comments || [];
+                        dbPublisher.comments.push(comment);
+
+                        return data.publishers.updateById(dbPublisher);
+                    })
+                    .then(() => {
+                        req.flash('info',
+                            'Your comment was added successfully!'); // eslint-disable-line
+                        return res.redirect('/publishers/' + id);
+                    })
+                    .catch((err) => {
+                        req.flash('error', err);
+                        return res.status(400);
+                    });
+            },
     };
 };

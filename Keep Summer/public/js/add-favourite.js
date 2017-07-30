@@ -14,13 +14,16 @@ $(function () {
             method: 'POST',
             url: '/user/favourites',
             data: data,
-            success: function (data) {
+            success: ((data) =>  {
                 console.log('success');
-            },
+            }),
             error: ((error) => {
                 console.log(error);
             })
-        });
+        })
+        .then(() => {
+             window.location.reload();
+         });
     });
 
 });

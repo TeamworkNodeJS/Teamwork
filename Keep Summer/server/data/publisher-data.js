@@ -13,7 +13,6 @@ class PublisherData extends BaseData {
         return result;
     }
 
-
     getMostPopolarPublishers(count) {
         const result = this.collection
         .aggregate([{ $project: { name: '$name',
