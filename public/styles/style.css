@@ -172,6 +172,9 @@ body #wrapper .publication > .row .single-publication-container .icons button:ho
 body #wrapper .publication > .row .single-publication-container .icons button:hover .glyphicon-star-empty {
   color: #fff60a;
 }
+body #wrapper .publication > .row .single-publication-container .icons button:hover .glyphicon-star {
+  color: #ff0000;
+}
 body #wrapper .publication > .row .single-publication-container .icons button:hover .glyphicon-thumbs-down {
   color: #ff0000;
 }

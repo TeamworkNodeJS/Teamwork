@@ -1,25 +1,51 @@
+// $(function () {
+//     $('.remove').on('click', function () {
+//         $this = $(this);
+//         var id = $this.parent().next().find('a').attr('href').substring(14);
+//         var data = {
+//             id: id
+//         };
+
+//         $.ajax({
+//             method: 'DELETE',
+//             url: '/user/favourites',
+//             data: data,
+//             success: ((data) =>  {
+//                 // location.reload();
+//                 // window.location.reload();
+//             }),
+//             error: ((error) => {
+//                 // console.log(error);
+//                 // window.location.reload();
+//             })
+//         });
+//     });
+
+// });
+
 $(function () {
-    $('.remove').on('click', function () {
+    $('.remove-favourite').on('click', function () {
         $this = $(this);
-        var id = $this.parent().next().find('a').attr('href').substring(14);
+        var pathname = window.location.pathname;
+        var id = pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
         var data = {
             id: id
         };
-
+        
         $.ajax({
             method: 'DELETE',
             url: '/user/favourites',
             data: data,
             success: ((data) =>  {
-                location.reload();
+                window.location.reload();   
             }),
             error: ((error) => {
-                console.log(error);
+                window.location.reload();
             })
         });
     });
-
 });
+
 
 // $(function () {
 //     $('.remove').on('click', function () {

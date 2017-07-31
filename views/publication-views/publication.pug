@@ -11,6 +11,7 @@ block scripts
     script(src="/static/js/popular.js")                                                         
     script(src="/static/js/destinations.js") 
     script(src="/static/js/add-favourite.js")
+    script(src="/static/js/remove-favourite.js")
     script(src="/static/js/rate-publication.js")
     script(src="/static/js/remove-publication.js")        
     
@@ -50,8 +51,12 @@ block container
                                 if user.username == model.publisher
                                     button(type="button" class="btn btn-default btn-xs remove" data-toggle="popover" data-content="Remove publication")
                                         span(class="glyphicon glyphicon-remove" aria-hidden="true")
-                                button(type="button" class="btn btn-default btn-xs favourite" data-toggle="popover" data-content="Add to favourites")
-                                    span(class="glyphicon glyphicon-star-empty" aria-hidden="true")
+                                if !model.liked
+                                    button(type="button" class="btn btn-default btn-xs favourite" data-toggle="popover" data-content="Add to favourites")
+                                        span(class="glyphicon glyphicon-star-empty" aria-hidden="true")
+                                if model.liked 
+                                    button(type="button" class="btn btn-default btn-xs remove-favourite" data-toggle="popover" data-content="Remove from favourites")
+                                        span(class="glyphicon glyphicon-star" aria-hidden="true")
                                 button(type="button" class="btn btn-default btn-xs like" data-toggle="popover" data-content="Like")
                                     span(class="glyphicon glyphicon-thumbs-up" aria-hidden="true")
                                 button(type="button" class="btn btn-default btn-xs dislike" data-toggle="popover" data-content="Dislike")
