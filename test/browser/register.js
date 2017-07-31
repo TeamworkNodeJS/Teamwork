@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { setupDriver } = require('./utils/setup-driver');
-const webdriver = require('selenium-webdriver');
+// const webdriver = require('selenium-webdriver');
 const ui = require('./utils/ui.js');
 const async = require('../../server/utilities/async');
 
@@ -20,9 +20,8 @@ describe('Register test', () => {
         return driver.quit();
     });
 
-    describe('Successful register with valid username and password given', () => {
-
-        const username = 'Test1';
+    describe('Successful register', () => {
+        const username = 'Test';
         const password = 'test1234*';
         const email ='test@gmail.com';
 

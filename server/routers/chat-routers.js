@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const auth = require('../utilities/authinticated');
 
 module.exports = function(app, data) {
     const router = new Router();

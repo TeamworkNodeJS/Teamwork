@@ -6,7 +6,9 @@ const async = require('../../../server/utilities/async');
 
 const username = 'Darin96';
 const password = 'darin96*';
-const imagePath = 'C:\\Users\\Darin-PC\\Desktop\\TeamProject\\Teamwork\\public\\Publicated images\\Jane Adam\\The Best Time to Go to Bali\\bali01.jpg';
+const imagePath = 'C:\\Users\\Darin-PC\\Desktop'
+    +'\\TeamProject\\Teamwork\\public\\Publicated images'
+    +'\\Jane Adam\\The Best Time to Go to Bali\\bali01.jpg';
 const test = 'Test';
 const date = '08/02/2017';
 
@@ -21,7 +23,8 @@ const createPublication = () => {
             .then(() => ui.click('#btn-signin'))
             .then(() => ui.click('#adventures'))
             .then(() => driver.sleep(1000))
-            .then(() => driver.executeScript('window.scrollTo(0, document.body.scrollHeight);'))
+            .then(() => driver
+            .executeScript('window.scrollTo(0, document.body.scrollHeight);'))
             .then(() => ui.click('.publication'))
             .then(() => ui.setValue('#title', test))
             .then(() => ui.setValue('#date', date))

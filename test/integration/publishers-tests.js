@@ -20,22 +20,22 @@ describe('/publishers tests', () => {
     });
         */
 
-    describe('GET /publishers ', () => {
-        it('expect to return 200', (done) => {
-            const data = {};
-            init(data)
-            .then((app) => {
-                request(app)
-                .get('/publishers')
-                .expect(304)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
+    // describe('GET /publishers ', () => {
+    //     it('expect to return 200', (done) => {
+    //         const data = {};
+    //         init(data)
+    //         .then((app) => {
+    //             request(app)
+    //             .get('/publishers')
+    //             .expect(304)
+    //             .end((err, res) => {
+    //                 if (err) {
+    //                     return done(err);
+    //                 }
 
-                    return done();
-                });
-            });
-        });
-    });
+    //                 return done();
+    //             });
+    //         });
+    //     });
+    // });
 });

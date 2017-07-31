@@ -41,20 +41,20 @@ module.exports = function(data) {
                 });
         },
         removeUserFavourites(req, res) {
-            const username = req.user.username;
+            //  const username = req.user.username;
             const id = req.body.id;
 
             data.users.findById(req.user._id)
                 .then((user) => {
-                    var favourites = user.favourites || [];
+                    const favourites = user.favourites || [];
 
-                    for (var i = 0; i < favourites.length; i++) {
-                        if (favourites[i]._id == id){
+                    for (let i = 0; i < favourites.length; i++) {
+                        if (favourites[i]._id === id) {
                             favourites.splice(i, 1);
                             data.users.updateById(user);
-                            return res.end();                
-                            break;
-                        } 
+                            return res.end();
+                            //  break;
+                        }
                     }
 
                     data.users.updateById(user);

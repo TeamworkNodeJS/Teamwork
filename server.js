@@ -21,8 +21,8 @@ async()
     .then((server) => {
         // Socket setup & pass server
         const io = socket(server);
-        io.on('connection', (socket) => {
-            console.log('made socket connection', socket.id);
+        io.on('connection', (_socket) => {
+            console.log('made socket connection', _socket.id);
 
             // Handle chat event
             socket.on('chat', function(data) {

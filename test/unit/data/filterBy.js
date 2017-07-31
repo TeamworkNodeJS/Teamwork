@@ -31,11 +31,6 @@ describe('BaseData.filterBy()', () => {
             toArray,
         };
     };
-
-    const filterBy = () => {
-        return find;
-    }
-
     describe('when there are items in db', () => {
         describe('with default toViewModel', () => {
             beforeEach(() => {

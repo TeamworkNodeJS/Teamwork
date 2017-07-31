@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
-const { expect } = require('chai');
+// const { expect } = require('chai');
 const { setupDriver } = require('../utils/setup-driver');
-const webdriver = require('selenium-webdriver');
+// const webdriver = require('selenium-webdriver');
 const ui = require('../utils/ui.js');
-const async = require('../../../server/utilities/async');
+// const async = require('../../../server/utilities/async');
 const publicationUtils = require('../utils/publication.utils');
 
 describe('Publication tests', () => {
