@@ -12,7 +12,6 @@ block container
         .well.well-sm
             h3.text-center Tell About Your Adventure
             form(action="/publications" method="POST" enctype="multipart/form-data")
-                //- enctype="multipart/form-data"
                 .row
                     .col-md-6
                         .form-group
@@ -44,7 +43,7 @@ block container
                         //-             input#publisher.form-control(type="text" name="publisher" placeholder="Enter publisher" required="required")
                         .form-group
                             label(for="publisher-info") Present the publisher in few words
-                                textarea#publisher-info.form-control(name="publisherinfo" placeholder="Enter publisher info" rows="2" cols="25" required="required")
+                                textarea#publisher-info.form-control(name="publisherinfo" placeholder="Enter publisher info" rows="5" cols="25" required="required")
                     .col-md-6
                         .form-group
                             label(for="image2") Add image

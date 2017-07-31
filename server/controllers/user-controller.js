@@ -41,7 +41,7 @@ module.exports = function(data) {
                 });
         },
         removeUserFavourites(req, res) {
-            //  const username = req.user.username;
+            // const username = req.user.username;
             const id = req.body.id;
 
             data.users.findById(req.user._id)
@@ -49,15 +49,15 @@ module.exports = function(data) {
                     const favourites = user.favourites || [];
 
                     for (let i = 0; i < favourites.length; i++) {
-                        if (favourites[i]._id === id) {
+                        if (JSON.stringify(favourites[i]._id) ===
+                            JSON.stringify(id)) {
                             favourites.splice(i, 1);
                             data.users.updateById(user);
                             return res.end();
-                            //  break;
                         }
                     }
 
-                    data.users.updateById(user);
+                    return data.users.updateById(user);
                 })
                 .then(() => {
                     // req.flash('info',

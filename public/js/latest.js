@@ -49,7 +49,7 @@ $(function () {
                     .addClass('.col-md-12')
                     .append($('<a href="/publications/' + publications._id + '">').append(
                         $('<img src="/static' + publications.image1 + '" alt="image"/>')))
-                    .append($('<div/>').addClass('info').append($('<h6/>').text(publications.title)))
+                    .append($('<div/>').addClass('info text-center').append($('<h6/>').text(publications.title)))
                     .appendTo(wrapper);
             });
         });

@@ -37,18 +37,18 @@ module.exports = function(data) {
                             return res.render('errors/not-found');
                         }
                         publication.liked = false;
-                        if(user){
-                            var favourites = req.user.favourites;
-                            for (var i = 0; i < favourites.length; i++) {
+                        if (user) {
+                            const favourites = req.user.favourites;
+                            for (let i = 0; i < favourites.length; i++) {
                                 // console.log('-----------------------');
                                 // console.log(favourites);
                                 // console.log(id);
-                                if (favourites[i]._id == id){
+                                if (favourites[i]._id === id) {
                                     publication.liked = true;
                                     // console.log('liked');
                                     break;
                                 } else {
-                                    // console.log('not liked');                                    
+                                    // console.log('not liked');
                                 }
                             }
                         }
@@ -239,7 +239,7 @@ module.exports = function(data) {
                 data.publishers.removeByQuery({ name: publisher }, { $pull: { publication: { _id: new ObjectId(id) } } });// eslint-disable-line
                 data.destinations.removeByQuery({ destination: destination }, { $pull: { publications: { _id: new ObjectId(id) } } });// eslint-disable-line
                 data.users.removeByQuery({ username: username }, { $pull: { publications: { _id: new ObjectId(id) } } });// eslint-disable-line
-                           
+
                 return res.end();
                 // req.method = 'GET';
                 // req.url = '/publications';

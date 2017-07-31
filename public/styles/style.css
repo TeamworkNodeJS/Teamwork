@@ -19,7 +19,7 @@ body header #logo a:hover {
 body header #nav a {
   color: #fff;
   padding: 5px;
-  font-size: 14px;
+  font-size: 15px;
 }
 body header #nav a span {
   padding: 5px;
@@ -27,7 +27,7 @@ body header #nav a span {
 body header #nav a button {
   padding: 5px;
   margin-top: 7px;
-  font-size: 12px;
+  font-size: 14px;
   border: 1px solid #C3BFBF;
   border-radius: 5px;
 }
@@ -83,7 +83,7 @@ body #wrapper .all-publications > .row {
   padding-bottom: 50px;
 }
 body #wrapper .all-publications .col-md-8 .row {
-  width: 90%;
+  width: 85%;
 }
 body #wrapper .all-publications .col-md-8 .row .col-md-4 {
   padding: 5px;
@@ -171,9 +171,6 @@ body #wrapper .publication > .row .single-publication-container .icons button:ho
 }
 body #wrapper .publication > .row .single-publication-container .icons button:hover .glyphicon-star-empty {
   color: #fff60a;
-}
-body #wrapper .publication > .row .single-publication-container .icons button:hover .glyphicon-star {
-  color: #ff0000;
 }
 body #wrapper .publication > .row .single-publication-container .icons button:hover .glyphicon-thumbs-down {
   color: #ff0000;
@@ -403,7 +400,7 @@ body #wrapper aside .nav {
 }
 body #wrapper aside .nav li a {
   color: #000;
-  font-size: 12px;
+  font-size: 14px;
 }
 body #wrapper aside .nav li.active > a {
   background-color: #eeeeee;
@@ -415,13 +412,13 @@ body #wrapper aside .filtered h5 {
   background-color: #eeeeee;
   padding: 15px 10px;
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 body #wrapper aside .filtered .latest {
   padding: 15px;
 }
 body #wrapper aside .filtered .latest h6 {
-  font-size: 12px;
+  font-size: 14px;
   margin: 20px 0 40px;
 }
 body #wrapper aside .filtered .latest img {
@@ -440,7 +437,7 @@ body #wrapper aside .filtered .popular .col-md-12:hover {
 }
 body #wrapper aside .filtered .popular .info {
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
   color: #000;
   font-family: 'Lora', serif;
 }
@@ -456,9 +453,6 @@ body #wrapper .signin-form {
   top: 80px;
   left: 400px;
   font-size: 12px;
-}
-body #wrapper .reg-form{
-  top:30px;
 }
 body #wrapper .reg-form .well,
 body #wrapper .signin-form .well {
@@ -479,6 +473,7 @@ body #wrapper .publication-form {
 }
 body #wrapper .publication-form .well {
   padding: 10px;
+  margin-bottom: 80px;
 }
 body #wrapper .publication-form .well h3 {
   padding: 0 0 20px;
