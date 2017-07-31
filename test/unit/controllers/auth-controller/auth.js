@@ -23,7 +23,7 @@ describe('auth controller', () => {
         },
         };
 
-        controller = require('../../../../../server/controllers/auth-controller')(data); // eslint-disable-line
+        controller = require('../../../../server/controllers/auth-controller')(data); // eslint-disable-line
         req = {
             body: {
                 firstname: 'Test',
@@ -33,9 +33,10 @@ describe('auth controller', () => {
                 password: 'test1234*',
                 confirmpassword: 'test1234*',
             },
+            flash() {},
         };
-        //  req = require('../../../req-res').getRequestMock();
-        res = require('../../../req-res').getResponseMock();
+        //  req = require('../../req-res').getRequestMock();
+        res = require('../../req-res').getResponseMock();
     });
 
     it('expect getLoginForm() to return login form', () => {

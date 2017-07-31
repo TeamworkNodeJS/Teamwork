@@ -66,7 +66,7 @@ module.exports = function(data) {
                     return res.redirect('/login');
                 })
                 .catch((err) => {
-                   //   req.flash('error', err);
+                    req.flash('error', err);
                     return res.redirect('/register');
                 });
         },

@@ -29,9 +29,9 @@ describe('publication controller', () => {
             },
         };
 
-        controller = require('../../../../../server/controllers/publications-controller')(data); // eslint-disable-line
-        req = require('../../../req-res').getRequestMock();
-        res = require('../../../req-res').getResponseMock();
+        controller = require('../../../../server/controllers/publications-controller')(data); // eslint-disable-line
+        req = require('../../req-res').getRequestMock();
+        res = require('../../req-res').getResponseMock();
     });
 
     it('expect getAll to return all publications', () =>{
