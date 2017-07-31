@@ -15,15 +15,13 @@ $(function () {
             url: '/user/favourites',
             data: data,
             success: ((data) =>  {
-                console.log('success');
+            window.location.reload();                
             }),
             error: ((error) => {
-                console.log(error);
+            window.location.reload();        
             })
         })
         .then(() => {
-             window.location.reload();
          });
     });
-
 });

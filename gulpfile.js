@@ -89,6 +89,7 @@ gulp.task('test-server:stop', () => {
 gulp.task('tests:browser', ['test-server:start'], () => {
     //  return gulp.src('./test/browser/login.js')
     //  return gulp.src('./test/browser/home.js')
+    //  return gulp.src('./test/browser/register.js')
     return gulp.src('./test/browser/publications/**/*.js')
         .pipe(mocha({
             reporter: 'nyan',

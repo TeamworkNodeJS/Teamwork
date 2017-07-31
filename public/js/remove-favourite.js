@@ -1,5 +1,5 @@
 $(function () {
-    $('.remove').on('click', function () {
+    $('.remove-favourite-user-page').on('click', function () {
         $this = $(this);
         var id = $this.parent().next().find('a').attr('href').substring(14);
         var data = {
@@ -11,15 +11,41 @@ $(function () {
             url: '/user/favourites',
             data: data,
             success: ((data) =>  {
-                location.reload();
+                // location.reload();
+                window.location.reload();
             }),
             error: ((error) => {
-                console.log(error);
+                // console.log(error);
+                window.location.reload();
             })
         });
     });
 
 });
+
+$(function () {
+    $('.remove-favourite').on('click', function () {
+        $this = $(this);
+        var pathname = window.location.pathname;
+        var id = pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+        var data = {
+            id: id
+        };
+        
+        $.ajax({
+            method: 'DELETE',
+            url: '/user/favourites',
+            data: data,
+            success: ((data) =>  {
+                window.location.reload();   
+            }),
+            error: ((error) => {
+                window.location.reload();
+            })
+        });
+    });
+});
+
 
 // $(function () {
 //     $('.remove').on('click', function () {

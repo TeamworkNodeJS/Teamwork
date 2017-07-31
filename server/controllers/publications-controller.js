@@ -29,12 +29,30 @@ module.exports = function(data) {
             },
             getById(req, res) {
                 const id = req.params.id;
+                const user = req.user;
 
                 return data.publications.getById(id)
                     .then((publication) => {
                         if (!publication) {
                             return res.render('errors/not-found');
                         }
+                        publication.liked = false;
+                        if(user){
+                            var favourites = req.user.favourites;
+                            for (var i = 0; i < favourites.length; i++) {
+                                // console.log('-----------------------');
+                                // console.log(favourites);
+                                // console.log(id);
+                                if (favourites[i]._id == id){
+                                    publication.liked = true;
+                                    // console.log('liked');
+                                    break;
+                                } else {
+                                    // console.log('not liked');                                    
+                                }
+                            }
+                        }
+
                         return res.render('publication-views/publication', {
                             model: publication,
                         });
@@ -103,7 +121,8 @@ module.exports = function(data) {
                 return Promise
                     .all([
                         data.publications.create(publication),
-                        data.publishers.findOrCreateBy(publisher),
+                        // data.publishers.findOrCreateBy(publisher),
+                        data.publishers.findOneOrCreate(publisher),
                         data.destinations.findOrCreateBy(destination),
                     ])
                     .then(([dbPublication, dbPublisher, dbDestination]) => {  // eslint-disable-line

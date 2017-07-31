@@ -44,23 +44,29 @@ module.exports = function(data) {
             const username = req.user.username;
             const id = req.body.id;
 
-            return data.users.removeByQuery({ username: username }, { $pull: { favourites: { _id: new ObjectId(id) } } }) // eslint-disable-line
+            data.users.findById(req.user._id)
+                .then((user) => {
+                    var favourites = user.favourites || [];
 
-                // //return data.users.findById(userId)                
+                    for (var i = 0; i < favourites.length; i++) {
+                        if (favourites[i]._id == id){
+                            favourites.splice(i, 1);
+                            data.users.updateById(user);
+                            return res.end();                
+                            break;
+                        } 
+                    }
 
-                // //.then( (result) => {
-                //  //   const index = result.favourites
-                //  //   .findIndex((x) => x._id === req.body.id);
-                //  //   return result.favourites.splice(index, 1);
-                //  //   })
+                    data.users.updateById(user);
+                })
                 .then(() => {
-                    req.flash('info',
-                        'Your favourites was removed successfully!');
-                    return res.redirect('back');
+                    // req.flash('info',
+                    //     'Your favourites was added successfully!');
+                    // return res.redirect('back');
                 })
                 .catch((err) => {
-                    req.flash('error', err);
-                    return res.status(400);
+                    // req.flash('error', err);
+                    // return res.status(400);
                 });
         },
     };

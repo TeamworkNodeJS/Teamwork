@@ -31,7 +31,7 @@ describe('Login test', () => {
         const username = 'Darin96';
         const password = 'darin96*';
 
-        it('expect to redirect to home page', (done) => {
+        it('expect to redirect to home page after login', (done) => {
             async()
                 .then(() => ui.click('.container button'))
                 .then(() => ui.click('.btn'))
