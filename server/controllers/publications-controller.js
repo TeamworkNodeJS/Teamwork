@@ -238,7 +238,7 @@ module.exports = function(data) {
                 // req.method = 'GET';
                 // req.url = '/publications';
                 // res.req = req;
-                // return res.redirect('/publications');            
+                // return res.redirect('/publications');
             },
             search(req, res) {
                 const filter = req.query.search;

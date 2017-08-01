@@ -1,6 +1,3 @@
-const request = require('supertest');
-const { init } = require('../../server/config');
-
 describe('/publishers tests', () => {
    /* let app = null;
     const data = {

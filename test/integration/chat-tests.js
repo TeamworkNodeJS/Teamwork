@@ -1,11 +1,6 @@
 const request = require('supertest');
 const { init } = require('../../server/config');
 
-const user = {
-    username: 'Darin96',
-    password: 'darin96*',
-}
-
 describe('/ chat-tests', () => {
     describe('GET /chat tests', () => {
         it('expect to return 200', (done) => {
