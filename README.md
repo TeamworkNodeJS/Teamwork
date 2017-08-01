@@ -58,7 +58,9 @@
 
 ## Live demo :
 
-[http://ec2-13-59-95-197.us-east-2.compute.amazonaws.com]
+[Amazon](http://ec2-13-59-95-197.us-east-2.compute.amazonaws.com)
 
 ## Video demo :
+
+[YouTube](https://www.youtube.com/watch?v=8ORiNsf0eqU)
 
