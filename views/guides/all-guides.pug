@@ -1,0 +1,22 @@
+extends ../_layout
+include ../_mixins/_aside
+block scripts                     
+    script(src="/libs/jquery/dist/jquery.js")
+    script(src="/libs/bootstrap/dist/js/bootstrap.js")
+    script(src="/static/js/latest.js")    
+    script(src="/static/js/popular.js")  
+    script(src="/static/js/destinations.js")
+    
+block container  
+    .all-guides.container
+        .row
+            .col-md-3.col-md-offset-1
+                +asides
+            .col-md-8
+                each item in model
+                    .guides-container
+                        h3.text-center
+                            a(href="/guides/" + item._id) #{item.country}
+                        p
+                            |    #{item.info}
+                        img(src = item.image, alt="image")

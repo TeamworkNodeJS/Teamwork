@@ -59,11 +59,6 @@ module.exports = function(data) {
                     });
             },
             create(req, res) {
-                // const publication = req.body;!!!!!!!!!!!!!!!!!!!!!!!
-                // const user = req.user;!!!!!!!!!!!!!!!!!!!!!!
-
-                // VALIDATIONS !!!!!!!!!!!!!!!!!!!!!!!!!
-
                 const clearRoot = function(rootedDir) {
                     let cleared = rootedDir.replace(appDir, '');
                     cleared = cleared.replace('\\public', '');
@@ -82,14 +77,14 @@ module.exports = function(data) {
 
 
                         const publisher = {
-                            name: publication.publisher,
+                            name: user.firstname + ' ' + user.lastname,
                             info: publication.publisherinfo,
                             comments: [],
                         };
 
-                         const destination = {
-                             destination: publication.destination,
-                         };
+                        const destination = {
+                            destination: publication.destination,
+                        };
 
                         const imagesDir = path
                         .join(PUBLISHER_PUBLICATIONS_IMAGES_DIRECTORY,
@@ -121,8 +116,7 @@ module.exports = function(data) {
                 return Promise
                     .all([
                         data.publications.create(publication),
-                        // data.publishers.findOrCreateBy(publisher),
-                        data.publishers.findOneOrCreate(publisher),
+                        data.publishers.findOrCreateBy(publisher),
                         data.destinations.findOrCreateBy(destination),
                     ])
                     .then(([dbPublication, dbPublisher, dbDestination]) => {  // eslint-disable-line
@@ -266,6 +260,21 @@ module.exports = function(data) {
                     text: req.body.textComment,
                 };
                 const id = req.params.id;
+
+                if (comment.firstname === 'undefined' ||
+                     typeof comment.firstname !== 'string') {
+                    return Promise.reject('Invalid name. Please enter again!');
+                }
+
+                if (comment.lastname === 'undefined' ||
+                     typeof comment.lastname !== 'string') {
+                    return Promise.reject('Invalid name. Please enter again!');
+                }
+
+                if (comment.text === 'undefined' ||
+                     typeof comment.text !== 'string') {
+                    return Promise.reject('Comment must be a rext');
+                }
 
                 return data.publications.getById(id)
                     .then((dbPublication) => {
