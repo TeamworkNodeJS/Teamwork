@@ -37,18 +37,18 @@ module.exports = function(data) {
                             return res.render('errors/not-found');
                         }
                         publication.liked = false;
-                        if(user){
-                            var favourites = req.user.favourites;
-                            for (var i = 0; i < favourites.length; i++) {
+                        if (user) {
+                            const favourites = req.user.favourites;
+                            for (let i = 0; i < favourites.length; i++) {
                                 // console.log('-----------------------');
                                 // console.log(favourites);
                                 // console.log(id);
-                                if (favourites[i]._id == id){
+                                if (favourites[i]._id === id) {
                                     publication.liked = true;
                                     // console.log('liked');
                                     break;
                                 } else {
-                                    // console.log('not liked');                                    
+                                    // console.log('not liked');
                                 }
                             }
                         }
@@ -59,11 +59,6 @@ module.exports = function(data) {
                     });
             },
             create(req, res) {
-                // const publication = req.body;!!!!!!!!!!!!!!!!!!!!!!!
-                // const user = req.user;!!!!!!!!!!!!!!!!!!!!!!
-
-                // VALIDATIONS !!!!!!!!!!!!!!!!!!!!!!!!!
-
                 const clearRoot = function(rootedDir) {
                     let cleared = rootedDir.replace(appDir, '');
                     cleared = cleared.replace('\\public', '');
@@ -82,14 +77,14 @@ module.exports = function(data) {
 
 
                         const publisher = {
-                            name: publication.publisher,
+                            name: user.firstname + ' ' + user.lastname,
                             info: publication.publisherinfo,
                             comments: [],
                         };
 
-                         const destination = {
-                             destination: publication.destination,
-                         };
+                        const destination = {
+                            destination: publication.destination,
+                        };
 
                         const imagesDir = path
                         .join(PUBLISHER_PUBLICATIONS_IMAGES_DIRECTORY,
@@ -121,8 +116,7 @@ module.exports = function(data) {
                 return Promise
                     .all([
                         data.publications.create(publication),
-                        // data.publishers.findOrCreateBy(publisher),
-                        data.publishers.findOneOrCreate(publisher),
+                        data.publishers.findOrCreateBy(publisher),
                         data.destinations.findOrCreateBy(destination),
                     ])
                     .then(([dbPublication, dbPublisher, dbDestination]) => {  // eslint-disable-line
@@ -239,12 +233,12 @@ module.exports = function(data) {
                 data.publishers.removeByQuery({ name: publisher }, { $pull: { publication: { _id: new ObjectId(id) } } });// eslint-disable-line
                 data.destinations.removeByQuery({ destination: destination }, { $pull: { publications: { _id: new ObjectId(id) } } });// eslint-disable-line
                 data.users.removeByQuery({ username: username }, { $pull: { publications: { _id: new ObjectId(id) } } });// eslint-disable-line
-                           
+
                 return res.end();
                 // req.method = 'GET';
                 // req.url = '/publications';
                 // res.req = req;
-                // return res.redirect('/publications');            
+                // return res.redirect('/publications');
             },
             search(req, res) {
                 const filter = req.query.search;
@@ -266,6 +260,21 @@ module.exports = function(data) {
                     text: req.body.textComment,
                 };
                 const id = req.params.id;
+
+                if (comment.firstname === 'undefined' ||
+                     typeof comment.firstname !== 'string') {
+                    return Promise.reject('Invalid name. Please enter again!');
+                }
+
+                if (comment.lastname === 'undefined' ||
+                     typeof comment.lastname !== 'string') {
+                    return Promise.reject('Invalid name. Please enter again!');
+                }
+
+                if (comment.text === 'undefined' ||
+                     typeof comment.text !== 'string') {
+                    return Promise.reject('Comment must be a rext');
+                }
 
                 return data.publications.getById(id)
                     .then((dbPublication) => {

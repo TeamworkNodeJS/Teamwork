@@ -24,16 +24,27 @@ block container
                             p #{model.info}
                         .col-md-12
                             h4.text-center Publications about #{model.destination}
-                        each element in model.publications
-                            .publications-container-info.col-md-6
-                                div
-                                    img(src="/static" + element.image, alt="image")
-                                .text-center
-                                    .date-postBy
-                                        span.date #{element.date}
-                                        span | 
-                                        span.post-by posted by #{element.publisher} 
+                            each element in model.publications
+                                .publications-container-info.col-md-6
                                     div
-                                        a(href="/publications/" + element._id) #{element.title}
-                        .col-md-12
-                            h4.text-center Guides about #{model.destination}
+                                        img(src="/static" + element.image, alt="image")
+                                    .text-center
+                                        .date-postBy
+                                            span.date #{element.date}
+                                            span | 
+                                            span.post-by posted by #{element.publisher} 
+                                        div
+                                            a(href="/publications/" + element._id) #{element.title}
+                            .col-md-12
+                                h4.text-center Guides about #{model.destination}
+                                each element in model.guides
+                                    .guides-container-info.col-md-6
+                                        div
+                                            img(src=element.image, alt="image")
+                                        .text-center
+                                            .date-postBy
+                                                span.destination #{element.destination}
+                                                span | 
+                                                span.post-by posted by admin
+                                            div
+                                                a(href="/guides/" + element._id) #{element.country}

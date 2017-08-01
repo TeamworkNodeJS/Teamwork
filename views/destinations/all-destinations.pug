@@ -22,16 +22,28 @@ block container
                         .row
                             .col-md-12
                                 h4.text-center Publications about #{item.destination}
-                            each element in item.publications
-                                .publications-container-info.col-md-6
-                                    div
-                                        img(src="/static" + element.image, alt="image")
-                                    .text-center
-                                        .date-postBy
-                                            span.date #{element.date}
-                                            span | 
-                                            span.post-by posted by #{element.publisher} 
-                                        div
-                                            a(href="/publications/" + element._id) #{element.title}
+                                if item.publications 
+                                    each element in item.publications
+                                        .publications-container-info.col-md-6
+                                            div
+                                                img(src="/static" + element.image, alt="image")
+                                            .text-center
+                                                .date-postBy
+                                                    span.date #{element.date}
+                                                    span | 
+                                                    span.post-by posted by #{element.publisher} 
+                                                div
+                                                    a(href="/publications/" + element._id) #{element.title}
                             .col-md-12
                                 h4.text-center Guides about #{item.destination}
+                                each element in item.guides
+                                    .guides-container-info.col-md-6
+                                        div
+                                            img(src=element.image, alt="image")
+                                        .text-center
+                                            .date-postBy
+                                                span.destination #{element.destination}
+                                                span | 
+                                                span.post-by posted by admin
+                                            div
+                                                a(href="/guides/" + element._id) #{element.country}

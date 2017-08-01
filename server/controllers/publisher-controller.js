@@ -44,6 +44,21 @@ module.exports = function(data) {
                 };
                 const id = req.params.id;
 
+                 if (comment.firstname === 'undefined' ||
+                     typeof comment.firstname !== 'string') {
+                    return Promise.reject('Invalid name. Please enter again!');
+                }
+
+                if (comment.lastname === 'undefined' ||
+                     typeof comment.lastname !== 'string') {
+                    return Promise.reject('Invalid name. Please enter again!');
+                }
+
+                if (comment.text === 'undefined' ||
+                     typeof comment.text !== 'string') {
+                    return Promise.reject('Comment must be a rext');
+                }
+
                 return data.publishers.getById(id)
                     .then((dbPublisher) => {
                         dbPublisher.comments = dbPublisher.comments || [];

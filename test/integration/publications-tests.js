@@ -108,26 +108,4 @@ describe('/publications tests', () => {
                 });
         });
     });
-
-
-    /* describe('POST /publications', () => {
-        it('should respond with redirect on post', function(done) {
-        request(app)
-        .post('/publications')
-        .send({
-            publication: {},
-            user: {},
-            publisher: {},
-        })
-        .expect(200)
-        .expect('Content-Type', /json/)
-        .end(function(err, res) {
-             if (err) {
-                return done(err);
-            }
-            return done();
-        });
-    });
-});
-*/
 });
