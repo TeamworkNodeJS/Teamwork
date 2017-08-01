@@ -79,6 +79,37 @@ describe('/publications tests', () => {
         });
     });
 
+    describe('GET /publications', () => {
+        it('expect to return 200', (done) => {
+            request(app)
+                .get('/publications/latest')
+                .expect('Content-Type', /html/)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+    describe('GET /publications', () => {
+        it('expect to return 200', (done) => {
+            request(app)
+                .get('/publications/search')
+                .expect('Content-Type', /html/)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+
     /* describe('POST /publications', () => {
         it('should respond with redirect on post', function(done) {
         request(app)
